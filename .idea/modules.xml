@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/order.iml" filepath="$PROJECT_DIR$/order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component.iml" filepath="$PROJECT_DIR$/order-component/order-component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-client/order-component-client.iml" filepath="$PROJECT_DIR$/order-component/order-component-client/order-component-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-dao/order-component-dao.iml" filepath="$PROJECT_DIR$/order-component/order-component-dao/order-component-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-dao-impl/order-component-dao-impl.iml" filepath="$PROJECT_DIR$/order-component/order-component-dao-impl/order-component-dao-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-domain/order-component-domain.iml" filepath="$PROJECT_DIR$/order-component/order-component-domain/order-component-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-entity/order-component-entity.iml" filepath="$PROJECT_DIR$/order-component/order-component-entity/order-component-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-mapper/order-component-mapper.iml" filepath="$PROJECT_DIR$/order-component/order-component-mapper/order-component-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-mirror/order-component-mirror.iml" filepath="$PROJECT_DIR$/order-component/order-component-mirror/order-component-mirror.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-pu/order-component-pu.iml" filepath="$PROJECT_DIR$/order-component/order-component-pu/order-component-pu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-pu-mirror/order-component-pu-mirror.iml" filepath="$PROJECT_DIR$/order-component/order-component-pu-mirror/order-component-pu-mirror.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-service/order-component-service.iml" filepath="$PROJECT_DIR$/order-component/order-component-service/order-component-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-service-impl/order-component-service-impl.iml" filepath="$PROJECT_DIR$/order-component/order-component-service-impl/order-component-service-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-test/order-component-test.iml" filepath="$PROJECT_DIR$/order-component/order-component-test/order-component-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-test/order-component-test-common/order-component-test-common.iml" filepath="$PROJECT_DIR$/order-component/order-component-test/order-component-test-common/order-component-test-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-test/order-component-test-integration/order-component-test-integration.iml" filepath="$PROJECT_DIR$/order-component/order-component-test/order-component-test-integration/order-component-test-integration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-component/order-component-test/order-component-test-unit/order-component-test-unit.iml" filepath="$PROJECT_DIR$/order-component/order-component-test/order-component-test-unit/order-component-test-unit.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.gigaspaces:xap-admin:14.0.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/gigaspaces/xap-admin/14.0.1/xap-admin-14.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/gigaspaces/xap-admin/14.0.1/xap-admin-14.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/gigaspaces/xap-admin/14.0.1/xap-admin-14.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="order-component-test-unit" />
+        <module name="order-component-dao" />
+        <module name="order-component-mapper" />
+        <module name="order-component-domain" />
+        <module name="order-component-pu-mirror" />
+        <module name="order-component-entity" />
+        <module name="order-component-test-integration" />
+        <module name="order-component-test-common" />
+        <module name="order-component-service" />
+        <module name="order-component-pu" />
+        <module name="order-component-dao-impl" />
+        <module name="order-component-client" />
+        <module name="order-component-mirror" />
+        <module name="order-component-service-impl" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="order" target="1.8" />
+      <module name="order-component" target="1.8" />
+      <module name="order-component-client" target="1.8" />
+      <module name="order-component-dao" target="1.8" />
+      <module name="order-component-dao-impl" target="1.8" />
+      <module name="order-component-domain" target="1.8" />
+      <module name="order-component-entity" target="1.8" />
+      <module name="order-component-mapper" target="1.8" />
+      <module name="order-component-mirror" target="1.8" />
+      <module name="order-component-pu" target="1.8" />
+      <module name="order-component-pu-mirror" target="1.8" />
+      <module name="order-component-service" target="1.8" />
+      <module name="order-component-service-impl" target="1.8" />
+      <module name="order-component-test" target="1.8" />
+      <module name="order-component-test-common" target="1.8" />
+      <module name="order-component-test-integration" target="1.8" />
+      <module name="order-component-test-unit" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

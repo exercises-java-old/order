@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.so4it.sugar:gigaspaces-util:0.17.0-RT4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/gigaspaces-util/0.17.0-RT4-SNAPSHOT/gigaspaces-util-0.17.0-RT4-20190801.145350-11.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/gigaspaces-util/0.17.0-RT4-SNAPSHOT/gigaspaces-util-0.17.0-RT4-20190801.145350-11-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/gigaspaces-util/0.17.0-RT4-SNAPSHOT/gigaspaces-util-0.17.0-RT4-20190801.145350-11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

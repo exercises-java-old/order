@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.so4it.sugar:security-codec:0.17.0-RT4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/security-codec/0.17.0-RT4-SNAPSHOT/security-codec-0.17.0-RT4-20190722.084021-8.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/security-codec/0.17.0-RT4-SNAPSHOT/security-codec-0.17.0-RT4-20190722.084021-8-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/security-codec/0.17.0-RT4-SNAPSHOT/security-codec-0.17.0-RT4-20190722.084021-8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

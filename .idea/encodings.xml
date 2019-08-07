@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-dao-impl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-domain" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-entity" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-mapper" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-mirror" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-pu" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-pu-mirror" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-service-impl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-test" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-test/order-component-test-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-test/order-component-test-integration" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-component/order-component-test/order-component-test-unit" charset="UTF-8" />
+  </component>
+</project>

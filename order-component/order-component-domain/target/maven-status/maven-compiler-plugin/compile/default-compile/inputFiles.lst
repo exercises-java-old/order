@@ -1,0 +1,8 @@
+/home/rifr/IdeaProjects/order/order-component/order-component-domain/src/main/java/se/lexicon/order/component/domain/CreateOrderTransactionRequest.java
+/home/rifr/IdeaProjects/order/order-component/order-component-domain/src/main/java/se/lexicon/order/component/domain/OrderBook.java
+/home/rifr/IdeaProjects/order/order-component/order-component-domain/src/main/java/se/lexicon/order/component/domain/OrderBooks.java
+/home/rifr/IdeaProjects/order/order-component/order-component-domain/src/main/java/se/lexicon/order/component/domain/Orders.java
+/home/rifr/IdeaProjects/order/order-component/order-component-domain/src/main/java/se/lexicon/order/component/domain/Order.java
+/home/rifr/IdeaProjects/order/order-component/order-component-domain/src/main/java/se/lexicon/order/component/domain/Money.java
+/home/rifr/IdeaProjects/order/order-component/order-component-domain/src/main/java/se/lexicon/order/component/domain/OrderTransaction.java
+/home/rifr/IdeaProjects/order/order-component/order-component-domain/src/main/java/se/lexicon/order/component/domain/Phase.java
