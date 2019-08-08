@@ -1,0 +1,36 @@
+-------------------------------------------------------------------------------
+Test set: se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0.991 sec <<< FAILURE! - in se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest
+testPlaceOrder(se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest)  Time elapsed: 0.011 sec  <<< ERROR!
+com.so4it.gs.rpc.exception.IllegalServiceMetadataException: bean=se.lexicon.order.component.service.OrderComponentService-orderComponentService beanId=1 message=Ambiguous routing. No routing argument defined in method signature or on method arguments and method not annotated with @Broadcast. serviceMethod=public abstract void se.lexicon.order.component.service.OrderComponentService.MatchOrder(se.lexicon.order.component.entity.OrderEntity,se.lexicon.order.component.domain.OrderBook)
+	at se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest.testPlaceOrder(OrderComponentServiceIntegrationTest.java:45)
+
+testGetAllOrderComponent(se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest)  Time elapsed: 0 sec  <<< ERROR!
+com.so4it.gs.rpc.exception.IllegalServiceMetadataException: bean=se.lexicon.order.component.service.OrderComponentService-orderComponentService beanId=1 message=Ambiguous routing. No routing argument defined in method signature or on method arguments and method not annotated with @Broadcast. serviceMethod=public abstract void se.lexicon.order.component.service.OrderComponentService.MatchOrder(se.lexicon.order.component.entity.OrderEntity,se.lexicon.order.component.domain.OrderBook)
+	at se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest.testGetAllOrderComponent(OrderComponentServiceIntegrationTest.java:182)
+
+testMatchOrder(se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest)  Time elapsed: 0.002 sec  <<< ERROR!
+com.so4it.gs.rpc.exception.IllegalServiceMetadataException: bean=se.lexicon.order.component.service.OrderComponentService-orderComponentService beanId=1 message=Ambiguous routing. No routing argument defined in method signature or on method arguments and method not annotated with @Broadcast. serviceMethod=public abstract void se.lexicon.order.component.service.OrderComponentService.MatchOrder(se.lexicon.order.component.entity.OrderEntity,se.lexicon.order.component.domain.OrderBook)
+	at se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest.testMatchOrder(OrderComponentServiceIntegrationTest.java:157)
+
+testPlaceTwoOrders(se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest)  Time elapsed: 0.001 sec  <<< ERROR!
+com.so4it.gs.rpc.exception.IllegalServiceMetadataException: bean=se.lexicon.order.component.service.OrderComponentService-orderComponentService beanId=1 message=Ambiguous routing. No routing argument defined in method signature or on method arguments and method not annotated with @Broadcast. serviceMethod=public abstract void se.lexicon.order.component.service.OrderComponentService.MatchOrder(se.lexicon.order.component.entity.OrderEntity,se.lexicon.order.component.domain.OrderBook)
+	at se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest.testPlaceTwoOrders(OrderComponentServiceIntegrationTest.java:60)
+
+testPlaceOrder(se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest)  Time elapsed: 0.001 sec  <<< ERROR!
+com.so4it.gs.rpc.exception.IllegalServiceMetadataException: bean=se.lexicon.order.component.service.OrderComponentService-orderComponentService beanId=1 message=Ambiguous routing. No routing argument defined in method signature or on method arguments and method not annotated with @Broadcast. serviceMethod=public abstract void se.lexicon.order.component.service.OrderComponentService.MatchOrder(se.lexicon.order.component.entity.OrderEntity,se.lexicon.order.component.domain.OrderBook)
+	at se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest.testPlaceOrder(OrderComponentServiceIntegrationTest.java:45)
+
+testGetAllOrderComponent(se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest)  Time elapsed: 0 sec  <<< ERROR!
+com.so4it.gs.rpc.exception.IllegalServiceMetadataException: bean=se.lexicon.order.component.service.OrderComponentService-orderComponentService beanId=1 message=Ambiguous routing. No routing argument defined in method signature or on method arguments and method not annotated with @Broadcast. serviceMethod=public abstract void se.lexicon.order.component.service.OrderComponentService.MatchOrder(se.lexicon.order.component.entity.OrderEntity,se.lexicon.order.component.domain.OrderBook)
+	at se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest.testGetAllOrderComponent(OrderComponentServiceIntegrationTest.java:182)
+
+testMatchOrder(se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest)  Time elapsed: 0.001 sec  <<< ERROR!
+com.so4it.gs.rpc.exception.IllegalServiceMetadataException: bean=se.lexicon.order.component.service.OrderComponentService-orderComponentService beanId=1 message=Ambiguous routing. No routing argument defined in method signature or on method arguments and method not annotated with @Broadcast. serviceMethod=public abstract void se.lexicon.order.component.service.OrderComponentService.MatchOrder(se.lexicon.order.component.entity.OrderEntity,se.lexicon.order.component.domain.OrderBook)
+	at se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest.testMatchOrder(OrderComponentServiceIntegrationTest.java:157)
+
+testPlaceTwoOrders(se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest)  Time elapsed: 0 sec  <<< ERROR!
+com.so4it.gs.rpc.exception.IllegalServiceMetadataException: bean=se.lexicon.order.component.service.OrderComponentService-orderComponentService beanId=1 message=Ambiguous routing. No routing argument defined in method signature or on method arguments and method not annotated with @Broadcast. serviceMethod=public abstract void se.lexicon.order.component.service.OrderComponentService.MatchOrder(se.lexicon.order.component.entity.OrderEntity,se.lexicon.order.component.domain.OrderBook)
+	at se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest.testPlaceTwoOrders(OrderComponentServiceIntegrationTest.java:60)
+

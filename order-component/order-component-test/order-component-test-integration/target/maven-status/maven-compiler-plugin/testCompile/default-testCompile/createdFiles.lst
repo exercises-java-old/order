@@ -1,0 +1,5 @@
+se/lexicon/order/component/test/integration/dao/OrderComponentDaoIntegrationTest.class
+se/lexicon/order/component/test/integration/dao/OrderComponentDaoIntegrationTestSuite.class
+se/lexicon/order/component/test/integration/service/OrderComponentServiceIntegrationTest.class
+se/lexicon/order/component/test/integration/client/OrderComponentClientIntegrationTest.class
+se/lexicon/order/component/test/integration/service/OrderComponentServiceIntegrationTestSuite.class
