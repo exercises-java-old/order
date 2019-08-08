@@ -8,9 +8,5 @@ import com.so4it.gs.rpc.ServiceProvider;
 public interface OrderComponentServiceProvider {
 
     @Service(value = ServiceBindingType.GS_REMOTING, name = OrderComponentService.DEFAULT_BEAN_NAME)
-    OrderComponentService getInvoiceComponentService();
-
-
-    @Service(value = ServiceBindingType.GS_REMOTING, name = OrderComponentService.DEFAULT_BEAN_NAME)
     OrderComponentService getOrderComponentService();
 }
