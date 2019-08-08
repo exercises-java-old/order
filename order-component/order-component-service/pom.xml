@@ -20,6 +20,10 @@
             <groupId>com.so4it.sugar</groupId>
             <artifactId>gigaspaces-rpc</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.lexicon</groupId>
+            <artifactId>order-component-entity</artifactId>
+        </dependency>
     </dependencies>
 </project>
 

@@ -32,7 +32,6 @@
     <orderEntry type="module" module-name="order-component-service" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:gigaspaces-rpc:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:request-core:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.so4it.sugar:component-entity:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.5.1" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:security-core:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:security-codec:0.17.0-RT4-SNAPSHOT" level="project" />
@@ -60,6 +59,8 @@
     <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-core:3.2.5" level="project" />
     <orderEntry type="library" name="Maven: io.reactivex.rxjava2:rxjava:2.1.6" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.1" level="project" />
+    <orderEntry type="module" module-name="order-component-entity" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:component-entity:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.gigaspaces:xap-admin:14.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.gigaspaces:xap-openspaces:14.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.gigaspaces:xap-jms:14.0.1" level="project" />

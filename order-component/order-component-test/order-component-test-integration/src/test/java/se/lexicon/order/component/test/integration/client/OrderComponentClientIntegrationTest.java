@@ -1,6 +1,6 @@
 package se.lexicon.order.component.test.integration.client;
 
-import com.lexicon.order.component.test.common.domain.OrderTestBuilder;
+import se.lexicon.order.component.test.common.domain.OrderTestBuilder;
 import com.so4it.test.category.IntegrationTest;
 import com.so4it.test.gs.rule.ClearGigaSpaceTestRule;
 import org.junit.Assert;
@@ -29,7 +29,7 @@ public class OrderComponentClientIntegrationTest {
     @Test
     public void testCreatingOrder(){
         OrderComponentClient orderComponentClient = OrderComponentServiceIntegrationTestSuite.getImportContext().getBean(OrderComponentClient.class);
-        orderComponentClient.createOrder(OrderTestBuilder.builder().build());
+        orderComponentClient.placeOrder(OrderTestBuilder.builder().build());
 
 
         Assert.assertEquals(1, OrderComponentServiceIntegrationTestSuite.getExportContext().getBean(GigaSpace.class).count(OrderEntity.templateBuilder().build()));
