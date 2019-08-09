@@ -15,6 +15,7 @@ import se.lexicon.order.component.test.common.domain.OrderTestBuilder;
 
 import java.math.BigDecimal;
 import java.util.Currency;
+import java.util.Set;
 
 /**
  * @author Magnus Poromaa {@literal <mailto:magnus.poromaa@so4it.com/>}
@@ -36,7 +37,7 @@ public class OrderComponentServiceIntegrationTest {
 
     @Test
     public void testPlaceOrder() {
-        //Set <Currency> currencies = Currency.getAvailableCurrencies();
+        //Set<Currency> currencies = Currency.getAvailableCurrencies();
         //System.out.println(currencies);
 
         OrderComponentService orderComponentService = OrderComponentServiceIntegrationTestSuite.getImportContext().getBean(OrderComponentService.class);
@@ -77,9 +78,9 @@ public class OrderComponentServiceIntegrationTest {
                 .withNoOfItems(100)
                 .withSide(Side.BUY)
                 .withMinMaxValue(Money.builder()
-                        .withAmount((BigDecimal.valueOf(550d)))
-                        .withCurrency(Currency.getInstance("SEK"))
-                        .build())
+                    .withAmount((BigDecimal.valueOf(550d)))
+                    .withCurrency(Currency.getInstance("SEK"))
+                    .build())
                 .build();
 
         Order order2 = OrderTestBuilder.builder()
@@ -89,10 +90,10 @@ public class OrderComponentServiceIntegrationTest {
                 .withNoOfItems(100)
                 .withSide(Side.SELL)
                 .withMinMaxValue(Money.builder()
-                        .withAmount((BigDecimal.valueOf(500d)))
-                        .withCurrency(Currency.getInstance("SEK"))
-                        .build())
-                        .build();
+                    .withAmount((BigDecimal.valueOf(500d)))
+                    .withCurrency(Currency.getInstance("SEK"))
+                    .build())
+                .build();
 
         Order order3 = OrderTestBuilder.builder()
                 //.withId("333333")
@@ -101,9 +102,9 @@ public class OrderComponentServiceIntegrationTest {
                 .withNoOfItems(50)
                 .withSide(Side.SELL)
                 .withMinMaxValue(Money.builder()
-                        .withAmount((BigDecimal.valueOf(480d)))
-                        .withCurrency(Currency.getInstance("SEK"))
-                        .build())
+                    .withAmount((BigDecimal.valueOf(480d)))
+                    .withCurrency(Currency.getInstance("SEK"))
+                    .build())
                 .build();
 
         Order order4 = OrderTestBuilder.builder()
@@ -113,9 +114,9 @@ public class OrderComponentServiceIntegrationTest {
                 .withNoOfItems(50)
                 .withSide(Side.SELL)
                 .withMinMaxValue(Money.builder()
-                        .withAmount((BigDecimal.valueOf(490d)))
-                        .withCurrency(Currency.getInstance("SEK"))
-                        .build())
+                    .withAmount((BigDecimal.valueOf(490d)))
+                    .withCurrency(Currency.getInstance("SEK"))
+                    .build())
                 .build();
 
         Order order5 = OrderTestBuilder.builder()
@@ -125,9 +126,9 @@ public class OrderComponentServiceIntegrationTest {
                 .withNoOfItems(100)
                 .withSide(Side.BUY)
                 .withMinMaxValue(Money.builder()
-                        .withAmount((BigDecimal.valueOf(500d)))
-                        .withCurrency(Currency.getInstance("SEK"))
-                        .build())
+                    .withAmount((BigDecimal.valueOf(500d)))
+                    .withCurrency(Currency.getInstance("SEK"))
+                    .build())
                 .build();
 
         orderComponentService.placeOrder(order1);
@@ -148,7 +149,6 @@ public class OrderComponentServiceIntegrationTest {
         Assert.assertEquals(1, orders4.getFirst().getOrderBooks().size());
         Assert.assertEquals(2, orders5.getFirst().getOrderBooks().size());
 
-        Assert.assertNotEquals(order1, orders1.getFirst());
     }
 
     @Test

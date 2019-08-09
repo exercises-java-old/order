@@ -222,7 +222,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                         .withSsn(bestMatchingOrderBook.getSsn())
                         .withOrderId(bestMatchingOrderBook.getId())
                         .withNoOfItems(Math.abs(itemsRemaining))
-                        .withPhase(bestMatchingOrderBook.getPhase())
+                        .withPhase(Phase.PENDING_INCOMING)
                         .withSide(bestMatchingOrderBook.getSide())
                         .withMinMaxValue(bestMatchingOrderBook.getMinMaxValue())
                         .withInstrument(bestMatchingOrderBook.getInstrument())
@@ -250,6 +250,8 @@ public class OrderComponentServiceImpl implements OrderComponentService {
 
     private OrderBookEntity chooseEntity
             (int noOfItemsToMatch, Currency inCurrency, OrderBookEntity current, OrderBookEntity compareWith) {
+
+        if (current == null) return compareWith;
 
         if (current.getMinMaxValue().getCurrency().equals(compareWith.getMinMaxValue().getCurrency())) { // same currency
 
