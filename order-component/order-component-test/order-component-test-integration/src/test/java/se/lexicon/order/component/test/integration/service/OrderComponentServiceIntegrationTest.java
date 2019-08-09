@@ -64,7 +64,7 @@ public class OrderComponentServiceIntegrationTest {
 
         Orders orders = orderComponentService.getOrders("111222");
 
-        Assert.assertEquals(3, orders.size());
+        Assert.assertEquals(2, orders.size());
     }
 
     @Test

@@ -19,11 +19,11 @@ public interface OrderComponentService {
 
     void placeOrder(@Routing("getSsn") Order order);
 
-<<<<<<< HEAD
-    void MatchOrder (@Routing("getSsn") OrderEntity orderEntity, OrderBook orderBook);
-=======
+
+  //  void MatchOrder (@Routing("getSsn") OrderEntity orderEntity, OrderBook orderBook);
+
     void MatchOrder (@Routing("getInstrument") OrderEntity orderEntity);
->>>>>>> development
+
 
 //    @Broadcast(reducer = BigDecimalRemoteResultReducer.class)
 //    BigDecimal getTotalOrderValueOfAllOrders();

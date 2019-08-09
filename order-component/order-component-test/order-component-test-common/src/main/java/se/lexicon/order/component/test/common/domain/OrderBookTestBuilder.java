@@ -17,7 +17,7 @@ public class OrderBookTestBuilder extends AbstractTestBuilder<OrderBook> {
     public OrderBookTestBuilder(OrderBook.Builder builder){
         this.builder= Required.notNull(builder,"builder");
         this.builder
-                 .withId("11111111")
+                 //.withId("11111111")
                  .withInstrument("ABB")
                  .withNoOfItems(100)
                  .withSide(Side.BUY)
@@ -30,9 +30,42 @@ public class OrderBookTestBuilder extends AbstractTestBuilder<OrderBook> {
 
     }
 
+    public OrderBookTestBuilder withId(String id){
+        builder.withId(id);
+        return this;
+    }
+
+    public OrderBookTestBuilder withInstrument(String instrument){
+        builder.withInstrument(instrument);
+        return this;
+    }
+
+    public OrderBookTestBuilder withNoOfItems(Integer noOfItems){
+        builder.withNoOfItems(noOfItems);
+        return this;
+    }
+
+    public OrderBookTestBuilder withSide(Side sellOrder){
+        builder.withSide(sellOrder);
+        return this;
+    }
+
+    public OrderBookTestBuilder withPhase(Phase phase){
+        builder.withPhase(phase);
+        return this;
+    }
+
+    public OrderBookTestBuilder withMinMaxValue(Money value){
+        builder.withMinMaxValue(value);
+        return this;
+    }
+
+    public static OrderBookTestBuilder builder(){
+        return new OrderBookTestBuilder(OrderBook.builder());
+    }
 
     @Override
     public OrderBook build() {
-        return null;
+        return builder.build();
     }
 }
