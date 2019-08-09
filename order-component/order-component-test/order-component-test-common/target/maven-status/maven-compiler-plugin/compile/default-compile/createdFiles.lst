@@ -1,3 +1,3 @@
-se/lexicon/order/component/test/common/entity/OrderEntityTestBuilder.class
-se/lexicon/order/component/test/common/entity/OrderBookEntityTestBuilder.class
-se/lexicon/order/component/test/common/domain/OrderTestBuilder.class
+se\lexicon\order\component\test\common\entity\OrderEntityTestBuilder.class
+se\lexicon\order\component\test\common\domain\OrderTestBuilder.class
+se\lexicon\order\component\test\common\entity\OrderBookEntityTestBuilder.class
