@@ -20,3 +20,4 @@ se/lexicon/order/component/domain/OrderBook$Builder.class
 se/lexicon/order/component/domain/OrderTransaction$1.class
 se/lexicon/order/component/domain/CreateOrderTransactionRequest.class
 se/lexicon/order/component/domain/OrderBook.class
+se/lexicon/order/component/domain/Side.class
