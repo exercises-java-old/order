@@ -9,6 +9,7 @@ import com.so4it.component.entity.AbstractEntityBuilder;
 import com.so4it.component.entity.IdEntity;
 import se.lexicon.order.component.domain.Money;
 import se.lexicon.order.component.domain.Phase;
+import se.lexicon.order.component.domain.Side;
 
 /**
  *
@@ -30,7 +31,7 @@ public class OrderBookEntity extends IdEntity<String> {
 
     private Phase phase = Phase.UNKNOWN;
 
-    private Boolean sellOrder; // Sell or Buy
+    private Side side; // Sell or Buy
 
     @Allowed(types = {Allowed.Type.NULLABLE})
     private String matchingOrderId;
@@ -46,7 +47,7 @@ public class OrderBookEntity extends IdEntity<String> {
         this.noOfItems = Required.notNull(builder.noOfItems,"noOfItems",builder.isTemplate());
         this.minMaxValue = Required.notNull(builder.minMaxValue,"minValue",builder.isTemplate());
         this.phase = Required.notNull(builder.phase,"phase",builder.isTemplate());
-        this.sellOrder = Required.notNull(builder.sellOrder,"sellOrder",builder.isTemplate());
+        this.side = Required.notNull(builder.side,"sellOrder",builder.isTemplate());
         this.matchingOrderId = builder.matchingOrderId;
     }
 
@@ -109,12 +110,12 @@ public class OrderBookEntity extends IdEntity<String> {
         this.phase = phase;
     }
 
-    public Boolean getSellOrder() {
-        return sellOrder;
+    public Side getSide() {
+        return side;
     }
 
-    private void setSellOrder(Boolean sellOrder) {
-        this.sellOrder = sellOrder;
+    private void setSide(Side side) {
+        this.side = side;
     }
 
     public String getMatchingOrderId() {
@@ -143,7 +144,7 @@ public class OrderBookEntity extends IdEntity<String> {
                 ", noOfItems=" + noOfItems +
                 ", minMaxValue=" + minMaxValue +
                 ", phase=" + phase +
-                ", sellOrder=" + sellOrder +
+                ", side=" + side +
                 ", matchingOrderId='" + matchingOrderId + '\'' +
                 '}';
     }
@@ -163,9 +164,9 @@ public class OrderBookEntity extends IdEntity<String> {
         Money minMaxValue;
         //Money max or min Value;
 
-        Phase phase = Phase.UNKNOWN;
+        Phase phase;
 
-        Boolean sellOrder; // Sell or Buy
+        Side side; // Sell or Buy
 
         String matchingOrderId;
 
@@ -208,8 +209,8 @@ public class OrderBookEntity extends IdEntity<String> {
             return this;
         }
 
-        public OrderBookEntity.Builder withSellOrder(Boolean sellOrder) {
-            this.sellOrder = sellOrder;
+        public OrderBookEntity.Builder withSide(Side side) {
+            this.side = side;
             return this;
         }
 

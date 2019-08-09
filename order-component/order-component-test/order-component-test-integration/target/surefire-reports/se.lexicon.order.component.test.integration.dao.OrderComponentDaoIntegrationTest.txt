@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: se.lexicon.order.component.test.integration.dao.OrderComponentDaoIntegrationTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.398 sec - in se.lexicon.order.component.test.integration.dao.OrderComponentDaoIntegrationTest
+=======
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.443 sec - in se.lexicon.order.component.test.integration.dao.OrderComponentDaoIntegrationTest
+>>>>>>> development

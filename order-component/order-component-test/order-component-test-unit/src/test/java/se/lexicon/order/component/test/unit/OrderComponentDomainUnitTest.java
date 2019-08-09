@@ -10,7 +10,7 @@ import org.junit.experimental.categories.Category;
 @Category(UnitTest.class)
 public class OrderComponentDomainUnitTest {
 
-    private static final String PACKAGE_NAME = "com.lexicon.order.component.test.common.domain";
+    private static final String PACKAGE_NAME = "se.lexicon.order.component.test.common.domain";
 
     @Test
     public void testDomainCompliance() {

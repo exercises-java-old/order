@@ -1,6 +1,5 @@
 package se.lexicon.order.component.service;
 
-import com.so4it.gs.rpc.Broadcast;
 import se.lexicon.order.component.domain.*;
 import se.lexicon.order.component.entity.OrderBookEntity;
 import se.lexicon.order.component.entity.OrderEntity;
@@ -9,7 +8,6 @@ import com.so4it.gs.rpc.ServiceExport;
 import se.lexicon.order.componment.dao.OrderBookDao;
 import se.lexicon.order.componment.dao.OrderDao;
 
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -57,29 +55,41 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                         .withId(entity.getId())
                         .withSsn(ssn)
                         .withAmount(entity.getAmount())
+                        .withInstrument(entity.getInstrument())
+                        .withNoOfItems(entity.getNoOfItems())
+                        .withMinMaxValue(entity.getMinMaxValue())
+                        .withSide(entity.getSide())
                         .withInsertionTimestamp(entity.getInsertionTimestamp())
-                        .withOrderBookId(OrderBooks.valueOf(orderBookDao.readAll(
-                                OrderBookEntity.templateBuilder().withSsn(ssn).withOrderId(entity.getId()).build()).stream()
-                                .map(obentity -> OrderBook.builder()
-                                        .withId(obentity.getId())
-                                        .withInstrument(obentity.getInstrument())
-                                        .withMinMaxValue(obentity.getMinMaxValue())
-                                        .withPhase(obentity.getPhase())
-                                        .withSellOrder(obentity.getSellOrder())
-                                        .build())
-                                .collect(Collectors.toSet())))
+                        .withOrderBookId(getOrderBooks(entity))
                         .build()).collect(Collectors.toSet()));
     }
 
     @Override
-    public void placeOrder(Order order) {
+    public  OrderBooks getOrderBooks (OrderEntity orderEntity) {
+        return OrderBooks.valueOf(orderBookDao.readAll(
+            OrderBookEntity.templateBuilder().withSsn(orderEntity.getSsn()).withOrderId(orderEntity.getId()).build()).stream()
+            .map(obentity -> OrderBook.builder()
+                    .withId(obentity.getId())
+                    .withInstrument(obentity.getInstrument())
+                    .withNoOfItems(obentity.getNoOfItems())
+                    .withMinMaxValue(obentity.getMinMaxValue())
+                    .withSide(obentity.getSide())
+                    .withPhase(obentity.getPhase())
+                     .build())
+            .collect(Collectors.toSet()));
+    };
 
-        if (order.getOrderBooks().getFirst()==null) return; //Dummy order?
+    @Override
+    public void placeOrder(Order order) {
 
         OrderEntity orderEntity = orderDao.insert(OrderEntity.builder()
                 .withId(order.getId())
                 .withSsn(order.getSsn())
                 .withAmount(order.getAmount())
+                .withInstrument(order.getInstrument())
+                .withNoOfItems(order.getNoOfItems())
+                .withMinMaxValue(order.getMinMaxValue())
+                .withSide(order.getSide())
                 .withInsertionTimestamp(order.getInsertionTimestamp())
                 .build());
 
@@ -94,27 +104,28 @@ public class OrderComponentServiceImpl implements OrderComponentService {
 //                .build())
 //                .forEach(orderBookDao::insert);
 
+        MatchOrder (orderEntity);
 
-        // Sweep through all orderBooks and try to match them against all corresponding orders
-        for (OrderBook orderBook : order.getOrderBooks()) {
-
-            if (orderBook.getPhase() == Phase.UNKNOWN || orderBook.getPhase() == Phase.PENDING_INCOMING) {
-
-                MatchOrder (orderEntity, orderBook);
-
-            }
-
-        } // End of loop
+//        // Sweep through all orderBooks and try to match them against all corresponding orders
+//        for (OrderBook orderBook : order.getOrderBooks()) {
+//
+//            if (orderBook.getPhase() == Phase.UNKNOWN || orderBook.getPhase() == Phase.PENDING_INCOMING) {
+//
+//                MatchOrder (orderEntity);
+//
+//            }
+//
+//        } // End of loop
     }
 
     @Override
-    public void MatchOrder (OrderEntity orderEntity, OrderBook orderBook) {
+    public void MatchOrder (OrderEntity orderEntity) {
 
         // GET ALL ORDERBOOKS, FILTER AGAINST ALL OTHERS BUY/SELL with same Instrument and Phase
         Set<OrderBookEntity> orderBookEntities = orderBookDao.readAll
                 (OrderBookEntity.templateBuilder()
-                        .withSellOrder(!orderBook.getSellOrder())
-                        .withInstrument(orderBook.getInstrument())
+                        .withSide(OtherSide(orderEntity.getSide()))
+                        .withInstrument(orderEntity.getInstrument())
                         .withPhase(Phase.PENDING_INCOMING)
                         .build());
 
@@ -123,7 +134,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
         OrderBookEntity bestMatchingOrderBook = null;
 
         boolean allPossibleMatchingFound = false;
-        int noOfItemsToMatch = orderBook.getNoOfItems();
+        int noOfItemsToMatch = orderEntity.getNoOfItems();
         int noOfItemsMatched = 0;
 
         while (!allPossibleMatchingFound) {
@@ -134,18 +145,18 @@ public class OrderComponentServiceImpl implements OrderComponentService {
 
                 minMaxValue = AmountOf(orderBookEntity.getMinMaxValue().getAmount().doubleValue(),
                         orderBookEntity.getMinMaxValue().getCurrency(),
-                        orderBook.getMinMaxValue().getCurrency());
+                        orderEntity.getMinMaxValue().getCurrency());
 
-                if (orderBook.getSellOrder() ?
-                        orderBook.getMinMaxValue().getAmount().doubleValue() <= minMaxValue :
-                        orderBook.getMinMaxValue().getAmount().doubleValue() >= minMaxValue) {
+                if (orderEntity.getSide().equals(Side.SELL) ?
+                        orderEntity.getMinMaxValue().getAmount().doubleValue() <= minMaxValue :
+                        orderEntity.getMinMaxValue().getAmount().doubleValue() >= minMaxValue) {
 
                     bestMatchingOrderBook = chooseEntity
-                            (noOfItemsToMatch, orderBook.getMinMaxValue().getCurrency(),
+                            (noOfItemsToMatch, orderEntity.getMinMaxValue().getCurrency(),
                                     bestMatchingOrderBook,orderBookEntity);
 
                     if (bestMatchingOrderBook.getNoOfItems().equals(noOfItemsToMatch) &&
-                            bestMatchingOrderBook.getMinMaxValue().getCurrency().equals(orderBook.getMinMaxValue().getCurrency()))
+                            bestMatchingOrderBook.getMinMaxValue().getCurrency().equals(orderEntity.getMinMaxValue().getCurrency()))
                         break; //Full matching found, exit loop
                 }
 //                }
@@ -160,9 +171,9 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                         .withOrderId(orderEntity.getId())
                         .withNoOfItems(noOfItemsToMatch)
                         .withPhase(Phase.PENDING_INCOMING)
-                        .withSellOrder(orderBook.getSellOrder())
-                        .withMinMaxValue(orderBook.getMinMaxValue())
-                        .withInstrument(orderBook.getInstrument())
+                        .withSide(orderEntity.getSide())
+                        .withMinMaxValue(orderEntity.getMinMaxValue())
+                        .withInstrument(orderEntity.getInstrument())
                         //.withMatchingOrderId() NO Matching order exists
                         .build());
 
@@ -172,8 +183,6 @@ public class OrderComponentServiceImpl implements OrderComponentService {
             }
 
             // Handle the result from the seach
-
-            OrderEntity matchingOrder = orderDao.read(bestMatchingOrderBook.getOrderId());
 
             int itemsRemaining = noOfItemsToMatch - bestMatchingOrderBook.getNoOfItems();
             allPossibleMatchingFound = itemsRemaining <= 0;
@@ -185,21 +194,21 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                     .withOrderId(orderEntity.getId())
                     .withNoOfItems(noOfItemsMatched)
                     .withPhase(Phase.PENDING_OUTGOING)
-                    .withSellOrder(orderBook.getSellOrder())
-                    .withMinMaxValue(orderBook.getMinMaxValue())
-                    .withInstrument(orderBook.getInstrument())
-                    .withMatchingOrderId(matchingOrder.getId())
+                    .withSide(orderEntity.getSide())
+                    .withMinMaxValue(orderEntity.getMinMaxValue())
+                    .withInstrument(orderEntity.getInstrument())
+                    .withMatchingOrderId(bestMatchingOrderBook.getOrderId())
                     .build());
 
             //System.out.println("Stored: " + orderBookEntity);
 
             orderBookEntity = orderBookDao.insertOrUpdate(OrderBookEntity.builder()
                     .withId(bestMatchingOrderBook.getId())
-                    .withSsn(matchingOrder.getSsn())
-                    .withOrderId(matchingOrder.getId())
+                    .withSsn(bestMatchingOrderBook.getSsn())
+                    .withOrderId(bestMatchingOrderBook.getOrderId())
                     .withNoOfItems(noOfItemsMatched)
                     .withPhase(Phase.PENDING_OUTGOING)
-                    .withSellOrder(bestMatchingOrderBook.getSellOrder())
+                    .withSide(bestMatchingOrderBook.getSide())
                     .withMinMaxValue(bestMatchingOrderBook.getMinMaxValue())
                     .withInstrument(bestMatchingOrderBook.getInstrument())
                     .withMatchingOrderId(orderEntity.getId())
@@ -210,11 +219,11 @@ public class OrderComponentServiceImpl implements OrderComponentService {
             if (itemsRemaining < 0) {
                 // Insert the remaining matching items
                 orderBookEntity = orderBookDao.insert(OrderBookEntity.builder()
-                        .withSsn(matchingOrder.getSsn())
-                        .withOrderId(matchingOrder.getId())
+                        .withSsn(bestMatchingOrderBook.getSsn())
+                        .withOrderId(bestMatchingOrderBook.getId())
                         .withNoOfItems(Math.abs(itemsRemaining))
-                        .withPhase(bestMatchingOrderBook.getPhase())
-                        .withSellOrder(bestMatchingOrderBook.getSellOrder())
+                        .withPhase(Phase.PENDING_INCOMING)
+                        .withSide(bestMatchingOrderBook.getSide())
                         .withMinMaxValue(bestMatchingOrderBook.getMinMaxValue())
                         .withInstrument(bestMatchingOrderBook.getInstrument())
                         .build());
@@ -234,8 +243,15 @@ public class OrderComponentServiceImpl implements OrderComponentService {
         return amount; // * ConvertionFactor(fromCurrency,toCurrency)
     }
 
+    private Side OtherSide(Side side) {
+        if (side == Side.BUY) return Side.SELL;
+        return Side.BUY;
+    }
+
     private OrderBookEntity chooseEntity
             (int noOfItemsToMatch, Currency inCurrency, OrderBookEntity current, OrderBookEntity compareWith) {
+
+        if (current == null) return compareWith;
 
         if (current.getMinMaxValue().getCurrency().equals(compareWith.getMinMaxValue().getCurrency())) { // same currency
 

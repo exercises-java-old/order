@@ -21,19 +21,27 @@ public class OrderTestBuilder extends AbstractTestBuilder<Order> {
                 //.withId("1111111111")
                 .withSsn("1111111111")
                 .withAmount(BigDecimal.TEN)
+                .withInstrument("ABB")
+                .withNoOfItems(100)
+                .withSide(Side.BUY)
+                .withMinMaxValue(Money.builder()
+                    .withAmount((BigDecimal.valueOf(50d)))
+                    .withCurrency(Currency.getInstance("SEK"))
+                    .build())
                 .withInsertionTimestamp(Instant.now())
-                .withOrderBookId (OrderBooks.valueOf(
-                        new OrderBook.Builder()
-                            //.withId("1111111111")
-                            .withInstrument("ABB")
-                            .withNoOfItems(100)
-                            .withSellOrder(false)
-                            .withPhase(Phase.UNKNOWN)
-                            .withMinMaxValue(Money.builder()
-                                .withAmount((BigDecimal.valueOf(500d)))
-                                .withCurrency(Currency.getInstance("SEK"))
-                                .build())
-                            .build()));
+
+//                .withOrderBookId (OrderBooks.valueOf(
+//                        new OrderBook.Builder()
+//                            //.withId("1111111111")
+//                            .withInstrument("ABB")
+//                            .withNoOfItems(100)
+//                            .withSide(Side.BUY)
+//                            .withPhase(Phase.UNKNOWN)
+//                            .withMinMaxValue(Money.builder()
+//                                .withAmount((BigDecimal.valueOf(500d)))
+//                                .withCurrency(Currency.getInstance("SEK"))
+//                                .build())
+                            .build();
     }
 
     public static OrderTestBuilder builder() {
@@ -48,6 +56,26 @@ public class OrderTestBuilder extends AbstractTestBuilder<Order> {
 
     public OrderTestBuilder withSsn(String ssn){
         builder.withSsn(ssn);
+        return this;
+    }
+
+    public OrderTestBuilder withInstrument(String instrument){
+        builder.withInstrument(instrument);
+        return this;
+    }
+
+    public OrderTestBuilder withNoOfItems(Integer noOfItems){
+        builder.withNoOfItems(noOfItems);
+        return this;
+    }
+
+    public OrderTestBuilder withMinMaxValue(Money money){
+        builder.withMinMaxValue(money);
+        return this;
+    }
+
+    public OrderTestBuilder withSide(Side side){
+        builder.withSide(side);
         return this;
     }
 
