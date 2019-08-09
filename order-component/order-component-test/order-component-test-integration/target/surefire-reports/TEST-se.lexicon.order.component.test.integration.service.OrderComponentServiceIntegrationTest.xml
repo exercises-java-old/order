@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="1.499" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="1.1" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="os.detected.version" value="4.15"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -72,13 +72,8 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase name="testOrderComponentServiceExists" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.039"/>
-  <testcase name="testOrderComponentServiceExists" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.001"/>
-  <testcase name="testPlaceOrder" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.237"/>
-  <testcase name="testPlaceOrder" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.008"/>
-  <testcase name="testGetAllOrderComponent" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.027"/>
-  <testcase name="testGetAllOrderComponent" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.026"/>
-  <testcase name="testMatchOrder" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.053"/>
-  <testcase name="testMatchOrder" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.042"/>
-  <testcase name="testPlaceTwoOrders" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.015"/>
-  <testcase name="testPlaceTwoOrders" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.014"/>
+  <testcase name="testPlaceOrder" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.24"/>
+  <testcase name="testGetAllOrderComponent" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.028"/>
+  <testcase name="testMatchOrder" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.061"/>
+  <testcase name="testPlaceTwoOrders" classname="se.lexicon.order.component.test.integration.service.OrderComponentServiceIntegrationTest" time="0.025"/>
 </testsuite>
