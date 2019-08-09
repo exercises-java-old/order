@@ -1,5 +1,6 @@
 package se.lexicon.order.component.domain;
 
+import com.so4it.annotation.Allowed;
 import com.so4it.common.util.object.Required;
 import com.so4it.common.util.object.ValueObject;
 
@@ -7,6 +8,7 @@ import java.io.Serializable;
 
 public class OrderBook extends ValueObject implements Serializable {
 
+    @Allowed(types = {Allowed.Type.NULLABLE})
     String id;
 
     String instrument;
