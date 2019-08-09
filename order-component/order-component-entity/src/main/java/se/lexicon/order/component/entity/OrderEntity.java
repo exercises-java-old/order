@@ -7,7 +7,9 @@ import com.so4it.annotation.Allowed;
 import com.so4it.common.util.object.Required;
 import com.so4it.component.entity.AbstractEntityBuilder;
 import com.so4it.component.entity.IdEntity;
+import se.lexicon.order.component.domain.Money;
 import se.lexicon.order.component.domain.OrderBooks;
+import se.lexicon.order.component.domain.Side;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -28,7 +30,14 @@ public class OrderEntity extends IdEntity<String> {
 
     private Instant insertionTimestamp;
 
-    //private OrderBooks orderBookId;
+    // original order
+    private String instrument;
+
+    private Integer noOfItems;
+
+    private Money minMaxValue; //Money minValue if SELL, maxValue if BUY;
+
+    private Side side;         // Sell or Buy
 
     private OrderEntity() {
     }
@@ -38,7 +47,10 @@ public class OrderEntity extends IdEntity<String> {
         this.ssn = Required.notNull(builder.ssn,"ssn",builder.isTemplate());
         this.amount = Required.notNull(builder.amount,"amount",builder.isTemplate());
         this.insertionTimestamp = Required.notNull(builder.insertionTimestamp,"insertionTimestamp",builder.isTemplate());
-        //this.orderBookId = Required.notNull(builder.orderBookId,"orderBookId",builder.isTemplate());
+        this.instrument = Required.notNull(builder.instrument,"instrument",builder.isTemplate());
+        this.noOfItems = Required.notNull(builder.noOfItems,"noOfItems",builder.isTemplate());
+        this.minMaxValue = Required.notNull(builder.minMaxValue,"minMaxValue",builder.isTemplate());
+        this.side = Required.notNull(builder.side,"side",builder.isTemplate());
     }
 
     @Override
@@ -76,6 +88,38 @@ public class OrderEntity extends IdEntity<String> {
         this.insertionTimestamp = insertionTimestamp;
     }
 
+    public String getInstrument() {
+        return instrument;
+    }
+
+    private void setInstrument(String instrument) {
+        this.instrument = instrument;
+    }
+
+    public Integer getNoOfItems() {
+        return noOfItems;
+    }
+
+    private void setNoOfItems(Integer noOfItems) {
+        this.noOfItems = noOfItems;
+    }
+
+    public Money getMinMaxValue() {
+        return minMaxValue;
+    }
+
+    private void setMinMaxValue(Money minMaxValue) {
+        this.minMaxValue = minMaxValue;
+    }
+
+    public Side getSide() {
+        return side;
+    }
+
+    private void setSide(Side side) {
+        this.side = side;
+    }
+
     public static Builder builder() {
         return new Builder(false);
     }
@@ -97,7 +141,13 @@ public class OrderEntity extends IdEntity<String> {
 
         private Instant insertionTimestamp;
 
-        //private OrderBooks orderBookId;
+        private String instrument;
+
+        private Integer noOfItems;
+
+        private Money minMaxValue; //Money minValue if SELL, maxValue if BUY;
+
+        private Side side;         // Sell or Buy
 
         public Builder(boolean template) {
             super(template);
@@ -123,11 +173,25 @@ public class OrderEntity extends IdEntity<String> {
             return this;
         }
 
-//        public OrderEntity.Builder withOrderBookId(OrderBooks orderBookId) {
-//            this.orderBookId = orderBookId;
-//            return this;
-//        }
+        public OrderEntity.Builder withInstrument(String instrument) {
+            this.instrument = instrument;
+            return this;
+        }
 
+        public OrderEntity.Builder withNoOfItems(Integer noOfItems) {
+            this.noOfItems = noOfItems;
+            return this;
+        }
+
+        public OrderEntity.Builder withMinMaxValue(Money minMaxValue) {
+            this.minMaxValue = minMaxValue;
+            return this;
+        }
+
+        public OrderEntity.Builder withSide(Side side) {
+            this.side = side;
+            return this;
+        }
 
         @Override
         public OrderEntity build() {

@@ -4,6 +4,7 @@ import com.so4it.common.util.object.Required;
 import com.so4it.test.domain.AbstractTestBuilder;
 import se.lexicon.order.component.domain.Money;
 import se.lexicon.order.component.domain.Phase;
+import se.lexicon.order.component.domain.Side;
 import se.lexicon.order.component.entity.OrderBookEntity;
 
 import java.math.BigDecimal;
@@ -27,7 +28,7 @@ public class OrderBookEntityTestBuilder extends AbstractTestBuilder<OrderBookEnt
                 .withMinMaxValue(Money.builder().withAmount(BigDecimal.ONE).withCurrency(Currency.getInstance("SEK")).build())
                 .withInstrument("ABB")
                 .withPhase(Phase.UNKNOWN)
-                .withSellOrder(false)
+                .withSide(Side.BUY)
                 //.withMatchingOrderId("")
                 .build();
     }

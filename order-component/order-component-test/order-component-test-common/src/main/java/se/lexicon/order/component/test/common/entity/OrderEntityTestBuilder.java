@@ -1,12 +1,15 @@
 package se.lexicon.order.component.test.common.entity;
 
+import se.lexicon.order.component.domain.Money;
 import se.lexicon.order.component.domain.OrderBooks;
+import se.lexicon.order.component.domain.Side;
 import se.lexicon.order.component.entity.OrderEntity;
 import com.so4it.common.util.object.Required;
 import com.so4it.test.domain.AbstractTestBuilder;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Currency;
 
 /**
  * @author Magnus Poromaa {@literal <mailto:magnus.poromaa@so4it.com/>}
@@ -22,7 +25,15 @@ public class OrderEntityTestBuilder extends AbstractTestBuilder<OrderEntity> {
                 //.withId("1111111111")
                 .withSsn("1111111111")
                 .withInsertionTimestamp(Instant.now())
-                .withAmount(BigDecimal.TEN);
+                .withAmount(BigDecimal.TEN)
+                .withInstrument("ABB")
+                .withNoOfItems(100)
+                .withSide(Side.BUY)
+                .withMinMaxValue(Money.builder()
+                        .withAmount((BigDecimal.valueOf(50d)))
+                        .withCurrency(Currency.getInstance("SEK"))
+                        .build())
+        ;
     }
 
     public OrderEntityTestBuilder withSsn(String ssn){
@@ -34,6 +45,27 @@ public class OrderEntityTestBuilder extends AbstractTestBuilder<OrderEntity> {
         builder.withAmount(amount);
         return this;
     }
+
+    public OrderEntityTestBuilder withInstrument(String instrument){
+        builder.withInstrument(instrument);
+        return this;
+    }
+
+    public OrderEntityTestBuilder withNoOfItems(Integer noOfItems){
+        builder.withNoOfItems(noOfItems);
+        return this;
+    }
+
+     public OrderEntityTestBuilder withMinMaxValue(Money money){
+        builder.withMinMaxValue(money);
+        return this;
+    }
+
+    public OrderEntityTestBuilder withSide(Side side){
+        builder.withSide(side);
+        return this;
+    }
+
 
     public static OrderEntityTestBuilder builder() {
         return new OrderEntityTestBuilder(OrderEntity.builder());
