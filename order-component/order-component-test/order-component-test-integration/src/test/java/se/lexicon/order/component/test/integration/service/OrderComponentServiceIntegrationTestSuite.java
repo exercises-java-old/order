@@ -28,7 +28,6 @@ import se.lexicon.order.component.service.OrderComponentServiceProvider;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        OrderComponentServiceIntegrationTest.class,
         OrderComponentServiceIntegrationTest.class
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

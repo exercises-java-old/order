@@ -1,9 +1,3 @@
-<<<<<<< HEAD
 /home/meda/projects/order/order-component/order-component-entity/src/main/java/se/lexicon/order/component/entity/OrderTransactionEntity.java
 /home/meda/projects/order/order-component/order-component-entity/src/main/java/se/lexicon/order/component/entity/OrderEntity.java
 /home/meda/projects/order/order-component/order-component-entity/src/main/java/se/lexicon/order/component/entity/OrderBookEntity.java
-=======
-/home/rifr/GIT/lexicon-java-8/order/order-component/order-component-entity/src/main/java/se/lexicon/order/component/entity/OrderTransactionEntity.java
-/home/rifr/GIT/lexicon-java-8/order/order-component/order-component-entity/src/main/java/se/lexicon/order/component/entity/OrderBookEntity.java
-/home/rifr/GIT/lexicon-java-8/order/order-component/order-component-entity/src/main/java/se/lexicon/order/component/entity/OrderEntity.java
->>>>>>> development
