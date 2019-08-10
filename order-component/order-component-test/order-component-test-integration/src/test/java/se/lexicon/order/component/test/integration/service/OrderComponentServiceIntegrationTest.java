@@ -42,9 +42,9 @@ public class OrderComponentServiceIntegrationTest {
 
         OrderComponentService orderComponentService = OrderComponentServiceIntegrationTestSuite.getImportContext().getBean(OrderComponentService.class);
 
-        Order order = OrderTestBuilder.builder().withSsn("111111").withAmount(BigDecimal.ONE).build();
+        Order order = OrderTestBuilder.builder().withSsn("111111").withInstrument("ABB").withAmount(BigDecimal.ONE).build();
         orderComponentService.placeOrder(order);
-        Orders orders = orderComponentService.getOrders("111111");
+        Orders orders = orderComponentService.getOrders("ABB","111111");
 
         Assert.assertEquals(1, orders.size());
         Assert.assertEquals(order, orders.getFirst());
@@ -56,13 +56,13 @@ public class OrderComponentServiceIntegrationTest {
     public void testPlaceTwoOrders() {
         OrderComponentService orderComponentService = OrderComponentServiceIntegrationTestSuite.getImportContext().getBean(OrderComponentService.class);
 
-        Order order1 = OrderTestBuilder.builder().withSsn("111222").withAmount(BigDecimal.ONE).build();
-        Order order2 = OrderTestBuilder.builder().withSsn("111222").withAmount(BigDecimal.TEN).build();
+        Order order1 = OrderTestBuilder.builder().withSsn("111222").withInstrument("ABB").withAmount(BigDecimal.ONE).build();
+        Order order2 = OrderTestBuilder.builder().withSsn("111222").withInstrument("ABB").withAmount(BigDecimal.TEN).build();
 
         orderComponentService.placeOrder(order1);
         orderComponentService.placeOrder(order2);
 
-        Orders orders = orderComponentService.getOrders("111222");
+        Orders orders = orderComponentService.getOrders("ABB","111222");
 
         Assert.assertEquals(2, orders.size());
     }
@@ -137,11 +137,11 @@ public class OrderComponentServiceIntegrationTest {
         orderComponentService.placeOrder(order4);
         orderComponentService.placeOrder(order5);
 
-        Orders orders1 = orderComponentService.getOrders("111111");
-        Orders orders2 = orderComponentService.getOrders("222222");
-        Orders orders3 = orderComponentService.getOrders("333333");
-        Orders orders4 = orderComponentService.getOrders("444444");
-        Orders orders5 = orderComponentService.getOrders("555555");
+        Orders orders1 = orderComponentService.getOrders("ABB","111111");
+        Orders orders2 = orderComponentService.getOrders("ABB","222222");
+        Orders orders3 = orderComponentService.getOrders("ABB","333333");
+        Orders orders4 = orderComponentService.getOrders("ABB","444444");
+        Orders orders5 = orderComponentService.getOrders("ABB","555555");
 
         Assert.assertEquals(1, orders1.getFirst().getOrderBooks().size());
         Assert.assertEquals(1, orders2.getFirst().getOrderBooks().size());
@@ -155,17 +155,53 @@ public class OrderComponentServiceIntegrationTest {
     public void testGetAllOrderComponent() {
         OrderComponentService orderComponentService = OrderComponentServiceIntegrationTestSuite.getImportContext().getBean(OrderComponentService.class);
 
-        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withAmount(BigDecimal.ONE).build());
-        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withAmount(BigDecimal.TEN).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withInstrument("ABB").withAmount(BigDecimal.ONE).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withInstrument("ABB").withAmount(BigDecimal.TEN).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withInstrument("SAAB").withAmount(BigDecimal.TEN).build());
 
-        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("222222").withAmount(BigDecimal.ONE).build());
-        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("222222").withAmount(BigDecimal.TEN).build());
+        Orders orders1 = orderComponentService.getOrders("ABB","111111");
+        Assert.assertEquals(2, orders1.size());
 
-        Orders orders = orderComponentService.getOrders("111111");
-        Assert.assertEquals(2, orders.size());
-        //Assert.assertEquals(11, orders.asStream().forEach(item -> item.getAmount().c));
+        Orders orders2 = orderComponentService.getOrders("SAAB","111111");
+        Assert.assertEquals(1, orders2.size());
 
-        //Assert.assertEquals(BigDecimal.valueOf(22.0), orderComponentService.getTotalOrderValueOfAllOrders());
+    }
+
+    @Test
+    public void testGetInstruments() {
+        OrderComponentService orderComponentService = OrderComponentServiceIntegrationTestSuite.getImportContext().getBean(OrderComponentService.class);
+
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withInstrument("ABB").withAmount(BigDecimal.ONE).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withInstrument("ABB").withAmount(BigDecimal.TEN).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withInstrument("SAAB").withAmount(BigDecimal.TEN).build());
+
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("222222").withInstrument("ABB").withAmount(BigDecimal.ONE).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("222222").withInstrument("SAAB").withAmount(BigDecimal.TEN).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("222222").withInstrument("ERICSSON").withAmount(BigDecimal.TEN).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("222222").withInstrument("ABB").withAmount(BigDecimal.TEN).build());
+
+        Assert.assertEquals(3, orderComponentService.getInstruments("222222").size());
+        Assert.assertEquals(2, orderComponentService.getInstruments("111111").size());
+
+        Assert.assertEquals("[ABB, SAAB, ERICSSON]", orderComponentService.getInstruments("222222").toString());
+        Assert.assertEquals("[ABB, SAAB]", orderComponentService.getInstruments("111111").toString());
+
+    }
+
+    @Test
+    public void testGetTotalOrderValue() {
+        OrderComponentService orderComponentService = OrderComponentServiceIntegrationTestSuite.getImportContext().getBean(OrderComponentService.class);
+
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withInstrument("ABB").withAmount(BigDecimal.ONE).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withInstrument("ABB").withAmount(BigDecimal.TEN).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("111111").withInstrument("SAAB").withAmount(BigDecimal.TEN).build());
+
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("222222").withInstrument("ABB").withAmount(BigDecimal.ONE).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("222222").withInstrument("SAAB").withAmount(BigDecimal.TEN).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("222222").withInstrument("ERICSSON").withAmount(BigDecimal.TEN).build());
+        orderComponentService.placeOrder(OrderTestBuilder.builder().withSsn("222222").withInstrument("ABB").withAmount(BigDecimal.TEN).build());
+
+        Assert.assertEquals(BigDecimal.valueOf(52.0), orderComponentService.getTotalOrderValueOfAllOrders());
 
     }
 

@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.so4it.sugar:registry-test-common:0.17.0-RT4-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/registry-test-common/0.17.0-RT4-SNAPSHOT/registry-test-common-0.17.0-RT4-20190806.102221-23.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/registry-test-common/0.17.0-RT4-SNAPSHOT/registry-test-common-0.17.0-RT4-20190809.084210-24.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/registry-test-common/0.17.0-RT4-SNAPSHOT/registry-test-common-0.17.0-RT4-20190806.102221-23-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/registry-test-common/0.17.0-RT4-SNAPSHOT/registry-test-common-0.17.0-RT4-20190809.084210-24-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/registry-test-common/0.17.0-RT4-SNAPSHOT/registry-test-common-0.17.0-RT4-20190806.102221-23-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/registry-test-common/0.17.0-RT4-SNAPSHOT/registry-test-common-0.17.0-RT4-20190809.084210-24-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

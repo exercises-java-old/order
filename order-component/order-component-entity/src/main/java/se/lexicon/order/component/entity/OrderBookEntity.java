@@ -69,7 +69,6 @@ public class OrderBookEntity extends IdEntity<String> {
         this.orderId = orderId;
     }
 
-    @SpaceRouting
     public String getSsn() {
         return ssn;
     }
@@ -78,6 +77,7 @@ public class OrderBookEntity extends IdEntity<String> {
         this.ssn = ssn;
     }
 
+    @SpaceRouting
     public String getInstrument() {
         return instrument;
     }

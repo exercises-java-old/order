@@ -21,10 +21,10 @@ public class OrderDaoImpl extends AbstractSpaceDao<OrderEntity, String> implemen
         super(gigaSpace);
     }
 
-//    @Override
-//    public BigDecimal sum() {
-//        return QueryExtension.sum(getGigaSpace(),new SQLQuery<>(OrderEntity.class,""),"amount");
-//    }
+    @Override
+    public BigDecimal sum() {
+        return QueryExtension.sum(getGigaSpace(),new SQLQuery<>(OrderEntity.class,""),"amount");
+    }
 
 }
 

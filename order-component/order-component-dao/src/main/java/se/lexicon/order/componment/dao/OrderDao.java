@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  */
 public interface OrderDao extends GenericDao<OrderEntity, String> {
 
-    // BigDecimal sum();
+    BigDecimal sum();
 
 }
 

@@ -8,6 +8,7 @@ import com.so4it.gs.rpc.ServiceExport;
 import se.lexicon.order.componment.dao.OrderBookDao;
 import se.lexicon.order.componment.dao.OrderDao;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,8 +24,17 @@ public class OrderComponentServiceImpl implements OrderComponentService {
         this.orderBookDao = Required.notNull(orderBookDao,"orderBookDao");
     }
 
+    public Set<String> getInstruments(String ssn) {
+
+        Map<String, String> instuments = new HashMap<>();
+        orderDao.readAll(OrderEntity.templateBuilder().withSsn(ssn).build()).stream()
+                .forEach(item -> instuments.put(item.getInstrument(),item.getInstrument()));
+
+        return instuments.values().stream().collect(Collectors.toSet());
+    };
+
     @Override
-    public Orders getOrders(String ssn) {
+    public Orders getOrders(String instrument, String ssn) {
 
         //where ssn =  ssn
         //Set<OrderEntity> orderEntities = orderDao.readAll(OrderEntity.templateBuilder().withSsn(ssn).build());
@@ -50,7 +60,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
 //                                .collect(Collectors.toSet())))
 //                        .build()).collect(Collectors.toSet()));
 
-        return Orders.valueOf(orderDao.readAll(OrderEntity.templateBuilder().withSsn(ssn).build()).stream().
+        return Orders.valueOf(orderDao.readAll(OrderEntity.templateBuilder().withSsn(ssn).withInstrument(instrument).build()).stream().
                 map(entity -> Order.builder()
                         .withId(entity.getId())
                         .withSsn(ssn)
@@ -268,7 +278,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
 
     }
 
-//    @Override
-//    public BigDecimal getTotalOrderValueOfAllOrders() { return orderDao.sum(); }
+    @Override
+    public BigDecimal getTotalOrderValueOfAllOrders() { return orderDao.sum(); }
 
 }
