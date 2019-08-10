@@ -129,7 +129,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
     }
 
     @Override
-    public void MatchOrder (OrderEntity orderEntity) {
+    public synchronized void MatchOrder (OrderEntity orderEntity) {
 
         // GET ALL ORDERBOOKS, FILTER AGAINST ALL OTHERS BUY/SELL with same Instrument and Phase
         Set<OrderBookEntity> orderBookEntities = orderBookDao.readAll
