@@ -11,8 +11,8 @@ import java.util.Set;
 public interface OrderComponentClient {
 
     Set<String> getInstruments(String ssn);
-    Orders getOrders(String Instrument, String ssn);
-    
+    Orders getOrders(String instrument, String ssn);
+
     void placeOrder(Order order);
 
 }
