@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 /home/richard/GIT/lexicon-java-8/order/order-component/order-component-service/src/main/java/se/lexicon/order/component/service/OrderComponentService.java
 /home/richard/GIT/lexicon-java-8/order/order-component/order-component-service/src/main/java/se/lexicon/order/component/service/InstrumentRemoteResultReducer.java
 /home/richard/GIT/lexicon-java-8/order/order-component/order-component-service/src/main/java/se/lexicon/order/component/service/BigDecimalRemoteResultReducer.java
 /home/richard/GIT/lexicon-java-8/order/order-component/order-component-service/src/main/java/se/lexicon/order/component/service/OrderComponentServiceProvider.java
-=======
-/home/meda/projects/order/order-component/order-component-service/src/main/java/se/lexicon/order/component/service/OrderComponentService.java
-/home/meda/projects/order/order-component/order-component-service/src/main/java/se/lexicon/order/component/service/BigDecimalRemoteResultReducer.java
-/home/meda/projects/order/order-component/order-component-service/src/main/java/se/lexicon/order/component/service/OrderComponentServiceProvider.java
->>>>>>> development

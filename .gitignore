@@ -21,3 +21,12 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/order-component/order-component-client/target/
+/order-component/order-component-dao/target/
+/order-component/order-component-dao-impl/target/
+/order-component/order-component-domain/target/
+/order-component/order-component-entity/target/
+/order-component/order-component-mapper/target/
+/order-component/order-component-service/target/
+/order-component/order-component-service-impl/target/
+/order-component/order-component-test/order-component-test-common/target/

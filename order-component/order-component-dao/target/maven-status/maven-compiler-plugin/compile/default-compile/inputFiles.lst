@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 /home/richard/GIT/lexicon-java-8/order/order-component/order-component-dao/src/main/java/se/lexicon/order/componment/dao/OrderTransactionDao.java
 /home/richard/GIT/lexicon-java-8/order/order-component/order-component-dao/src/main/java/se/lexicon/order/componment/dao/OrderDao.java
 /home/richard/GIT/lexicon-java-8/order/order-component/order-component-dao/src/main/java/se/lexicon/order/componment/dao/OrderBookDao.java
-=======
-/home/meda/projects/order/order-component/order-component-dao/src/main/java/se/lexicon/order/componment/dao/OrderTransactionDao.java
-/home/meda/projects/order/order-component/order-component-dao/src/main/java/se/lexicon/order/componment/dao/OrderBookDao.java
-/home/meda/projects/order/order-component/order-component-dao/src/main/java/se/lexicon/order/componment/dao/OrderDao.java
->>>>>>> development
+/home/richard/GIT/lexicon-java-8/order/order-component/order-component-dao/src/main/java/se/lexicon/order/componment/dao/OrderDealDao.java
