@@ -1,7 +1,6 @@
 package se.lexicon.order.component.test.common.entity;
 
 import se.lexicon.order.component.domain.Money;
-import se.lexicon.order.component.domain.OrderBooks;
 import se.lexicon.order.component.domain.Side;
 import se.lexicon.order.component.entity.OrderEntity;
 import com.so4it.common.util.object.Required;
@@ -28,12 +27,13 @@ public class OrderEntityTestBuilder extends AbstractTestBuilder<OrderEntity> {
                 .withAmount(BigDecimal.TEN)
                 .withInstrument("ABB")
                 .withNoOfItems(100)
-                .withSide(Side.BUY)
                 .withMinMaxValue(Money.builder()
                         .withAmount((BigDecimal.valueOf(50d)))
                         .withCurrency(Currency.getInstance("SEK"))
                         .build())
-        ;
+                .withSide(Side.BUY)
+                .withNoOfItemsToMatch(100)
+                .withAllItemsMatched(false);
     }
 
     public OrderEntityTestBuilder withSsn(String ssn){
@@ -63,6 +63,16 @@ public class OrderEntityTestBuilder extends AbstractTestBuilder<OrderEntity> {
 
     public OrderEntityTestBuilder withSide(Side side){
         builder.withSide(side);
+        return this;
+    }
+
+    public OrderEntityTestBuilder withNoOfMatchedItems(Integer noOfMatchedItems){
+        builder.withNoOfItemsToMatch(noOfMatchedItems);
+        return this;
+    }
+
+    public OrderEntityTestBuilder withAllItemsMatched(Boolean allItemsMatched){
+        builder.withAllItemsMatched(allItemsMatched);
         return this;
     }
 
