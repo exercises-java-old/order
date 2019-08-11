@@ -9,18 +9,18 @@ import java.io.Serializable;
 public class OrderBook extends ValueObject implements Serializable {
 
     @Allowed(types = {Allowed.Type.NULLABLE})
-    String id;
+    private String id;
 
-    String instrument;
+    private String instrument;
 
-    Integer noOfItems;
+    private  Integer noOfItems;
 
-    Money minMaxValue;
+    private  Money minMaxValue;
     //Money maxValue if BUY, minValue if SELL;
 
-    Phase phase = Phase.UNKNOWN;
+    private Phase phase = Phase.UNKNOWN;
 
-    Side side; // Sell or Buy
+    private Side side; // Sell or Buy
 
     private OrderBook() {
     }
@@ -70,18 +70,18 @@ public class OrderBook extends ValueObject implements Serializable {
 
     public static class Builder implements com.so4it.common.builder.Builder<OrderBook>{
 
-        String id;
+        private String id;
 
-        String instrument;
+        private String instrument;
 
-        Integer noOfItems;
+        private Integer noOfItems;
 
-        Money minMaxValue;
+        private Money minMaxValue;
         //Money max or min Value;
 
-        Phase phase;
+        private Phase phase;
 
-        Side side;
+        private Side side;
 
         public Builder withId(String id){
             this.id = id;

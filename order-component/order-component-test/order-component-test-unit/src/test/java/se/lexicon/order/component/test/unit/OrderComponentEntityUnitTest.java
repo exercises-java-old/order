@@ -14,7 +14,7 @@ public class OrderComponentEntityUnitTest {
     private static final String PACKAGE_NAME = "se.lexicon.order.component.test.common.entity";
 
     @Test
-    public void testDomainCompliance() {
+    public void testEntityCompliance() {
 
         TestBuilderExecutor.execute(PACKAGE_NAME, EntityMatchers.getMatchers());
     }

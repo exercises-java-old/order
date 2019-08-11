@@ -5,7 +5,7 @@
 
     <bean id="orderComponentService" class="se.lexicon.order.component.service.OrderComponentServiceImpl">
         <constructor-arg name="orderDao" ref="orderDao"/>
-        <constructor-arg name="orderBookDao" ref="orderBookDao"/>
+        <constructor-arg name="orderDealDao" ref="orderDealDao"/>
     </bean>
 
 

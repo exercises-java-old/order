@@ -1,18 +1,33 @@
-se/lexicon/order/component/domain/OrderBooks.class
 se/lexicon/order/component/domain/OrderTransaction.class
+<<<<<<< HEAD
+=======
+se/lexicon/order/component/domain/OrderBooks.class
+se/lexicon/order/component/domain/OrderTransaction$Builder.class
+>>>>>>> development
 se/lexicon/order/component/domain/Orders$Serializer.class
 se/lexicon/order/component/domain/OrderTransaction$Builder.class
 se/lexicon/order/component/domain/OrderBooks$Deserializer.class
 se/lexicon/order/component/domain/Money.class
 se/lexicon/order/component/domain/OrderBooks$Serializer.class
 se/lexicon/order/component/domain/Money$Builder.class
+se/lexicon/order/component/domain/Money$1.class
 se/lexicon/order/component/domain/Orders.class
+<<<<<<< HEAD
 se/lexicon/order/component/domain/Money$1.class
 se/lexicon/order/component/domain/OrderBook$1.class
+=======
+>>>>>>> development
 se/lexicon/order/component/domain/Order$1.class
+se/lexicon/order/component/domain/OrderBook$1.class
 se/lexicon/order/component/domain/Order.class
+<<<<<<< HEAD
 se/lexicon/order/component/domain/Orders$Deserializer.class
 se/lexicon/order/component/domain/CreateOrderTransactionRequest$Builder.class
+=======
+se/lexicon/order/component/domain/Phase.class
+se/lexicon/order/component/domain/CreateOrderTransactionRequest$Builder.class
+se/lexicon/order/component/domain/Orders$Deserializer.class
+>>>>>>> development
 se/lexicon/order/component/domain/CreateOrderTransactionRequest$1.class
 se/lexicon/order/component/domain/Order$Builder.class
 se/lexicon/order/component/domain/Phase.class

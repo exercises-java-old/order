@@ -2,11 +2,13 @@ package se.lexicon.order.component.service;
 
 import se.lexicon.order.component.domain.*;
 import se.lexicon.order.component.entity.OrderBookEntity;
+import se.lexicon.order.component.entity.OrderDealEntity;
 import se.lexicon.order.component.entity.OrderEntity;
 import com.so4it.common.util.object.Required;
 import com.so4it.gs.rpc.ServiceExport;
 import se.lexicon.order.componment.dao.OrderBookDao;
 import se.lexicon.order.componment.dao.OrderDao;
+import se.lexicon.order.componment.dao.OrderDealDao;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -16,12 +18,12 @@ import java.util.stream.Collectors;
 public class OrderComponentServiceImpl implements OrderComponentService {
 
     private OrderDao orderDao;
-    private OrderBookDao orderBookDao;
+    private OrderDealDao orderDealDao;
 
-    public OrderComponentServiceImpl(OrderDao orderDao, OrderBookDao orderBookDao) {
+    public OrderComponentServiceImpl(OrderDao orderDao, OrderDealDao orderDealDao) {
 
         this.orderDao     = Required.notNull(orderDao,"orderDao");
-        this.orderBookDao = Required.notNull(orderBookDao,"orderBookDao");
+        this.orderDealDao = Required.notNull(orderDealDao,"orderDealDao");
     }
 
     public Set<String> getInstruments(String ssn) {
@@ -36,30 +38,6 @@ public class OrderComponentServiceImpl implements OrderComponentService {
     @Override
     public Orders getOrders(String instrument, String ssn) {
 
-        //where ssn =  ssn
-        //Set<OrderEntity> orderEntities = orderDao.readAll(OrderEntity.templateBuilder().withSsn(ssn).build());
-
-//        Set<OrderBookEntity> orderBookEntities =
-//                orderBookDao.readAll(OrderBookEntity.templateBuilder().withSsn(ssn).build());
-//
-//        return Orders.valueOf(orderDao.readAll(OrderEntity.templateBuilder().withSsn(ssn).build()).stream().
-//                map(entity -> Order.builder()
-//                        .withId(entity.getId())
-//                        .withSsn(ssn)
-//                        .withAmount(entity.getAmount())
-//                        .withInsertionTimestamp(entity.getInsertionTimestamp())
-//                        .withOrderBookId(OrderBooks.valueOf(orderBookEntities.stream()
-//                                .filter(f -> f.getOrderId().equals(entity.getId()))
-//                                .map(obentity -> OrderBook.builder()
-//                                        .withId(obentity.getId())
-//                                        .withInstrument(obentity.getInstrument())
-//                                        .withMinMaxValue(obentity.getMinMaxValue())
-//                                        .withPhase(obentity.getPhase())
-//                                        .withSellOrder(obentity.getSellOrder())
-//                                        .build())
-//                                .collect(Collectors.toSet())))
-//                        .build()).collect(Collectors.toSet()));
-
         return Orders.valueOf(orderDao.readAll(OrderEntity.templateBuilder().withSsn(ssn).withInstrument(instrument).build()).stream().
                 map(entity -> Order.builder()
                         .withId(entity.getId())
@@ -70,49 +48,55 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                         .withMinMaxValue(entity.getMinMaxValue())
                         .withSide(entity.getSide())
                         .withInsertionTimestamp(entity.getInsertionTimestamp())
-                        .withOrderBookId(getOrderBooks(entity))
+                        //.withOrderBookId(null)
+                        .withOrderDealId(getOrderDeals(entity))
                         .build()).collect(Collectors.toSet()));
     }
 
     @Override
-    public  OrderBooks getOrderBooks (OrderEntity orderEntity) {
-        return OrderBooks.valueOf(orderBookDao.readAll(
-            OrderBookEntity.templateBuilder().withSsn(orderEntity.getSsn()).withOrderId(orderEntity.getId()).build()).stream()
-            .map(obentity -> OrderBook.builder()
-                    .withId(obentity.getId())
-                    .withInstrument(obentity.getInstrument())
-                    .withNoOfItems(obentity.getNoOfItems())
-                    .withMinMaxValue(obentity.getMinMaxValue())
-                    .withSide(obentity.getSide())
-                    .withPhase(obentity.getPhase())
-                     .build())
-            .collect(Collectors.toSet()));
-    };
+    public OrderDeals getOrderDeals (OrderEntity orderEntity) {
+
+        OrderDeals orderDeals1 = OrderDeals.valueOf(orderDealDao.readAll(
+                OrderDealEntity.templateBuilder().withOrderId1(orderEntity.getId()).build()).stream()
+                .map(odentity -> OrderDeal.builder()
+                        .withId(odentity.getId())
+                        .withInstrument(odentity.getInstrument())
+                        .withNoOfItems(odentity.getNoOfItems())
+                        .withMatchingOrderId(odentity.getOrderId2())
+                        .build())
+                .collect(Collectors.toSet()));
+
+        OrderDeals orderDeals2 = OrderDeals.valueOf(orderDealDao.readAll(
+                OrderDealEntity.templateBuilder().withOrderId2(orderEntity.getId()).build()).stream()
+                .map(odentity -> OrderDeal.builder()
+                        .withId(odentity.getId())
+                        .withInstrument(odentity.getInstrument())
+                        .withNoOfItems(odentity.getNoOfItems())
+                        .withMatchingOrderId(odentity.getOrderId1())
+                        .build())
+                .collect(Collectors.toSet()));
+
+        return (orderDeals1.size() != 0) ? orderDeals1 : orderDeals2;
+
+    }
+
+//    @Override
+//    public  OrderBooks getOrderBooks (OrderEntity orderEntity) {
+//        return OrderBooks.valueOf(orderBookDao.readAll(
+//            OrderBookEntity.templateBuilder().withSsn(orderEntity.getSsn()).withOrderId(orderEntity.getId()).build()).stream()
+//            .map(obentity -> OrderBook.builder()
+//                    .withId(obentity.getId())
+//                    .withInstrument(obentity.getInstrument())
+//                    .withNoOfItems(obentity.getNoOfItems())
+//                    .withMinMaxValue(obentity.getMinMaxValue())
+//                    .withSide(obentity.getSide())
+//                    .withPhase(obentity.getPhase())
+//                     .build())
+//            .collect(Collectors.toSet()));
+//    };
 
     @Override
     public void placeOrder(Order order) {
-
-//        OrderEntity orderEntity = orderDao.insert(OrderEntity.builder()
-//                .withId(order.getId())
-//                .withSsn(order.getSsn())
-//                .withAmount(order.getAmount())
-//                .withInstrument(order.getInstrument())
-//                .withNoOfItems(order.getNoOfItems())
-//                .withMinMaxValue(order.getMinMaxValue())
-//                .withSide(order.getSide())
-//                .withInsertionTimestamp(order.getInsertionTimestamp())
-//                .build());
-
-//        order.getOrderBookId().asList().stream().map(orderBook -> OrderBookEntity.builder()
-//                .withOrderId(order.getId())
-//                .withSsn(order.getSsn())
-//                .withInstrument(orderBook.getInstrument())
-//                .withNoOfItems(orderBook.getNoOfItems())
-//                .withMinMaxValue(orderBook.getMinMaxValue())
-//                .withPhase(Phase.PENDING_INCOMING)
-//                .withSellOrder(orderBook.getSellOrder())
-//                .build())
-//                .forEach(orderBookDao::insert);
 
         MatchOrder (orderDao.insert(OrderEntity.builder()
                 .withId(order.getId())
@@ -127,16 +111,6 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                 .withAllItemsMatched(false)
                 .build()));
 
-//        // Sweep through all orderBooks and try to match them against all corresponding orders
-//        for (OrderBook orderBook : order.getOrderBooks()) {
-//
-//            if (orderBook.getPhase() == Phase.UNKNOWN || orderBook.getPhase() == Phase.PENDING_INCOMING) {
-//
-//                MatchOrder (orderEntity);
-//
-//            }
-//
-//        } // End of loop
     }
 
     @Override
@@ -153,13 +127,13 @@ public class OrderComponentServiceImpl implements OrderComponentService {
 
         double minMaxValue = 0d;
 
-        OrderEntity bestMatchingOrder = null;
-
         boolean allPossibleMatchingFound = false;
         int noOfItemsToMatch = orderEntity.getNoOfItemsToMatch();
         int noOfItemsMatched = 0;
 
         while (!allPossibleMatchingFound) {
+
+            OrderEntity bestMatchingOrder = null;
 
             for (OrderEntity matchingOrderEntity : orderEntities) {
 
@@ -175,7 +149,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                             (noOfItemsToMatch, orderEntity.getMinMaxValue().getCurrency(),
                                     bestMatchingOrder,matchingOrderEntity);
 
-                    if (bestMatchingOrder.getNoOfItems().equals(noOfItemsToMatch) &&
+                    if (bestMatchingOrder.getNoOfItemsToMatch().equals(noOfItemsToMatch) &&
                             bestMatchingOrder.getMinMaxValue().getCurrency().equals(orderEntity.getMinMaxValue().getCurrency()))
                         break; //Full matching found, exit loop
                 }
@@ -183,22 +157,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
             } // loop end;
 
            if (bestMatchingOrder == null){
-
-                // No matching, enter in Dao for later use
-//                OrderBookEntity orderBookEntity = orderBookDao.insert(OrderBookEntity.builder()
-//                        //.withId(orderBook.getId())
-//                        .withSsn(orderEntity.getSsn())
-//                        .withOrderId(orderEntity.getId())
-//                        .withNoOfItems(noOfItemsToMatch)
-//                        .withPhase(Phase.PENDING_INCOMING)
-//                        .withSide(orderEntity.getSide())
-//                        .withMinMaxValue(orderEntity.getMinMaxValue())
-//                        .withInstrument(orderEntity.getInstrument())
-//                        //.withMatchingOrderId() NO Matching order exists
-//                        .build());
-
-                //System.out.println("Stored: " + orderBookEntity);
-
+                //System.out.println("No Match found for: " + orderEntity);
                 return; //No matching found, exit this procedure
             }
 
@@ -221,7 +180,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                     .withAllItemsMatched(itemsRemaining == 0)
                     .build());
 
-            //System.out.println("Stored: " + orderEntity);
+            //System.out.println("Entity: " + orderEntity);
 
             OrderEntity orderedEntity = orderDao.update(OrderEntity.builder()
                     .withId(bestMatchingOrder.getId())
@@ -236,29 +195,22 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                     .withAllItemsMatched((bestMatchingOrder.getNoOfItemsToMatch() - noOfItemsMatched) == 0)
                     .build());
 
-            // Create initial DEAL
+            //System.out.println("Matched with: " + orderedEntity);
 
-           //System.out.println("Matched with: " + orderedEntity);
+            // Create initial DEAL
+            OrderDealEntity orderDealEntity = orderDealDao.insert(OrderDealEntity.builder()
+                .withInstrument(orderEntity.getInstrument())
+                .withNoOfItems(noOfItemsToMatch)
+                .withOrderId1(orderEntity.getId())
+                .withOrderId2(bestMatchingOrder.getId())
+                .withClosed(false)
+                .build());
+
+            //System.out.println("Deal: " + orderDealEntity);
+
+            orderEntities.remove(bestMatchingOrder); // Do not use this entity the next round
 
             noOfItemsToMatch = itemsRemaining;
-
-//            if (itemsRemaining < 0) {
-//                // Insert the remaining matching items
-//                orderBookEntity = orderBookDao.insert(OrderBookEntity.builder()
-//                        .withSsn(bestMatchingOrderBook.getSsn())
-//                        .withOrderId(bestMatchingOrderBook.getId())
-//                        .withNoOfItems(Math.abs(itemsRemaining))
-//                        .withPhase(Phase.PENDING_INCOMING)
-//                        .withSide(bestMatchingOrderBook.getSide())
-//                        .withMinMaxValue(bestMatchingOrderBook.getMinMaxValue())
-//                        .withInstrument(bestMatchingOrderBook.getInstrument())
-//                        .build());
-//
-//                //System.out.println("Remainder: " + orderBookEntity);
-//
-//                return; //All possible matchings found, exit this procedure
-//
-//            } else {noOfItemsToMatch = itemsRemaining;} // Continue with the rest
 
         } // While loop
     }

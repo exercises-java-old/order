@@ -15,7 +15,6 @@ import se.lexicon.order.component.test.common.domain.OrderTestBuilder;
 
 import java.math.BigDecimal;
 import java.util.Currency;
-import java.util.Set;
 
 /**
  * @author Magnus Poromaa {@literal <mailto:magnus.poromaa@so4it.com/>}
@@ -48,7 +47,6 @@ public class OrderComponentServiceIntegrationTest {
 
         Assert.assertEquals(1, orders.size());
         Assert.assertEquals(order, orders.getFirst());
-        Assert.assertEquals(1, orders.getFirst().getOrderBooks().size());
 
     }
 
@@ -143,11 +141,11 @@ public class OrderComponentServiceIntegrationTest {
         Orders orders4 = orderComponentService.getOrders("ABB","444444");
         Orders orders5 = orderComponentService.getOrders("ABB","555555");
 
-        Assert.assertEquals(1, orders1.getFirst().getOrderBooks().size());
-        Assert.assertEquals(1, orders2.getFirst().getOrderBooks().size());
-        Assert.assertEquals(1, orders3.getFirst().getOrderBooks().size());
-        Assert.assertEquals(1, orders4.getFirst().getOrderBooks().size());
-        Assert.assertEquals(2, orders5.getFirst().getOrderBooks().size());
+        Assert.assertEquals(1, orders1.getFirst().getOrderDeals().size());
+        Assert.assertEquals(1, orders2.getFirst().getOrderDeals().size());
+        Assert.assertEquals(1, orders3.getFirst().getOrderDeals().size());
+        Assert.assertEquals(1, orders4.getFirst().getOrderDeals().size());
+        Assert.assertEquals(2, orders5.getFirst().getOrderDeals().size());
 
     }
 

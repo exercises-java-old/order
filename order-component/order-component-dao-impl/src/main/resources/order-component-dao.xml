@@ -13,9 +13,12 @@
         <constructor-arg name="gigaSpace" ref="orderGigaSpace"/>
     </bean>
 
-    <bean id="orderBookDao" class="se.lexicon.order.component.dao.OrderBookDaoImpl">
+    <bean id="orderDealDao" class="se.lexicon.order.component.dao.OrderDealDaoImpl">
         <constructor-arg name="gigaSpace" ref="orderGigaSpace"/>
     </bean>
 
+    <bean id="orderBookDao" class="se.lexicon.order.component.dao.OrderBookDaoImpl">
+        <constructor-arg name="gigaSpace" ref="orderGigaSpace"/>
+    </bean>
 
 </beans>

@@ -37,6 +37,9 @@ public class Order extends ValueObject implements Serializable {
     @Allowed(types = {Allowed.Type.NULLABLE})
     private OrderBooks orderBooks; //reference to the orderbooks
 
+    @Allowed(types = {Allowed.Type.NULLABLE})
+    private OrderDeals orderDeals; //reference to the orderdeals
+
     private Order() {
     }
 
@@ -50,6 +53,7 @@ public class Order extends ValueObject implements Serializable {
         this.side = Required.notNull(builder.side,"side");
         this.insertionTimestamp = Required.notNull(builder.insertionTimestamp,"insertionTimestamp");
         this.orderBooks = builder.orderBooks;
+        this.orderDeals = builder.orderDeals;
     }
 
 
@@ -62,6 +66,8 @@ public class Order extends ValueObject implements Serializable {
     }
 
     public OrderBooks getOrderBooks() { return orderBooks; }
+
+    public OrderDeals getOrderDeals() { return orderDeals; }
 
     public BigDecimal getAmount() {
         return amount;
@@ -112,6 +118,8 @@ public class Order extends ValueObject implements Serializable {
 
         private OrderBooks orderBooks;
 
+        private OrderDeals orderDeals;
+
         private Instant insertionTimestamp;
 
         public Builder withId(String id){
@@ -156,6 +164,11 @@ public class Order extends ValueObject implements Serializable {
 
         public Builder withOrderBookId(OrderBooks orderBookId){
             this.orderBooks = orderBookId;
+            return this;
+        }
+
+        public Builder withOrderDealId(OrderDeals orderDealId){
+            this.orderDeals = orderDealId;
             return this;
         }
 
