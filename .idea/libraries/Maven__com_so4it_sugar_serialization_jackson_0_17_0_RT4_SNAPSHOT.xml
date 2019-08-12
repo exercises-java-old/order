@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.so4it.sugar:serialization-jackson:0.17.0-RT4-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/serialization-jackson/0.17.0-RT4-SNAPSHOT/serialization-jackson-0.17.0-RT4-20190809.083656-24.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/serialization-jackson/0.17.0-RT4-SNAPSHOT/serialization-jackson-0.17.0-RT4-20190812.044200-25.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/serialization-jackson/0.17.0-RT4-SNAPSHOT/serialization-jackson-0.17.0-RT4-20190809.083656-24-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/serialization-jackson/0.17.0-RT4-SNAPSHOT/serialization-jackson-0.17.0-RT4-20190812.044200-25-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/serialization-jackson/0.17.0-RT4-SNAPSHOT/serialization-jackson-0.17.0-RT4-20190809.083656-24-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/so4it/sugar/serialization-jackson/0.17.0-RT4-SNAPSHOT/serialization-jackson-0.17.0-RT4-20190812.044200-25-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
