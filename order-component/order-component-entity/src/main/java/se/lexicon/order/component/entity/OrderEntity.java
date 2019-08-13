@@ -8,6 +8,7 @@ import com.so4it.common.util.object.Required;
 import com.so4it.component.entity.AbstractEntityBuilder;
 import com.so4it.component.entity.IdEntity;
 import se.lexicon.order.component.domain.Money;
+import se.lexicon.order.component.domain.OrderPriceType;
 import se.lexicon.order.component.domain.Side;
 
 import java.math.BigDecimal;
@@ -38,6 +39,10 @@ public class OrderEntity extends IdEntity<String> {
 
     private Side side;         // Sell or Buy
 
+    private OrderPriceType orderPriceType; // BUY/SELL at MARKET or LIMITED price
+
+    private String orderBookId;
+
     // Matching information
     private Integer noOfItemsToMatch;
 
@@ -55,6 +60,8 @@ public class OrderEntity extends IdEntity<String> {
         this.noOfItems = Required.notNull(builder.noOfItems,"noOfItems",builder.isTemplate());
         this.minMaxValue = Required.notNull(builder.minMaxValue,"minMaxValue",builder.isTemplate());
         this.side = Required.notNull(builder.side,"side",builder.isTemplate());
+        this.orderPriceType = Required.notNull(builder.orderPriceType,"orderPriceType",builder.isTemplate());
+        this.orderBookId = Required.notNull(builder.orderBookId,"orderBookId",builder.isTemplate());
         this.noOfItemsToMatch = Required.notNull(builder.noOfItemsToMatch,"noOfMatchedItems",builder.isTemplate());
         this.allItemsMatched = Required.notNull(builder.allItemsMatched,"allItemsMatched",builder.isTemplate());
     }
@@ -126,6 +133,22 @@ public class OrderEntity extends IdEntity<String> {
         this.side = side;
     }
 
+    public OrderPriceType getOrderPriceType() {
+        return orderPriceType;
+    }
+
+    private void setOrderPriceType(OrderPriceType orderPriceType) {
+        this.orderPriceType = orderPriceType;
+    }
+
+    public String getOrderBookId() {
+        return orderBookId;
+    }
+
+    private void setOrderBookId(String orderBookId) {
+        this.orderBookId = orderBookId;
+    }
+
     public Integer getNoOfItemsToMatch() {
         return noOfItemsToMatch;
     }
@@ -170,6 +193,10 @@ public class OrderEntity extends IdEntity<String> {
         private Money minMaxValue; //Money minValue if SELL, maxValue if BUY;
 
         private Side side;         // Sell or Buy
+
+        private OrderPriceType orderPriceType;
+
+        private String orderBookId;
 
         private Integer noOfItemsToMatch;
 
@@ -216,6 +243,16 @@ public class OrderEntity extends IdEntity<String> {
 
         public OrderEntity.Builder withSide(Side side) {
             this.side = side;
+            return this;
+        }
+
+        public OrderEntity.Builder withOrderPriceType(OrderPriceType orderPriceType) {
+            this.orderPriceType = orderPriceType;
+            return this;
+        }
+
+        public OrderEntity.Builder withOrderBookId(String orderBookId) {
+            this.orderBookId = orderBookId;
             return this;
         }
 

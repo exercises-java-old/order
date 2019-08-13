@@ -1,6 +1,7 @@
 package se.lexicon.order.component.test.common.entity;
 
 import se.lexicon.order.component.domain.Money;
+import se.lexicon.order.component.domain.OrderPriceType;
 import se.lexicon.order.component.domain.Side;
 import se.lexicon.order.component.entity.OrderEntity;
 import com.so4it.common.util.object.Required;
@@ -32,6 +33,8 @@ public class OrderEntityTestBuilder extends AbstractTestBuilder<OrderEntity> {
                         .withCurrency(Currency.getInstance("SEK"))
                         .build())
                 .withSide(Side.BUY)
+                .withOrderPriceType(OrderPriceType.MARKET)
+                .withOrderBookId("ABB/SEK")
                 .withNoOfItemsToMatch(100)
                 .withAllItemsMatched(false);
     }
@@ -63,6 +66,15 @@ public class OrderEntityTestBuilder extends AbstractTestBuilder<OrderEntity> {
 
     public OrderEntityTestBuilder withSide(Side side){
         builder.withSide(side);
+        return this;
+    }
+    public OrderEntityTestBuilder withOrderPriceType(OrderPriceType orderPriceType){
+        builder.withOrderPriceType(orderPriceType);
+        return this;
+    }
+
+    public OrderEntityTestBuilder withOrderBookId(String orderBookId){
+        builder.withOrderBookId(orderBookId);
         return this;
     }
 

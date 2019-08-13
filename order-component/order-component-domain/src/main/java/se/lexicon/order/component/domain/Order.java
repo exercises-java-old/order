@@ -34,8 +34,10 @@ public class Order extends ValueObject implements Serializable {
 
     private Side side;         // Sell or Buy
 
+    private OrderPriceType orderPriceType; // BUY/SELL at MARKET or LIMITED price
+
     @Allowed(types = {Allowed.Type.NULLABLE})
-    private OrderBooks orderBooks; //reference to the orderbooks
+    private String orderBookId;
 
     @Allowed(types = {Allowed.Type.NULLABLE})
     private OrderDeals orderDeals; //reference to the orderdeals
@@ -51,8 +53,9 @@ public class Order extends ValueObject implements Serializable {
         this.noOfItems = Required.notNull(builder.noOfItems,"noOfItems");
         this.minMaxValue = Required.notNull(builder.minMaxValue,"minMaxValue");
         this.side = Required.notNull(builder.side,"side");
+        this.orderPriceType = Required.notNull(builder.orderPriceType,"orderPriceType");
         this.insertionTimestamp = Required.notNull(builder.insertionTimestamp,"insertionTimestamp");
-        this.orderBooks = builder.orderBooks;
+        this.orderBookId = builder.orderBookId;
         this.orderDeals = builder.orderDeals;
     }
 
@@ -65,7 +68,9 @@ public class Order extends ValueObject implements Serializable {
         return ssn;
     }
 
-    public OrderBooks getOrderBooks() { return orderBooks; }
+    public String getOrderBookId() {
+        return orderBookId;
+    }
 
     public OrderDeals getOrderDeals() { return orderDeals; }
 
@@ -91,9 +96,11 @@ public class Order extends ValueObject implements Serializable {
         return side;
     }
 
+    public OrderPriceType getOrderPriceType() { return orderPriceType; }
+
     @Override
     protected Object[] getIdFields() {
-        return new Object[]{amount, ssn, insertionTimestamp, instrument, noOfItems, minMaxValue, side};
+        return new Object[]{amount, ssn, insertionTimestamp, instrument, noOfItems, minMaxValue, side, orderPriceType};
     }
 
     public static Builder builder(){
@@ -114,9 +121,11 @@ public class Order extends ValueObject implements Serializable {
 
         private Money minMaxValue;
 
-        private Side side; // Sell or Buy
+        private Side side;
 
-        private OrderBooks orderBooks;
+        private OrderPriceType orderPriceType;
+
+        private String orderBookId;
 
         private OrderDeals orderDeals;
 
@@ -157,13 +166,18 @@ public class Order extends ValueObject implements Serializable {
             return this;
         }
 
+        public Builder withOrderPriceType(OrderPriceType orderPriceType){
+            this.orderPriceType = orderPriceType;
+            return this;
+        }
+
         public Builder withInsertionTimestamp(Instant insertionTimestamp){
             this.insertionTimestamp = insertionTimestamp;
             return this;
         }
 
-        public Builder withOrderBookId(OrderBooks orderBookId){
-            this.orderBooks = orderBookId;
+        public Builder withOrderBookId(String orderBookId){
+            this.orderBookId = orderBookId;
             return this;
         }
 

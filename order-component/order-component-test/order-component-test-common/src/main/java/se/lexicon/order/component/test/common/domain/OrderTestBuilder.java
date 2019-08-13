@@ -29,6 +29,8 @@ public class OrderTestBuilder extends AbstractTestBuilder<Order> {
                     .withCurrency(Currency.getInstance("SEK"))
                     .build())
                 .withInsertionTimestamp(Instant.now())
+                .withOrderBookId("ABB/SEK")
+                .withOrderPriceType(OrderPriceType.MARKET)
 
 //                .withOrderBookId (OrderBooks.valueOf(
 //                        new OrderBook.Builder()
@@ -79,6 +81,11 @@ public class OrderTestBuilder extends AbstractTestBuilder<Order> {
         return this;
     }
 
+    public OrderTestBuilder withOrderPriceType(OrderPriceType orderPriceType){
+        builder.withOrderPriceType(orderPriceType);
+        return this;
+    }
+
     public OrderTestBuilder withAmount(BigDecimal amount){
         builder.withAmount(amount);
         return this;
@@ -89,7 +96,7 @@ public class OrderTestBuilder extends AbstractTestBuilder<Order> {
         return this;
     }
 
-    public OrderTestBuilder withOrderBookId(OrderBooks orderBookId){
+    public OrderTestBuilder withOrderBookId(String orderBookId){
         builder.withOrderBookId(orderBookId);
         return this;
     }
