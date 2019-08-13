@@ -1,3 +1,4 @@
+se/lexicon/order/component/domain/OrderPriceType.class
 se/lexicon/order/component/domain/OrderDeals$Deserializer.class
 se/lexicon/order/component/domain/OrderBooks$Serializer.class
 se/lexicon/order/component/domain/Money$Builder.class
