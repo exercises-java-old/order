@@ -7,6 +7,7 @@ import com.so4it.annotation.Allowed;
 import com.so4it.common.util.object.Required;
 import com.so4it.component.entity.AbstractEntityBuilder;
 import com.so4it.component.entity.IdEntity;
+import se.lexicon.order.component.domain.Money;
 
 import java.util.Set;
 
@@ -26,6 +27,8 @@ public class OrderDealEntity extends IdEntity<String> {
 
     private Boolean closed;
 
+    private Money price;
+
     private OrderDealEntity(){
 
     }
@@ -37,6 +40,7 @@ public class OrderDealEntity extends IdEntity<String> {
         this.orderId1 =Required.notNull(builder.orderId1,"orderId1",builder.isTemplate());
         this.orderId2 =Required.notNull(builder.orderId2,"orderId2",builder.isTemplate());
         this.closed =Required.notNull(builder.closed,"closed",builder.isTemplate());
+        this.price =Required.notNull(builder.price,"price",builder.isTemplate());
     }
 
 
@@ -92,6 +96,10 @@ public class OrderDealEntity extends IdEntity<String> {
         this.closed = closed;
     }
 
+    public Money getPrice() { return price; }
+
+    private void setPrice(Money price) { this.price = price; }
+
     public static Builder builder(){
         return new Builder(false);
     }
@@ -108,6 +116,7 @@ public class OrderDealEntity extends IdEntity<String> {
         private String orderId1;
         private String orderId2;
         private Boolean closed;
+        private Money price;
 
         public Builder(boolean template){
             super(template);
@@ -140,6 +149,11 @@ public class OrderDealEntity extends IdEntity<String> {
 
         public OrderDealEntity.Builder withClosed(Boolean closed){
             this.closed=closed;
+            return this;
+        }
+
+        public OrderDealEntity.Builder withPrice(Money price){
+            this.price=price;
             return this;
         }
 

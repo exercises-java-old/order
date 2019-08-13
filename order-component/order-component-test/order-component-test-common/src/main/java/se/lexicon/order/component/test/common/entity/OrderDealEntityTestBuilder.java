@@ -2,8 +2,11 @@ package se.lexicon.order.component.test.common.entity;
 
 import com.so4it.common.util.object.Required;
 import com.so4it.test.domain.AbstractTestBuilder;
+import se.lexicon.order.component.domain.Money;
 import se.lexicon.order.component.entity.OrderDealEntity;
 
+import java.math.BigDecimal;
+import java.util.Currency;
 import java.util.Set;
 
 public class OrderDealEntityTestBuilder extends AbstractTestBuilder<OrderDealEntity>{
@@ -20,6 +23,7 @@ public class OrderDealEntityTestBuilder extends AbstractTestBuilder<OrderDealEnt
                 .withOrderId1("22222222")
                 .withOrderId2("33333333")
                 .withClosed(false)
+                .withPrice(Money.builder().withAmount(BigDecimal.ONE).withCurrency(Currency.getInstance("SEK")).build())
                 .build();
     }
 

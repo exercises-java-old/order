@@ -1,12 +1,10 @@
 package se.lexicon.order.component.service;
 
 import se.lexicon.order.component.domain.*;
-import se.lexicon.order.component.entity.OrderBookEntity;
 import se.lexicon.order.component.entity.OrderDealEntity;
 import se.lexicon.order.component.entity.OrderEntity;
 import com.so4it.common.util.object.Required;
 import com.so4it.gs.rpc.ServiceExport;
-import se.lexicon.order.componment.dao.OrderBookDao;
 import se.lexicon.order.componment.dao.OrderDao;
 import se.lexicon.order.componment.dao.OrderDealDao;
 
@@ -63,6 +61,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                         .withId(odentity.getId())
                         .withInstrument(odentity.getInstrument())
                         .withNoOfItems(odentity.getNoOfItems())
+                        .withPrice(odentity.getPrice())
                         .withMatchingOrderId(odentity.getOrderId2())
                         .build())
                 .collect(Collectors.toSet()));
@@ -73,6 +72,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                         .withId(odentity.getId())
                         .withInstrument(odentity.getInstrument())
                         .withNoOfItems(odentity.getNoOfItems())
+                        .withPrice(odentity.getPrice())
                         .withMatchingOrderId(odentity.getOrderId1())
                         .build())
                 .collect(Collectors.toSet()));
@@ -210,6 +210,7 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                 .withNoOfItems(noOfItemsToMatch)
                 .withOrderId1(orderEntity.getId())
                 .withOrderId2(bestMatchingOrder.getId())
+                .withPrice(CalculatePrice(orderEntity, bestMatchingOrder))
                 .withClosed(false)
                 .build());
 
@@ -251,6 +252,30 @@ public class OrderComponentServiceImpl implements OrderComponentService {
         if (inCurrency.equals(current.getMinMaxValue().getCurrency())) return current;
         return compareWith;
 
+    }
+
+    private Money CalculatePrice (OrderEntity orderEntity1, OrderEntity orderEntity2) {
+        // WE NEED to change the lastPrice later on
+        if (orderEntity1.getSide() == Side.SELL)
+            return CalculatePrice (orderEntity1.getMinMaxValue(), orderEntity1, orderEntity2);
+        return CalculatePrice (orderEntity2.getMinMaxValue(), orderEntity2, orderEntity1);
+    }
+
+    private Money CalculatePrice (Money lastPrice, OrderEntity seller, OrderEntity buyer) {
+
+        if (buyer.getOrderPriceType() == OrderPriceType.MARKET && seller.getOrderPriceType() == OrderPriceType.MARKET) {
+            return lastPrice;
+        } else if (buyer.getOrderPriceType() == OrderPriceType.MARKET && seller.getOrderPriceType() != OrderPriceType.MARKET) {
+            return seller.getMinMaxValue();
+        } else if (seller.getOrderPriceType() == OrderPriceType.MARKET && buyer.getOrderPriceType() != OrderPriceType.MARKET) {
+            return buyer.getMinMaxValue();
+        }
+
+        // Both NOT MARKET
+        if (seller.getMinMaxValue().equals(buyer.getMinMaxValue()))
+            return seller.getMinMaxValue(); //Agreed price
+
+        return lastPrice;
     }
 
     @Override

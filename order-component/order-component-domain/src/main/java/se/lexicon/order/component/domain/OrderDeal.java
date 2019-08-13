@@ -17,6 +17,8 @@ public class OrderDeal extends ValueObject implements Serializable {
 
     private Integer noOfItems;
 
+    private Money price;
+
     private String matchingOrderId;
 
     private OrderDeal() {
@@ -26,6 +28,7 @@ public class OrderDeal extends ValueObject implements Serializable {
         this.id = builder.id;
         this.instrument = Required.notNull(builder.instrument,"instrument");
         this.noOfItems = Required.notNull(builder.noOfItems,"noOfItems");
+        this.price = Required.notNull(builder.price,"price");
         this.matchingOrderId = Required.notNull(builder.matchingOrderId,"matchingOrderId");
     }
 
@@ -40,6 +43,8 @@ public class OrderDeal extends ValueObject implements Serializable {
     public Integer getNoOfItems() {
         return noOfItems;
     }
+
+    public Money getPrice() { return price; }
 
     public String getMatchingOrderId() {
         return matchingOrderId;
@@ -62,6 +67,8 @@ public class OrderDeal extends ValueObject implements Serializable {
 
         private Integer noOfItems;
 
+        private Money price;
+
         private String matchingOrderId;
 
         public Builder withId(String id){
@@ -76,6 +83,11 @@ public class OrderDeal extends ValueObject implements Serializable {
 
         public Builder withNoOfItems(Integer noOfItems){
             this.noOfItems = noOfItems;
+            return this;
+        }
+
+        public Builder withPrice(Money price){
+            this.price = price;
             return this;
         }
 
