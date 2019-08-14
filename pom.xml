@@ -9,40 +9,8 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>order-api</module>
         <module>order-component</module>
-	<!--
-
-        <module>agreement</module>
-        <module>analytic</module>
-        <module>arrangement</module>
-        <module>authentication</module>
-        <module>booking</module>
-        <module>bulletin</module>
-        <module>card</module>
-        <module>checkout</module>
-        <module>common</module>
-        <module>device-management</module>
-        <module>endpoint</module>
-        <module>explain</module>
-        <module>gateway</module>
-        <module>integration</module>
-        <module>invoice</module>
-        <module>involved-party</module>
-        <module>involved-party-data-ledger</module>
-        <module>message</module>
-        <module>personal-details</module>
-        <module>product-definition</module>
-        <module>protobuf</module>
-        <module>right-of-disposal</module>
-        <module>risk-scoring</module>
-        <module>screening</module>
-        <module>signature-ledger</module>
-        <module>test</module>
-        <module>transaction</module>
-        <module>util</module>
-	-->
-
-
     </modules>
 
 
@@ -79,8 +47,9 @@
 
         <gs.license>Product=InsightEdge;Version=14.0;Type=PREMIUM;Customer=So4it_SEBX_DEV;Expiration=2019-Aug-28;Hash=8SJZ1HNZrUEDQxk3IO4V</gs.license>
 
-        <api.specs.sugar.url>https://git.so4it.com/SO4IT/sugar-api-repository/raw/develop/src/main/proto</api.specs.sugar.url>
-        <api.specs.local.url>${project.basedir}/../../../protobuf/src/main/proto/seb</api.specs.local.url>
+
+        <api.specs.sugar.url>https://raw.githubusercontent.com/lexicon-java-8/api-repository/develop/src/main/proto/</api.specs.sugar.url>
+        <api.specs.local.url>${project.basedir}/../../../api-repository/src/main/proto/api</api.specs.local.url>
 
         <!--
             Default maven properties

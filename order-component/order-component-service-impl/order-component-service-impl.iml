@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -49,8 +54,6 @@
     <orderEntry type="library" name="Maven: commons-configuration:commons-configuration:1.8" level="project" />
     <orderEntry type="library" name="Maven: io.reactivex:rxjava:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:registry-core:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.so4it.sugar:cache-core:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.5.6" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:fault-tolerance-core:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:common-jmx:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.hystrix:hystrix-metrics-event-stream:1.4.23" level="project" />
