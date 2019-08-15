@@ -1,38 +1,22 @@
-# Compiled class file
-*.class
+# Created by .ignore support plugin (hsz.mobi)
+**/target
+**/bower_components
+**/node_modules
+**/webapp_build
+**/*.iml
+**/projectFilesBackup*
+**/*.ipr
+**/*.iws
+**/*.idea
+**/*.retry
+**/*.galaxy_install_info
+**/*.log
+**/.DS_Store
+**/overlays
+**/.vagrant
+**/.npmrc
+**/package-lock.json
+**/builds
+**/dependency-reduced-pom.xml
+**/.flattened-pom.xml
 
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-/.idea/
-/order-component/order-component-client/target/
-/order-component/order-component-dao/target/
-/order-component/order-component-dao-impl/target/
-/order-component/order-component-domain/target/
-/order-component/order-component-entity/target/
-/order-component/order-component-mapper/target/
-/order-component/order-component-service/target/
-/order-component/order-component-service-impl/target/
-/order-component/order-component-mirror/target/
-/order-component/order-component-pu/target/
-/order-component/order-component-pu-mirror/target/
-/order-component/order-component-test/order-component-test-common/target/
-/order-component/order-component-test/order-component-test-integration/target/
-/order-component/order-component-test/order-component-test-unit/target/
