@@ -49,7 +49,7 @@
 
 
         <api.specs.sugar.url>https://raw.githubusercontent.com/lexicon-java-8/api-repository/develop/src/main/proto/</api.specs.sugar.url>
-        <api.specs.local.url>${project.basedir}/../../../api-repository/src/main/proto/api</api.specs.local.url>
+        <api.specs.local.url>${project.basedir}/../../../api-repository/src/main/proto</api.specs.local.url>
 
         <!--
             Default maven properties
