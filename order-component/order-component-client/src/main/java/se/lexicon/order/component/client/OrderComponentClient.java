@@ -1,6 +1,7 @@
 package se.lexicon.order.component.client;
 
 import se.lexicon.order.component.domain.Order;
+import se.lexicon.order.component.domain.OrderDeal;
 import se.lexicon.order.component.domain.Orders;
 
 import java.util.Set;
@@ -10,8 +11,9 @@ import java.util.Set;
  */
 public interface OrderComponentClient {
 
-    Set<String> getInstruments(String ssn);
-    Orders getOrders(String instrument, String ssn);
+    void makeOrderDeal (OrderDeal orderDeal);
+
+    Orders getOrders(String ssn);
 
     void placeOrder(Order order);
 

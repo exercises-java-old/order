@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="gigaSpaceParallelQueueConfiguration" class="com.so4it.gs.queue.GigaSpaceParallelQueueConfiguration">
+        <constructor-arg name="dynamicConfiguration" ref="dynamicConfiguration"/>
+    </bean>
+
+
+    <bean id="parallelQueueFactory" class="se.lexicon.order.component.service.ParallelQueueFactory">
+        <constructor-arg name="gigaSpaceParallelQueueConfiguration" ref="gigaSpaceParallelQueueConfiguration"/>
+        <constructor-arg name="mBeanRegistry" ref="mBeanRegistry"/>
+        <constructor-arg name="gigaSpace" ref="orderGigaSpace"/>
+        <constructor-arg name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+
+    <bean id ="orderParallelQueue" class="com.so4it.gs.queue.GigaSpaceParallelQueue" factory-bean="parallelQueueFactory"
+          factory-method="createTaskExecutorParallelQueueOrder" init-method="initialize" destroy-method="close">
+        <constructor-arg name="workflowParallelQueueConsumer" ref="orderParallelQueueConsumer"/>
+    </bean>
+
+    <bean id ="orderDealParallelQueue" class="com.so4it.gs.queue.GigaSpaceParallelQueue" factory-bean="parallelQueueFactory"
+          factory-method="createTaskExecutorParallelQueueOrderDeal" init-method="initialize" destroy-method="close">
+        <constructor-arg name="workflowParallelQueueConsumer" ref="orderDealParallelQueueConsumer"/>
+    </bean>
+
+
+
+    <bean id="orderParallelQueueConsumer" class="se.lexicon.order.component.service.OrderParallelQueueConsumer">
+        <constructor-arg name="orderDao" ref="orderDao"/>
+    </bean>
+
+    <bean id="orderDealParallelQueueConsumer" class="se.lexicon.order.component.service.OrderDealParallelQueueConsumer">
+        <constructor-arg name="orderDealDao" ref="orderDealDao"/>
+    </bean>
+
+</beans>

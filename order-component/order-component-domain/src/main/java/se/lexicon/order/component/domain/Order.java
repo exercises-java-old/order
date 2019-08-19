@@ -36,7 +36,6 @@ public class Order extends ValueObject implements Serializable {
 
     private OrderPriceType orderPriceType; // BUY/SELL at MARKET or LIMITED price
 
-    @Allowed(types = {Allowed.Type.NULLABLE})
     private String orderBookId;
 
     @Allowed(types = {Allowed.Type.NULLABLE})
@@ -55,7 +54,7 @@ public class Order extends ValueObject implements Serializable {
         this.side = Required.notNull(builder.side,"side");
         this.orderPriceType = Required.notNull(builder.orderPriceType,"orderPriceType");
         this.insertionTimestamp = Required.notNull(builder.insertionTimestamp,"insertionTimestamp");
-        this.orderBookId = builder.orderBookId;
+        this.orderBookId = Required.notNull(builder.orderBookId,"orderBookId");
         this.orderDeals = builder.orderDeals;
     }
 

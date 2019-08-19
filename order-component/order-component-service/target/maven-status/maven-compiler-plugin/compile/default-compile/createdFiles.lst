@@ -1,4 +1,4 @@
-se/lexicon/order/component/service/OrderComponentServiceProvider.class
 se/lexicon/order/component/service/InstrumentRemoteResultReducer.class
+se/lexicon/order/component/service/OrderComponentServiceProvider.class
 se/lexicon/order/component/service/BigDecimalRemoteResultReducer.class
 se/lexicon/order/component/service/OrderComponentService.class

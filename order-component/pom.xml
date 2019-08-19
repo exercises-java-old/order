@@ -37,6 +37,11 @@
             -->
             <dependency>
                 <groupId>com.lexicon</groupId>
+                <artifactId>market-component-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
                 <artifactId>order-component-client</artifactId>
                 <version>${project.version}</version>
             </dependency>

@@ -1,6 +1,7 @@
 package se.lexicon.order.component.client;
 
 import se.lexicon.order.component.domain.Order;
+import se.lexicon.order.component.domain.OrderDeal;
 import se.lexicon.order.component.domain.Orders;
 import se.lexicon.order.component.service.OrderComponentService;
 import com.so4it.common.util.object.Required;
@@ -19,10 +20,10 @@ public class OrderComponentClientImpl implements OrderComponentClient{
     }
 
     @Override
-    public Set<String> getInstruments(String ssn){ return orderComponentService.getInstruments(ssn); }
+    public void makeOrderDeal (OrderDeal orderDeal){ orderComponentService.makeOrderDeal(orderDeal); }
 
     @Override
-    public Orders getOrders(String instrument, String ssn){ return orderComponentService.getOrders(instrument,ssn); }
+    public Orders getOrders(String ssn){ return orderComponentService.getOrders(ssn); }
 
     @Override
     public void placeOrder(Order order) { orderComponentService.placeOrder(order); }

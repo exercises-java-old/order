@@ -53,7 +53,6 @@
     <orderEntry type="library" name="Maven: com.netflix.archaius:archaius-core:0.4.1" level="project" />
     <orderEntry type="library" name="Maven: io.reactivex:rxjava:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:fault-tolerance-core:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.so4it.sugar:common-jmx:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.hystrix:hystrix-metrics-event-stream:1.4.23" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:exception:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:common-bean:0.17.0-RT4-SNAPSHOT" level="project" />
@@ -62,6 +61,14 @@
     <orderEntry type="library" name="Maven: io.reactivex.rxjava2:rxjava:2.1.6" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.1" level="project" />
     <orderEntry type="module" module-name="order-component-service-impl" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:queue:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:gigaspaces-parallel-queue:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:common-logger:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:common-jmx:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="market-component-client" />
+    <orderEntry type="module" module-name="market-component-domain" />
+    <orderEntry type="module" module-name="market-component-service" />
+    <orderEntry type="module" module-name="market-component-entity" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:configuration-test-common:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:configuration-core:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: junit-addons:junit-addons:1.4" level="project" />

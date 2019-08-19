@@ -34,9 +34,7 @@ public class OrderEntityTestBuilder extends AbstractTestBuilder<OrderEntity> {
                         .build())
                 .withSide(Side.BUY)
                 .withOrderPriceType(OrderPriceType.MARKET)
-                .withOrderBookId("ABB/SEK")
-                .withNoOfItemsToMatch(100)
-                .withAllItemsMatched(false);
+                .withOrderBookId("ABB/SEK");
     }
 
     public OrderEntityTestBuilder withSsn(String ssn){
@@ -75,16 +73,6 @@ public class OrderEntityTestBuilder extends AbstractTestBuilder<OrderEntity> {
 
     public OrderEntityTestBuilder withOrderBookId(String orderBookId){
         builder.withOrderBookId(orderBookId);
-        return this;
-    }
-
-    public OrderEntityTestBuilder withNoOfMatchedItems(Integer noOfMatchedItems){
-        builder.withNoOfItemsToMatch(noOfMatchedItems);
-        return this;
-    }
-
-    public OrderEntityTestBuilder withAllItemsMatched(Boolean allItemsMatched){
-        builder.withAllItemsMatched(allItemsMatched);
         return this;
     }
 

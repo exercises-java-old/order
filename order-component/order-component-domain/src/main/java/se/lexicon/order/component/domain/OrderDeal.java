@@ -13,27 +13,34 @@ public class OrderDeal extends ValueObject implements Serializable {
     @Allowed(types = {Allowed.Type.NULLABLE})
     private String id;
 
+    private String ssn;
+
+    private String orderId;
+
     private String instrument;
 
     private Integer noOfItems;
 
     private Money price;
 
-    private String matchingOrderId;
-
     private OrderDeal() {
     }
 
     private OrderDeal(Builder builder) {
         this.id = builder.id;
+        this.ssn = Required.notNull(builder.ssn,"ssn");
+        this.orderId = Required.notNull(builder.orderId,"orderId");
         this.instrument = Required.notNull(builder.instrument,"instrument");
         this.noOfItems = Required.notNull(builder.noOfItems,"noOfItems");
         this.price = Required.notNull(builder.price,"price");
-        this.matchingOrderId = Required.notNull(builder.matchingOrderId,"matchingOrderId");
     }
 
     public String getId() {
         return id;
+    }
+
+    public String getSsn() {
+        return ssn;
     }
 
     public String getInstrument() {
@@ -46,13 +53,13 @@ public class OrderDeal extends ValueObject implements Serializable {
 
     public Money getPrice() { return price; }
 
-    public String getMatchingOrderId() {
-        return matchingOrderId;
+    public String getOrderId() {
+        return orderId;
     }
 
     @Override
     protected Object[] getIdFields() {
-        return new Object[]{id, instrument, noOfItems, matchingOrderId};
+        return new Object[]{id, ssn, orderId, instrument, noOfItems, price};
     }
 
     public static Builder builder(){
@@ -63,16 +70,28 @@ public class OrderDeal extends ValueObject implements Serializable {
 
         private String id;
 
+        private String ssn;
+
+        private String orderId;
+
         private String instrument;
 
         private Integer noOfItems;
 
         private Money price;
 
-        private String matchingOrderId;
-
         public Builder withId(String id){
             this.id = id;
+            return this;
+        }
+
+        public Builder withSsn(String ssn){
+            this.ssn = ssn;
+            return this;
+        }
+
+        public Builder withOrderId(String orderId){
+            this.orderId = orderId;
             return this;
         }
 
@@ -88,11 +107,6 @@ public class OrderDeal extends ValueObject implements Serializable {
 
         public Builder withPrice(Money price){
             this.price = price;
-            return this;
-        }
-
-        public Builder withMatchingOrderId(String matchingOrderId){
-            this.matchingOrderId = matchingOrderId;
             return this;
         }
 

@@ -3,10 +3,7 @@ package se.lexicon.order.component.service;
 
 import com.so4it.gs.rpc.Broadcast;
 import com.so4it.gs.rpc.Routing;
-import se.lexicon.order.component.domain.Order;
-import se.lexicon.order.component.domain.OrderBooks;
-import se.lexicon.order.component.domain.OrderDeals;
-import se.lexicon.order.component.domain.Orders;
+import se.lexicon.order.component.domain.*;
 import se.lexicon.order.component.entity.OrderDealEntity;
 import se.lexicon.order.component.entity.OrderEntity;
 import java.math.BigDecimal;
@@ -16,16 +13,10 @@ public interface OrderComponentService {
 
     String DEFAULT_BEAN_NAME = "orderComponentService";
 
-    @Broadcast(reducer = InstrumentRemoteResultReducer.class)
-    Set<String> getInstruments(String ssn);
+    void makeOrderDeal (@Routing("getSsn") OrderDeal orderDeal);
 
-    Orders getOrders(@Routing String Instrument, String ssn);
-
-    OrderDeals getOrderDeals (@Routing("getInstrument") OrderEntity orderEntity);
-
-    void placeOrder(@Routing("getInstrument") Order order);
-
-    void MatchOrder (@Routing("getInstrument") OrderEntity orderEntity);
+    Boolean placeOrder(@Routing("getSsn") Order order);
+    Orders getOrders(@Routing String ssn);
 
     @Broadcast(reducer = BigDecimalRemoteResultReducer.class)
     BigDecimal getTotalOrderValueOfAllOrders();

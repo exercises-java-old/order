@@ -3,9 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
+    <import resource="classpath*:order-component-service-parallel-queue.xml"/>
+
     <bean id="orderComponentService" class="se.lexicon.order.component.service.OrderComponentServiceImpl">
         <constructor-arg name="orderDao" ref="orderDao"/>
         <constructor-arg name="orderDealDao" ref="orderDealDao"/>
+        <constructor-arg name="orderParallelQueue" ref="orderParallelQueue"/>
+        <constructor-arg name="orderDealParallelQueue" ref="orderDealParallelQueue"/>
     </bean>
 
 

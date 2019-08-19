@@ -1,6 +1,7 @@
 package se.lexicon.order.component.entity;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceFifoGroupingProperty;
 import com.gigaspaces.annotation.pojo.SpaceId;
 import com.gigaspaces.annotation.pojo.SpaceRouting;
 import com.so4it.annotation.Allowed;
@@ -43,11 +44,6 @@ public class OrderEntity extends IdEntity<String> {
 
     private String orderBookId;
 
-    // Matching information
-    private Integer noOfItemsToMatch;
-
-    private Boolean allItemsMatched;
-
     private OrderEntity() {
     }
 
@@ -62,9 +58,7 @@ public class OrderEntity extends IdEntity<String> {
         this.side = Required.notNull(builder.side,"side",builder.isTemplate());
         this.orderPriceType = Required.notNull(builder.orderPriceType,"orderPriceType",builder.isTemplate());
         this.orderBookId = Required.notNull(builder.orderBookId,"orderBookId",builder.isTemplate());
-        this.noOfItemsToMatch = Required.notNull(builder.noOfItemsToMatch,"noOfMatchedItems",builder.isTemplate());
-        this.allItemsMatched = Required.notNull(builder.allItemsMatched,"allItemsMatched",builder.isTemplate());
-    }
+   }
 
     @Override
     @SpaceId(autoGenerate = true)
@@ -76,6 +70,8 @@ public class OrderEntity extends IdEntity<String> {
         this.id = id;
     }
 
+    @SpaceRouting
+    @SpaceFifoGroupingProperty
     public String getSsn() {
         return ssn;
     }
@@ -100,7 +96,6 @@ public class OrderEntity extends IdEntity<String> {
         this.insertionTimestamp = insertionTimestamp;
     }
 
-    @SpaceRouting
     public String getInstrument() {
         return instrument;
     }
@@ -149,22 +144,6 @@ public class OrderEntity extends IdEntity<String> {
         this.orderBookId = orderBookId;
     }
 
-    public Integer getNoOfItemsToMatch() {
-        return noOfItemsToMatch;
-    }
-
-    private void setNoOfItemsToMatch(Integer noOfItemsToMatch) {
-        this.noOfItemsToMatch = noOfItemsToMatch;
-    }
-
-    public Boolean getAllItemsMatched() {
-        return allItemsMatched;
-    }
-
-    private void setAllItemsMatched(Boolean allItemsMatched) {
-        this.allItemsMatched = allItemsMatched;
-    }
-
     public static Builder builder() {
         return new Builder(false);
     }
@@ -197,10 +176,6 @@ public class OrderEntity extends IdEntity<String> {
         private OrderPriceType orderPriceType;
 
         private String orderBookId;
-
-        private Integer noOfItemsToMatch;
-
-        private Boolean allItemsMatched;
 
         public Builder(boolean template) {
             super(template);
@@ -253,16 +228,6 @@ public class OrderEntity extends IdEntity<String> {
 
         public OrderEntity.Builder withOrderBookId(String orderBookId) {
             this.orderBookId = orderBookId;
-            return this;
-        }
-
-        public OrderEntity.Builder withNoOfItemsToMatch(Integer noOfItemsToMatch) {
-            this.noOfItemsToMatch = noOfItemsToMatch;
-            return this;
-        }
-
-        public OrderEntity.Builder withAllItemsMatched(Boolean allItemsMatched) {
-            this.allItemsMatched = allItemsMatched;
             return this;
         }
 

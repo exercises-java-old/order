@@ -18,11 +18,10 @@ public class OrderDealEntityTestBuilder extends AbstractTestBuilder<OrderDealEnt
         this.builder= Required.notNull(builder,"builder");
         this.builder
                 .withId("111111111")
+                .withSsn("111111111-1")
                 .withInstrument("ABB")
                 .withNoOfItems(100)
-                .withOrderId1("22222222")
-                .withOrderId2("33333333")
-                .withClosed(false)
+                .withOrderId("22222222")
                 .withPrice(Money.builder().withAmount(BigDecimal.ONE).withCurrency(Currency.getInstance("SEK")).build())
                 .build();
     }
@@ -42,13 +41,8 @@ public class OrderDealEntityTestBuilder extends AbstractTestBuilder<OrderDealEnt
         return this;
     }
 
-    public OrderDealEntityTestBuilder withOrderId1(String orderId1){
-        builder.withOrderId1(orderId1);
-        return this;
-    }
-
-    public OrderDealEntityTestBuilder withOrderId2(String orderId2){
-        builder.withOrderId2(orderId2);
+    public OrderDealEntityTestBuilder withOrderId(String orderId){
+        builder.withOrderId(orderId);
         return this;
     }
 
