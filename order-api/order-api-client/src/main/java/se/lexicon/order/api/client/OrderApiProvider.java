@@ -1,4 +1,4 @@
-package se.lexicon.account.api.client;
+package se.lexicon.order.api.client;
 
 import com.so4it.api.Account;
 import com.so4it.api.ApiClientProvider;
@@ -8,5 +8,5 @@ import com.so4it.api.ApiClientProvider;
         specification = Account.PATH,
         version = Account.VERSION,
         beanPublisher = AccountApiProviderBeanPublisher.class)
-public class AccountApiProvider {
+public class OrderApiProvider {
 }

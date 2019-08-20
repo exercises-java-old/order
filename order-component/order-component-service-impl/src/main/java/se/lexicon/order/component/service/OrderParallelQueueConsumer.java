@@ -4,7 +4,8 @@ import com.so4it.queue.ParallelQueueConsumer;
 import se.lexicon.market.component.client.MarketOrderComponentClient;
 import se.lexicon.market.component.domain.MarketOrder;
 import se.lexicon.order.component.entity.OrderEntity;
-import se.lexicon.order.component.event.PlaceOrderEvent;
+import se.lexicon.order.component.mapper.MoneyMapper;
+import se.lexicon.order.component.mapper.EnumMapper;
 import se.lexicon.order.componment.dao.OrderDao;
 
 public class OrderParallelQueueConsumer {
@@ -32,12 +33,23 @@ public class OrderParallelQueueConsumer {
 
         OrderEntity orderEntity = orderDao.insert(placeOrderEvent);
 
+        //System.out.println(orderEntity);
+
         // Check account
 
-//        marketOrderComponentClient.placeMarketOrder
-//                (MarketOrder.builder()
-//                        .withOrderId(orderEntity.getId())
-//                        .withInstrument(orderEntity.getInstrument()).build());
+//        marketOrderComponentClient.placeMarketOrder (MarketOrder.builder()
+//            //.withId()
+//            .withSsn(orderEntity.getSsn())
+//            .withOrderId(orderEntity.getId())
+//            .withInstrument(orderEntity.getInstrument())
+//            .withAmount(orderEntity.getAmount())
+//            .withInsertionTimestamp(orderEntity.getInsertionTimestamp())
+//            .withMinMaxValue(MoneyMapper.mapIt(orderEntity.getMinMaxValue()))
+//            .withNoOfItems(orderEntity.getNoOfItems())
+//            .withMarketPriceType(EnumMapper.map(orderEntity.getOrderPriceType()))
+//            .withSide(EnumMapper.map(orderEntity.getSide()))
+//            .withOrderBookId(orderEntity.getOrderBookId())
+//            .build());
 
     }
 }

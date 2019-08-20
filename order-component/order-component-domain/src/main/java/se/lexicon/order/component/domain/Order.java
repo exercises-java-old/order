@@ -99,7 +99,7 @@ public class Order extends ValueObject implements Serializable {
 
     @Override
     protected Object[] getIdFields() {
-        return new Object[]{amount, ssn, insertionTimestamp, instrument, noOfItems, minMaxValue, side, orderPriceType};
+        return new Object[]{id, ssn, amount, insertionTimestamp, instrument, noOfItems, minMaxValue, side, orderPriceType, orderBookId};
     }
 
     public static Builder builder(){

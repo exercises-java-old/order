@@ -1,2 +1,5 @@
 se/lexicon/order/component/service/OrderComponentDescriptor.class
+se/lexicon/order/component/service/OrderParallelQueueConsumer.class
 se/lexicon/order/component/service/OrderComponentServiceImpl.class
+se/lexicon/order/component/service/ParallelQueueFactory.class
+se/lexicon/order/component/service/OrderDealParallelQueueConsumer.class

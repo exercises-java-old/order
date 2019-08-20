@@ -4,24 +4,24 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.lexicon</groupId>
-        <artifactId>account-api</artifactId>
+        <artifactId>order-api</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>account-api-test</artifactId>
+    <artifactId>order-api-test</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>account-api-test-common</module>
-        <module>account-api-test-integration</module>
-        <module>account-api-test-unit</module>
+        <module>order-api-test-common</module>
+        <module>order-api-test-integration</module>
+        <module>order-api-test-unit</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.lexicon</groupId>
-                <artifactId>account-api-test-common</artifactId>
+                <artifactId>order-api-test-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -30,22 +30,22 @@
             -->
             <dependency>
                 <groupId>com.lexicon</groupId>
-                <artifactId>account-component-dao-impl</artifactId>
+                <artifactId>order-component-dao-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.lexicon</groupId>
-                <artifactId>account-component-client</artifactId>
+                <artifactId>order-component-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.lexicon</groupId>
-                <artifactId>account-component-service-impl</artifactId>
+                <artifactId>order-component-service-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.lexicon</groupId>
-                <artifactId>account-component-test-common</artifactId>
+                <artifactId>order-component-test-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

@@ -1,6 +1,5 @@
 package se.lexicon.order.component.service;
 
-import com.so4it.gs.rpc.Routing;
 import com.so4it.queue.ParallelQueue;
 import se.lexicon.order.component.domain.*;
 import se.lexicon.order.component.entity.OrderDealEntity;
@@ -13,7 +12,6 @@ import se.lexicon.order.componment.dao.OrderDao;
 import se.lexicon.order.componment.dao.OrderDealDao;
 
 import java.math.BigDecimal;
-import java.util.*;
 import java.util.stream.Collectors;
 
 @ServiceExport({OrderComponentService.class})

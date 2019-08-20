@@ -31,7 +31,7 @@ public class OrderDealParallelQueueConsumer {
 
         // Update VPC
 
-        System.out.println(orderDealEntity);
+        //System.out.println(orderDealEntity);
 
     }
 }

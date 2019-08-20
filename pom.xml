@@ -9,10 +9,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>order-api</module>
         <module>order-component</module>
     </modules>
 
+    <!--
+        <module>order-api</module>
+    -->
 
     <properties>
 

@@ -12,18 +12,22 @@
     <packaging>pom</packaging>
 
     <modules>
-        <!--
-        <module>order-api-client</module>
-        -->
+       <module>order-api-client</module>
         <module>order-api-common</module>
-        <!--
         <module>order-api-mapper</module>
         <module>order-api-pu</module>
         <module>order-api-server</module>
         <module>order-api-test</module>
-        -->
     </modules>
 
+    <!--
+    <module>order-api-client</module>
+    <module>order-api-common</module>
+     <module>order-api-mapper</module>
+    <module>order-api-pu</module>
+    <module>order-api-server</module>
+    <module>order-api-test</module>
+    -->
 
     <dependencyManagement>
         <dependencies>

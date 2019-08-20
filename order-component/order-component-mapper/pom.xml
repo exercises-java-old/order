@@ -20,6 +20,10 @@
             <groupId>com.lexicon</groupId>
             <artifactId>order-component-entity</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.lexicon</groupId>
+            <artifactId>market-component-domain</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

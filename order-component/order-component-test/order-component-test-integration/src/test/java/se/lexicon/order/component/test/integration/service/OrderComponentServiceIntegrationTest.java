@@ -64,7 +64,7 @@ public class OrderComponentServiceIntegrationTest {
         orderComponentService.placeOrder(order1);
         orderComponentService.placeOrder(order2);
 
-        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("111222").size() == 1));
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("111222").size() == 2));
 
         //Orders orders = orderComponentService.getOrders("111222");
         //Assert.assertEquals(2, orders.size());
@@ -149,6 +149,71 @@ public class OrderComponentServiceIntegrationTest {
 //        Orders orders5 = orderComponentService.getOrders("555555");
 
         // SENT TO MARKET, GOT BACK THE RESULT
+
+        //FAKE result below...
+//        orderComponentService.makeOrderDeal(OrderDeal.builder()
+//                .withOrderId("111111")
+//                .withSsn("111111")
+//                .withInstrument("ABB")
+//                .withNoOfItems(100)
+//                .withPrice(Money.builder()
+//                        .withAmount((BigDecimal.valueOf(500d)))
+//                        .withCurrency(Currency.getInstance("SEK"))
+//                        .build())
+//               .build());
+//        orderComponentService.makeOrderDeal(OrderDeal.builder()
+//                .withOrderId("222222")
+//                .withSsn("222222")
+//                .withInstrument("ABB")
+//                .withNoOfItems(100)
+//                .withPrice(Money.builder()
+//                        .withAmount((BigDecimal.valueOf(500d)))
+//                        .withCurrency(Currency.getInstance("SEK"))
+//                        .build())
+//                .build());
+//
+//        orderComponentService.makeOrderDeal(OrderDeal.builder()
+//                .withOrderId("333333")
+//                .withSsn("333333")
+//                .withInstrument("ABB")
+//                .withNoOfItems(50)
+//                .withPrice(Money.builder()
+//                        .withAmount((BigDecimal.valueOf(500d)))
+//                        .withCurrency(Currency.getInstance("SEK"))
+//                        .build())
+//                .build());
+//        orderComponentService.makeOrderDeal(OrderDeal.builder()
+//                .withOrderId("555555")
+//                .withSsn("555555")
+//                .withInstrument("ABB")
+//                .withNoOfItems(50)
+//                .withPrice(Money.builder()
+//                        .withAmount((BigDecimal.valueOf(500d)))
+//                        .withCurrency(Currency.getInstance("SEK"))
+//                        .build())
+//                .build());
+//
+//        orderComponentService.makeOrderDeal(OrderDeal.builder()
+//                .withOrderId("444444")
+//                .withSsn("444444")
+//                .withInstrument("ABB")
+//                .withNoOfItems(50)
+//                .withPrice(Money.builder()
+//                        .withAmount((BigDecimal.valueOf(500d)))
+//                        .withCurrency(Currency.getInstance("SEK"))
+//                        .build())
+//                .build());
+//        orderComponentService.makeOrderDeal(OrderDeal.builder()
+//                .withOrderId("555555")
+//                .withSsn("555555")
+//                .withInstrument("ABB")
+//                .withNoOfItems(50)
+//                .withPrice(Money.builder()
+//                        .withAmount((BigDecimal.valueOf(500d)))
+//                        .withCurrency(Currency.getInstance("SEK"))
+//                        .build())
+//                .build());
+
 
         Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("111111").getFirst().getOrderDeals().size() == 1));
         Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("222222").getFirst().getOrderDeals().size() == 1));

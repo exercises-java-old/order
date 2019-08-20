@@ -1,4 +1,4 @@
-package se.lexicon.account.api.client;
+package se.lexicon.order.api.client;
 
 import se.lexicon.account.api.AccountApiServiceGrpc;
 import com.so4it.api.AbstractApiClientProviderBeanPublisher;
@@ -12,23 +12,23 @@ import com.so4it.metric.springframework.MetricsTimerBeanProxy;
 import com.so4it.request.core.RequestContextBeanProxy;
 import io.grpc.ManagedChannel;
 
-public class AccountApiProviderBeanPublisher extends AbstractApiClientProviderBeanPublisher {
+public class OrderApiProviderBeanPublisher extends AbstractApiClientProviderBeanPublisher {
 
     @Override
     public void publish(ApiClientProviderDefinition apiProviderDefinition,
                         BeanContext beanContext,
                         ApiFrameworkConfiguration configuration,
                         ManagedChannel managedChannel) {
-        AccountApiServiceGrpc.AccountApiServiceBlockingStub agreementApiServiceBlockingStub = AccountApiServiceGrpc.newBlockingStub(managedChannel);
-        AccountApiClient accountApiClientImpl = new AccountApiClientImpl(agreementApiServiceBlockingStub);
-        AccountApiClient accountApiClient = BeanProxyInvocationHandler.create(
-                AccountApiClient.class,
-                accountApiClientImpl,
+        OrderApiServiceGrpc.OrderApiServiceBlockingStub agreementApiServiceBlockingStub = OrderApiServiceGrpc.newBlockingStub(managedChannel);
+        OrderApiClient orderApiClientImpl = new OrderApiClientImpl(agreementApiServiceBlockingStub);
+        OrderApiClient orderApiClient = BeanProxyInvocationHandler.create(
+                OrderApiClient.class,
+                orderApiClientImpl,
                 StatusRuntimeExceptionBeanProxy.create(),
-                MetricsTimerBeanProxy.create(accountApiClientImpl),
-                //FaultTolerantBeanProxy.create(accountApiClientImpl, beanContext),
+                MetricsTimerBeanProxy.create(orderApiClientImpl),
+                //FaultTolerantBeanProxy.create(orderApiClientImpl, beanContext),
                 RequestContextBeanProxy.create());
-        beanContext.register(AccountApiClient.DEFAULT_API_BEAN_NAME, accountApiClient);
+        beanContext.register(OrderApiClient.DEFAULT_API_BEAN_NAME, orderApiClient);
     }
 
 }

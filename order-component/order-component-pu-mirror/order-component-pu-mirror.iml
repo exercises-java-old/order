@@ -16,6 +16,7 @@
     <orderEntry type="module" module-name="order-component-mirror" />
     <orderEntry type="module" module-name="order-component-entity" />
     <orderEntry type="module" module-name="order-component-domain" />
+    <orderEntry type="module" module-name="account-component-domain" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:component-entity:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:common-builder:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:datasource-core:0.17.0-RT4-SNAPSHOT" level="project" />

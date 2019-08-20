@@ -3,28 +3,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>account-api</artifactId>
+        <artifactId>order-api</artifactId>
         <groupId>com.lexicon</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>account-api-client</artifactId>
+    <artifactId>order-api-client</artifactId>
 
 
     <dependencies>
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-api-common</artifactId>
+            <artifactId>order-api-common</artifactId>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-api-mapper</artifactId>
+            <artifactId>order-api-mapper</artifactId>
         </dependency>
 
 
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-component-domain</artifactId>
+            <artifactId>order-component-domain</artifactId>
         </dependency>
 
         <dependency>

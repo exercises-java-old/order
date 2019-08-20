@@ -4,45 +4,45 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.lexicon</groupId>
-        <artifactId>account-api-test</artifactId>
+        <artifactId>order-api-test</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>account-api-test-integration</artifactId>
+    <artifactId>order-api-test-integration</artifactId>
 
 
     <dependencies>
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-api-client</artifactId>
+            <artifactId>order-api-client</artifactId>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-api-server</artifactId>
+            <artifactId>order-api-server</artifactId>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-api-test-common</artifactId>
+            <artifactId>order-api-test-common</artifactId>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-component-service</artifactId>
+            <artifactId>order-component-service</artifactId>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-component-dao-impl</artifactId>
+            <artifactId>order-component-dao-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-component-client</artifactId>
+            <artifactId>order-component-client</artifactId>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-component-service-impl</artifactId>
+            <artifactId>order-component-service-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
-            <artifactId>account-component-test-common</artifactId>
+            <artifactId>order-component-test-common</artifactId>
         </dependency>
 
         <dependency>

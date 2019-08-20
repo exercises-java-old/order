@@ -28,10 +28,12 @@
     <orderEntry type="library" name="Maven: javax.annotation:javax.annotation-api:1.2" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:common-builder:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:common-util:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="account-component-domain" />
     <orderEntry type="module" module-name="order-component-entity" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:component-entity:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="order-component-service-impl" />
     <orderEntry type="module" module-name="order-component-mapper" />
+    <orderEntry type="module" module-name="market-component-domain" />
     <orderEntry type="module" module-name="order-component-service" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:gigaspaces-rpc:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:request-core:0.17.0-RT4-SNAPSHOT" level="project" />
@@ -63,7 +65,6 @@
     <orderEntry type="library" name="Maven: com.so4it.sugar:common-logger:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:common-jmx:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="market-component-client" />
-    <orderEntry type="module" module-name="market-component-domain" />
     <orderEntry type="module" module-name="market-component-service" />
     <orderEntry type="module" module-name="market-component-entity" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:test-builder-common:0.17.0-RT4-SNAPSHOT" level="project" />

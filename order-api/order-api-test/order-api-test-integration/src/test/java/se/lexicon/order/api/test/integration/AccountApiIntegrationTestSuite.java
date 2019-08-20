@@ -90,8 +90,8 @@ public class AccountApiIntegrationTestSuite {
             API_TEST_RULE.addXmlConfiguration("metric-springframework.xml");
             API_TEST_RULE.addXmlConfiguration("account-component-client.xml");
             API_TEST_RULE.addXmlConfiguration("account-component-test-import.xml");
-            API_TEST_RULE.addXmlConfiguration("account-api-server.xml");
-            API_TEST_RULE.addXmlConfiguration("account-api-server-export.xml");
+            API_TEST_RULE.addXmlConfiguration("order-api-server.xml");
+            API_TEST_RULE.addXmlConfiguration("order-api-server-export.xml");
             API_TEST_RULE.addBean(MBeanRegistry.DEFAULT_BEAN_NAME, MBeanRegistryFactory.getDefaultRegistry());
             API_TEST_RULE.addBean(ApiRegistryClient.DEFAULT_API_BEAN_NAME, API_REGISTRY);
             API_TEST_RULE.addBean(ServiceRegistryClient.DEFAULT_API_BEAN_NAME, SERVICE_REGISTRY);

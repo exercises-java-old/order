@@ -27,7 +27,6 @@
     </bean>
 
 
-
     <bean id="orderParallelQueueConsumer" class="se.lexicon.order.component.service.OrderParallelQueueConsumer">
         <constructor-arg name="orderDao" ref="orderDao"/>
     </bean>
