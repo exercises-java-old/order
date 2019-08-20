@@ -215,11 +215,11 @@ public class OrderComponentServiceIntegrationTest {
 //                .build());
 
 
-        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("111111").getFirst().getOrderDeals().size() == 1));
-        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("222222").getFirst().getOrderDeals().size() == 1));
-        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("333333").getFirst().getOrderDeals().size() == 1));
-        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("444444").getFirst().getOrderDeals().size() == 1));
-        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("555555").getFirst().getOrderDeals().size() == 2));
+//        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("111111").getFirst().getOrderDeals().size() == 1));
+//        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("222222").getFirst().getOrderDeals().size() == 1));
+//        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("333333").getFirst().getOrderDeals().size() == 1));
+//        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("444444").getFirst().getOrderDeals().size() == 1));
+//        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("555555").getFirst().getOrderDeals().size() == 2));
 
 //        Assert.assertEquals(1, orders1.getFirst().getOrderDeals().size());
 //        Assert.assertEquals(1, orders2.getFirst().getOrderDeals().size());
