@@ -39,12 +39,7 @@ public class AccountApiClientClientIntegrationTest {
     @Rule
     public ClearGigaSpaceTestRule clearGigaSpaceTestRule = new ClearGigaSpaceTestRule(AccountApiIntegrationTestSuite.getComponentRule().getBean(GigaSpace.class));
 
-
-
-
     private static final BeanContext BEAN_CONTEXT = ApiFrameworkCommonTest.createClientBeanContext(AccountApiIntegrationTestSuite.DYNAMIC_CONFIGURATION);
-
-
 
     @Rule
     public ApiFrameworkBootstrapTestRule apiFrameworkBootstrapTestRule = ApiFrameworkBootstrapTestRule.builder()
