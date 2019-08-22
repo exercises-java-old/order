@@ -56,7 +56,7 @@ public class OrderDealEntity extends IdEntity<String> {
         return ssn;
     }
 
-    public void setSsn(String ssn){
+    private void setSsn(String ssn){
         this.ssn = ssn;
     }
 

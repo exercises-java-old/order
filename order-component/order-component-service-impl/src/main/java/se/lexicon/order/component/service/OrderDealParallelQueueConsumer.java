@@ -2,9 +2,8 @@ package se.lexicon.order.component.service;
 
 import com.so4it.queue.ParallelQueueConsumer;
 import se.lexicon.order.component.entity.OrderDealEntity;
-import se.lexicon.order.component.entity.OrderEntity;
 import se.lexicon.order.component.event.MakeDealEvent;
-import se.lexicon.order.componment.dao.OrderDao;
+import se.lexicon.order.component.mapper.OrderDealMapper;
 import se.lexicon.order.componment.dao.OrderDealDao;
 
 public class OrderDealParallelQueueConsumer {
@@ -23,15 +22,15 @@ public class OrderDealParallelQueueConsumer {
      * @param makeDealEvent
      */
     @ParallelQueueConsumer
-    public void makeOrderDeal(OrderDealEntity makeDealEvent) {
+    public void makeOrderDeal(MakeDealEvent makeDealEvent) {
 
-        OrderDealEntity orderDealEntity = orderDealDao.insert(makeDealEvent);
+        OrderDealEntity orderDealEntity = orderDealDao.insert(OrderDealMapper.map(makeDealEvent.getOrderDeal()));
 
         // Update the ACCOUNT
 
         // Update VPC
 
-        //System.out.println(orderDealEntity);
+        System.out.println(orderDealEntity);
 
     }
 }

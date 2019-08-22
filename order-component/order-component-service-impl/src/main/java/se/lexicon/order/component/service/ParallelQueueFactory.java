@@ -8,8 +8,8 @@ import com.so4it.gs.queue.GigaSpaceParallelQueueFactory;
 import com.so4it.queue.ParallelQueue;
 import org.openspaces.core.GigaSpace;
 import org.springframework.transaction.PlatformTransactionManager;
-import se.lexicon.order.component.entity.OrderDealEntity;
-import se.lexicon.order.component.entity.OrderEntity;
+import se.lexicon.order.component.event.MakeDealEvent;
+import se.lexicon.order.component.event.PlaceOrderEvent;
 
 public class ParallelQueueFactory {
 
@@ -29,7 +29,7 @@ public class ParallelQueueFactory {
         this.gigaSpaceParallelQueueConfiguration = Required.notNull(gigaSpaceParallelQueueConfiguration, "gigaSpaceParallelQueueConfiguration");
     }
 
-    public ParallelQueue<OrderEntity> createTaskExecutorParallelQueueOrder(OrderParallelQueueConsumer workflowParallelQueueConsumer) {
+    public ParallelQueue<PlaceOrderEvent> createTaskExecutorParallelQueueOrder(OrderParallelQueueConsumer workflowParallelQueueConsumer) {
         return GigaSpaceParallelQueueFactory.createSingleReadSingleTakeWithFifoStaticTemplateWithTransactionManager(
                 "OrderExecutor",
                 gigaSpace,
@@ -37,10 +37,10 @@ public class ParallelQueueFactory {
                 mBeanRegistry,
                 gigaSpaceParallelQueueConfiguration,
                 workflowParallelQueueConsumer,
-                new SQLQuery<>(OrderEntity.class, ""));
+                new SQLQuery<>(PlaceOrderEvent.class, ""));
     }
 
-    public ParallelQueue<OrderDealEntity> createTaskExecutorParallelQueueOrderDeal(OrderDealParallelQueueConsumer workflowParallelQueueConsumer) {
+    public ParallelQueue<MakeDealEvent> createTaskExecutorParallelQueueOrderDeal(OrderDealParallelQueueConsumer workflowParallelQueueConsumer) {
         return GigaSpaceParallelQueueFactory.createSingleReadSingleTakeWithFifoStaticTemplateWithTransactionManager(
                 "OrderDealExecutor",
                 gigaSpace,
@@ -48,7 +48,7 @@ public class ParallelQueueFactory {
                 mBeanRegistry,
                 gigaSpaceParallelQueueConfiguration,
                 workflowParallelQueueConsumer,
-                new SQLQuery<>(OrderDealEntity.class, ""));
+                new SQLQuery<>(MakeDealEvent.class, ""));
     }
 
 }

@@ -1,11 +1,9 @@
 package se.lexicon.order.component.service;
 
 import com.so4it.queue.ParallelQueueConsumer;
-import se.lexicon.market.component.client.MarketOrderComponentClient;
-import se.lexicon.market.component.domain.MarketOrder;
 import se.lexicon.order.component.entity.OrderEntity;
-import se.lexicon.order.component.mapper.MoneyMapper;
-import se.lexicon.order.component.mapper.EnumMapper;
+import se.lexicon.order.component.event.PlaceOrderEvent;
+import se.lexicon.order.component.mapper.OrderMapper;
 import se.lexicon.order.componment.dao.OrderDao;
 
 public class OrderParallelQueueConsumer {
@@ -29,11 +27,11 @@ public class OrderParallelQueueConsumer {
      * @param placeOrderEvent
      */
     @ParallelQueueConsumer
-    public void placeOrder(OrderEntity placeOrderEvent) {
+    public void placeOrder(PlaceOrderEvent placeOrderEvent) {
 
-        OrderEntity orderEntity = orderDao.insert(placeOrderEvent);
+        OrderEntity orderEntity = orderDao.insert(OrderMapper.map(placeOrderEvent.getOrder()));
 
-        //System.out.println(orderEntity);
+        System.out.println(orderEntity);
 
         // Check account
 

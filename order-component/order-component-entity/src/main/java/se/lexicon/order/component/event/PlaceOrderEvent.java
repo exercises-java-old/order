@@ -8,7 +8,7 @@ import com.so4it.annotation.Allowed;
 import com.so4it.common.util.object.Required;
 import com.so4it.component.entity.AbstractEntityBuilder;
 import com.so4it.component.entity.IdEntity;
-import se.lexicon.order.component.entity.OrderEntity;
+import se.lexicon.order.component.domain.Order;
 
 import java.math.BigDecimal;
 
@@ -24,7 +24,7 @@ public class PlaceOrderEvent extends IdEntity<String> {
 
     private String ssn;
 
-    private OrderEntity orderEntity;
+    private Order order;
 
     private Integer counter;
 
@@ -34,7 +34,7 @@ public class PlaceOrderEvent extends IdEntity<String> {
     private PlaceOrderEvent(Builder builder) {
         this.id = builder.id;
         this.ssn = Required.notNull(builder.ssn,"ssn",builder.isTemplate());
-        this.orderEntity = Required.notNull(builder.orderEntity,"orderEntity",builder.isTemplate());
+        this.order = Required.notNull(builder.order,"order",builder.isTemplate());
         this.counter = Required.notNull(builder.counter,"counter",builder.isTemplate());
     }
 
@@ -54,12 +54,12 @@ public class PlaceOrderEvent extends IdEntity<String> {
 
     private void setSsn(String ssn) { this.ssn = ssn; }
 
-    public OrderEntity getOrderEntity() {
-        return orderEntity;
+    public Order getOrder() {
+        return order;
     }
 
-    private void setOrderEntity(OrderEntity orderEntity) {
-        this.orderEntity = orderEntity;
+    private void setOrder(Order order) {
+        this.order = order;
     }
 
     public Integer getCounter() {
@@ -85,7 +85,7 @@ public class PlaceOrderEvent extends IdEntity<String> {
 
         private String ssn;
 
-        private OrderEntity orderEntity;
+        private Order order;
 
         private Integer counter;
 
@@ -103,8 +103,8 @@ public class PlaceOrderEvent extends IdEntity<String> {
             return this;
         }
 
-        public PlaceOrderEvent.Builder withOrderEntity(OrderEntity orderEntity) {
-            this.orderEntity = orderEntity;
+        public PlaceOrderEvent.Builder withOrder(Order order) {
+            this.order = order;
             return this;
         }
 
