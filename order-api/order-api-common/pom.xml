@@ -37,7 +37,7 @@
                         <configuration>
                             <apis>
                                 <api>
-                                    <name>market</name>
+                                    <name>order</name>
                                 </api>
                             </apis>
                         </configuration>

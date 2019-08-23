@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>order-api</module>
         <module>order-component</module>
     </modules>
 
@@ -48,7 +49,6 @@
         <platform.required.endpoint.dependencies.artifact.id>platform-required-endpoint-dependencies-4.0.0</platform.required.endpoint.dependencies.artifact.id>
 
         <gs.license>Product=InsightEdge;Version=14.0;Type=PREMIUM;Customer=So4it_SEBX_DEV;Expiration=2019-Aug-28;Hash=8SJZ1HNZrUEDQxk3IO4V</gs.license>
-
 
         <api.specs.sugar.url>https://raw.githubusercontent.com/lexicon-java-8/api-repository/develop/src/main/proto/</api.specs.sugar.url>
         <api.specs.local.url>${project.basedir}/../../../api-repository/src/main/proto</api.specs.local.url>

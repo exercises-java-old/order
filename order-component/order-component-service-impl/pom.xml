@@ -14,6 +14,12 @@
     <dependencies>
         <dependency>
             <groupId>com.lexicon</groupId>
+            <artifactId>market-api-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lexicon</groupId>
             <artifactId>order-component-dao</artifactId>
         </dependency>
         <dependency>

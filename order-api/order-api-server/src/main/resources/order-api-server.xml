@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="accountApiService" class="se.lexicon.account.api.server.AccountApiServerImpl">
-        <constructor-arg name="accountComponentClient" ref="accountComponentClient"/>
+    <bean id="orderApiService" class="se.lexicon.order.api.server.OrderApiServerImpl">
+        <constructor-arg name="orderComponentClient" ref="orderComponentClient"/>
     </bean>
 
 

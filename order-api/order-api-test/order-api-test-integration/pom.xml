@@ -15,34 +15,42 @@
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>order-api-client</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>order-api-server</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>order-api-test-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>order-component-service</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>order-component-dao-impl</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>order-component-client</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>order-component-service-impl</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>order-component-test-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

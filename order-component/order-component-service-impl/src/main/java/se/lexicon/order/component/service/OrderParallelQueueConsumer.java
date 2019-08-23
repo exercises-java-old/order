@@ -1,8 +1,12 @@
 package se.lexicon.order.component.service;
 
 import com.so4it.queue.ParallelQueueConsumer;
+import se.lexicon.market.api.client.MarketApiClient;
+import se.lexicon.market.component.domain.MarketOrder;
 import se.lexicon.order.component.entity.OrderEntity;
 import se.lexicon.order.component.event.PlaceOrderEvent;
+import se.lexicon.order.component.mapper.EnumMapper;
+import se.lexicon.order.component.mapper.MoneyMapper;
 import se.lexicon.order.component.mapper.OrderMapper;
 import se.lexicon.order.componment.dao.OrderDao;
 
@@ -12,12 +16,12 @@ public class OrderParallelQueueConsumer {
     private OrderDao orderDao;
     //private MarketOrderComponentClient marketOrderComponentClient;
 
-    //private MarketApiClient marketClient;
+    private MarketApiClient marketApiClient;
 
 
-    public OrderParallelQueueConsumer(OrderDao orderDao) {
+    public OrderParallelQueueConsumer(OrderDao orderDao, MarketApiClient marketApiClient) {
         this.orderDao = orderDao;
-        //this.marketOrderComponentClient = marketOrderComponentClient;
+        this.marketApiClient = marketApiClient;
     }
 
     /**
@@ -35,7 +39,7 @@ public class OrderParallelQueueConsumer {
 
         // Check account
 
-//        marketOrderComponentClient.placeMarketOrder (MarketOrder.builder()
+//        boolean ok = marketApiClient.placeMarketOrder (MarketOrder.builder()
 //            //.withId()
 //            .withSsn(orderEntity.getSsn())
 //            .withOrderId(orderEntity.getId())
@@ -44,10 +48,11 @@ public class OrderParallelQueueConsumer {
 //            .withInsertionTimestamp(orderEntity.getInsertionTimestamp())
 //            .withMinMaxValue(MoneyMapper.mapIt(orderEntity.getMinMaxValue()))
 //            .withNoOfItems(orderEntity.getNoOfItems())
-//            .withMarketPriceType(EnumMapper.map(orderEntity.getOrderPriceType()))
+//            .withOrderPriceType(EnumMapper.map(orderEntity.getOrderPriceType()))
 //            .withSide(EnumMapper.map(orderEntity.getSide()))
 //            .withOrderBookId(orderEntity.getOrderBookId())
 //            .build());
 
+        // If not OK, reenter placeOrderEvent in the queue
     }
 }

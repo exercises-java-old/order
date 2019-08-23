@@ -39,32 +39,62 @@
     <orderEntry type="module" module-name="order-component-entity" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:component-entity:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="order-component-service-impl" />
-    <orderEntry type="module" module-name="order-component-mapper" />
+    <orderEntry type="module" module-name="market-api-client" />
+    <orderEntry type="module" module-name="market-api-common" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-protobuf:1.18.0" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-core:1.18.0" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-context:1.18.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" name="Maven: io.opencensus:opencensus-api:0.18.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opencensus:opencensus-contrib-grpc-metrics:0.18.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.5.1" level="project" />
+    <orderEntry type="library" name="Maven: org.checkerframework:checker-compat-qual:2.5.2" level="project" />
+    <orderEntry type="library" name="Maven: com.google.api.grpc:proto-google-common-protos:1.12.0" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-protobuf-lite:1.18.0" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-stub:1.18.0" level="project" />
+    <orderEntry type="module" module-name="market-api-mapper" />
     <orderEntry type="module" module-name="market-component-domain" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:api-core:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:api-domain:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:serialization-protobuf:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:api-util:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:api-mapper:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:exception:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:common-bean:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-core:3.2.5" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-netty:1.18.0" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-codec-http2:4.1.32.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-codec-http:4.1.32.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.32.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.32.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.32.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.32.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-handler-proxy:4.1.32.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.32.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-resolver:4.1.32.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-codec-socks:4.1.32.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:fault-tolerance-core:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:common-function:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:common-reflection:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.10" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:annotations:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:request-core:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.netflix.hystrix:hystrix-core:1.4.23" level="project" />
+    <orderEntry type="library" name="Maven: com.netflix.archaius:archaius-core:0.4.1" level="project" />
+    <orderEntry type="library" name="Maven: io.reactivex:rxjava:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.netflix.hystrix:hystrix-metrics-event-stream:1.4.23" level="project" />
+    <orderEntry type="library" name="Maven: io.reactivex.rxjava2:rxjava:2.1.6" level="project" />
+    <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.so4it.sugar:metric-springframework:0.17.0-RT4-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="order-component-mapper" />
     <orderEntry type="module" module-name="order-component-service" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:gigaspaces-rpc:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.so4it.sugar:request-core:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.5.1" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:security-core:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:security-codec:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.56" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.56" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-jwt:1.0.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: com.netflix.hystrix:hystrix-core:1.4.23" level="project" />
-    <orderEntry type="library" name="Maven: com.netflix.archaius:archaius-core:0.4.1" level="project" />
-    <orderEntry type="library" name="Maven: io.reactivex:rxjava:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:registry-core:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.so4it.sugar:fault-tolerance-core:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.netflix.hystrix:hystrix-metrics-event-stream:1.4.23" level="project" />
-    <orderEntry type="library" name="Maven: com.so4it.sugar:exception:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.so4it.sugar:common-bean:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.so4it.sugar:common-reflection:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.10" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.findbugs:annotations:2.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.so4it.sugar:common-function:0.17.0-RT4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-core:3.2.5" level="project" />
-    <orderEntry type="library" name="Maven: io.reactivex.rxjava2:rxjava:2.1.6" level="project" />
-    <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:queue:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:gigaspaces-parallel-queue:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:gigaspaces-util:0.17.0-RT4-SNAPSHOT" level="project" />

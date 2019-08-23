@@ -15,16 +15,13 @@
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>order-api-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.lexicon</groupId>
-            <artifactId>order-api-mapper</artifactId>
-        </dependency>
-
 
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>order-component-domain</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

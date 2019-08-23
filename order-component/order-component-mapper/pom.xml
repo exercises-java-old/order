@@ -23,6 +23,7 @@
         <dependency>
             <groupId>com.lexicon</groupId>
             <artifactId>market-component-domain</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

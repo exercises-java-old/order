@@ -25,8 +25,11 @@
     <orderEntry type="module" module-name="account-component-domain" />
     <orderEntry type="module" module-name="order-component-entity" />
     <orderEntry type="module" module-name="order-component-service-impl" />
-    <orderEntry type="module" module-name="order-component-mapper" />
+    <orderEntry type="module" module-name="market-api-client" />
+    <orderEntry type="module" module-name="market-api-common" />
+    <orderEntry type="module" module-name="market-api-mapper" />
     <orderEntry type="module" module-name="market-component-domain" />
+    <orderEntry type="module" module-name="order-component-mapper" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:queue:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:gigaspaces-parallel-queue:0.17.0-RT4-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.so4it.sugar:common-logger:0.17.0-RT4-SNAPSHOT" level="project" />

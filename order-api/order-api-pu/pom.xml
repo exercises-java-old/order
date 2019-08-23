@@ -4,30 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.lexicon</groupId>
-        <artifactId>account-api</artifactId>
+        <artifactId>order-api</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>account-api-pu</artifactId>
+    <artifactId>order-api-pu</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
         <!--
             Project
         -->
-        <dependency>
-            <groupId>com.lexicon</groupId>
-            <artifactId>account-api-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.lexicon</groupId>
-            <artifactId>account-component-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.lexicon</groupId>
-            <artifactId>account-component-service</artifactId>
-        </dependency>
-
         <!--
             Sugar
         -->

@@ -65,7 +65,7 @@
             <dependency>
                 <groupId>com.so4it.sugar</groupId>
                 <artifactId>gigaspaces-test-common</artifactId>
-                <version>${sugar.gigaspaces.version}</version>
+                <version>${sugar.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.so4it.sugar</groupId>

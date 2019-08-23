@@ -13,4 +13,7 @@
         <constructor-arg name="orderDealParallelQueue" ref="orderDealParallelQueue"/>
     </bean>
 
+    <bean id="marketApiClient" class="se.lexicon.market.component.service.MarketApiClientImpl">
+   </bean>
+
 </beans>
