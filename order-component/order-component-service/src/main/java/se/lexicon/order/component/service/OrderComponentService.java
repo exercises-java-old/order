@@ -4,10 +4,7 @@ package se.lexicon.order.component.service;
 import com.so4it.gs.rpc.Broadcast;
 import com.so4it.gs.rpc.Routing;
 import se.lexicon.order.component.domain.*;
-import se.lexicon.order.component.entity.OrderDealEntity;
-import se.lexicon.order.component.entity.OrderEntity;
 import java.math.BigDecimal;
-import java.util.Set;
 
 public interface OrderComponentService {
 

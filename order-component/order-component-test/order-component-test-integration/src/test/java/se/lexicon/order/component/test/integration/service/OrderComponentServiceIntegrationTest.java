@@ -44,7 +44,9 @@ public class OrderComponentServiceIntegrationTest {
         OrderComponentService orderComponentService = OrderComponentServiceIntegrationTestSuite.getImportContext().getBean(OrderComponentService.class);
 
         Order order = OrderTestBuilder.builder().withSsn("111111").withInstrument("ABB").withAmount(BigDecimal.ONE).build();
-        orderComponentService.placeOrder(order);
+        Boolean ok = orderComponentService.placeOrder(order);
+
+        Assert.assertTrue(ok);
 
         Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("111111").size() == 1));
 
@@ -61,8 +63,11 @@ public class OrderComponentServiceIntegrationTest {
         Order order1 = OrderTestBuilder.builder().withSsn("111222").withInstrument("ABB").withAmount(BigDecimal.ONE).build();
         Order order2 = OrderTestBuilder.builder().withSsn("111222").withInstrument("ABB").withAmount(BigDecimal.TEN).build();
 
-        orderComponentService.placeOrder(order1);
-        orderComponentService.placeOrder(order2);
+        Boolean ok1 = orderComponentService.placeOrder(order1);
+        Boolean ok2 = orderComponentService.placeOrder(order2);
+
+        Assert.assertTrue(ok1);
+        Assert.assertTrue(ok2);
 
         Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("111222").size() == 2));
 
@@ -134,13 +139,24 @@ public class OrderComponentServiceIntegrationTest {
                     .build())
                 .build();
 
-        orderComponentService.placeOrder(order1);
-        orderComponentService.placeOrder(order2);
-        orderComponentService.placeOrder(order3);
-        orderComponentService.placeOrder(order4);
-        orderComponentService.placeOrder(order5);
+        Boolean ok1 = orderComponentService.placeOrder(order1);
+        Boolean ok2 = orderComponentService.placeOrder(order2);
+        Boolean ok3 = orderComponentService.placeOrder(order3);
+        Boolean ok4 = orderComponentService.placeOrder(order4);
+        Boolean ok5 = orderComponentService.placeOrder(order5);
 
+        Assert.assertTrue(ok1);
+        Assert.assertTrue(ok2);
+        Assert.assertTrue(ok3);
+        Assert.assertTrue(ok4);
+        Assert.assertTrue(ok5);
         // Wait so the orders can be sent to the market and that the deal can come back again
+
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("111111").size() == 1));
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("222222").size() == 1));
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("333333").size() == 1));
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("444444").size() == 1));
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("555555").size() == 1));
 
 //        Orders orders1 = orderComponentService.getOrders("111111");
 //        Orders orders2 = orderComponentService.getOrders("222222");
@@ -151,81 +167,75 @@ public class OrderComponentServiceIntegrationTest {
         // SENT TO MARKET, GOT BACK THE RESULT
 
         //FAKE result below...
-//        orderComponentService.makeOrderDeal(OrderDeal.builder()
-//                .withOrderId("111111")
-//                .withSsn("111111")
-//                .withInstrument("ABB")
-//                .withNoOfItems(100)
-//                .withPrice(Money.builder()
-//                        .withAmount((BigDecimal.valueOf(500d)))
-//                        .withCurrency(Currency.getInstance("SEK"))
-//                        .build())
-//               .build());
-//        orderComponentService.makeOrderDeal(OrderDeal.builder()
-//                .withOrderId("222222")
-//                .withSsn("222222")
-//                .withInstrument("ABB")
-//                .withNoOfItems(100)
-//                .withPrice(Money.builder()
-//                        .withAmount((BigDecimal.valueOf(500d)))
-//                        .withCurrency(Currency.getInstance("SEK"))
-//                        .build())
-//                .build());
-//
-//        orderComponentService.makeOrderDeal(OrderDeal.builder()
-//                .withOrderId("333333")
-//                .withSsn("333333")
-//                .withInstrument("ABB")
-//                .withNoOfItems(50)
-//                .withPrice(Money.builder()
-//                        .withAmount((BigDecimal.valueOf(500d)))
-//                        .withCurrency(Currency.getInstance("SEK"))
-//                        .build())
-//                .build());
-//        orderComponentService.makeOrderDeal(OrderDeal.builder()
-//                .withOrderId("555555")
-//                .withSsn("555555")
-//                .withInstrument("ABB")
-//                .withNoOfItems(50)
-//                .withPrice(Money.builder()
-//                        .withAmount((BigDecimal.valueOf(500d)))
-//                        .withCurrency(Currency.getInstance("SEK"))
-//                        .build())
-//                .build());
-//
-//        orderComponentService.makeOrderDeal(OrderDeal.builder()
-//                .withOrderId("444444")
-//                .withSsn("444444")
-//                .withInstrument("ABB")
-//                .withNoOfItems(50)
-//                .withPrice(Money.builder()
-//                        .withAmount((BigDecimal.valueOf(500d)))
-//                        .withCurrency(Currency.getInstance("SEK"))
-//                        .build())
-//                .build());
-//        orderComponentService.makeOrderDeal(OrderDeal.builder()
-//                .withOrderId("555555")
-//                .withSsn("555555")
-//                .withInstrument("ABB")
-//                .withNoOfItems(50)
-//                .withPrice(Money.builder()
-//                        .withAmount((BigDecimal.valueOf(500d)))
-//                        .withCurrency(Currency.getInstance("SEK"))
-//                        .build())
-//                .build());
+        orderComponentService.makeOrderDeal(OrderDeal.builder()
+                .withOrderId(orderComponentService.getOrders("111111").getFirst().getId())
+                .withSsn("111111")
+                .withInstrument("ABB")
+                .withNoOfItems(100)
+                .withPrice(Money.builder()
+                        .withAmount((BigDecimal.valueOf(500d)))
+                        .withCurrency(Currency.getInstance("SEK"))
+                        .build())
+                .build());
+
+        orderComponentService.makeOrderDeal(OrderDeal.builder()
+                .withOrderId(orderComponentService.getOrders("222222").getFirst().getId())
+                .withSsn("222222")
+                .withInstrument("ABB")
+                .withNoOfItems(100)
+                .withPrice(Money.builder()
+                        .withAmount((BigDecimal.valueOf(500d)))
+                        .withCurrency(Currency.getInstance("SEK"))
+                        .build())
+                .build());
+        orderComponentService.makeOrderDeal(OrderDeal.builder()
+                .withOrderId(orderComponentService.getOrders("333333").getFirst().getId())
+                .withSsn("333333")
+                .withInstrument("ABB")
+                .withNoOfItems(50)
+                .withPrice(Money.builder()
+                        .withAmount((BigDecimal.valueOf(500d)))
+                        .withCurrency(Currency.getInstance("SEK"))
+                        .build())
+                .build());
+        orderComponentService.makeOrderDeal(OrderDeal.builder()
+                .withOrderId(orderComponentService.getOrders("555555").getFirst().getId())
+                .withSsn("555555")
+                .withInstrument("ABB")
+                .withNoOfItems(50)
+                .withPrice(Money.builder()
+                        .withAmount((BigDecimal.valueOf(500d)))
+                        .withCurrency(Currency.getInstance("SEK"))
+                        .build())
+                .build());
+
+        orderComponentService.makeOrderDeal(OrderDeal.builder()
+                .withOrderId(orderComponentService.getOrders("444444").getFirst().getId())
+                .withSsn("444444")
+                .withInstrument("ABB")
+                .withNoOfItems(50)
+                .withPrice(Money.builder()
+                        .withAmount((BigDecimal.valueOf(500d)))
+                        .withCurrency(Currency.getInstance("SEK"))
+                        .build())
+                .build());
+        orderComponentService.makeOrderDeal(OrderDeal.builder()
+                .withOrderId(orderComponentService.getOrders("555555").getFirst().getId())
+                .withSsn("555555")
+                .withInstrument("ABB")
+                .withNoOfItems(50)
+                .withPrice(Money.builder()
+                        .withAmount((BigDecimal.valueOf(500d)))
+                        .withCurrency(Currency.getInstance("SEK"))
+                        .build())
+                .build());
 
 
-//        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("111111").getFirst().getOrderDeals().size() == 1));
-//        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("222222").getFirst().getOrderDeals().size() == 1));
-//        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("333333").getFirst().getOrderDeals().size() == 1));
-//        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("444444").getFirst().getOrderDeals().size() == 1));
-//        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("555555").getFirst().getOrderDeals().size() == 2));
-
-//        Assert.assertEquals(1, orders1.getFirst().getOrderDeals().size());
-//        Assert.assertEquals(1, orders2.getFirst().getOrderDeals().size());
-//        Assert.assertEquals(1, orders3.getFirst().getOrderDeals().size());
-//        Assert.assertEquals(1, orders4.getFirst().getOrderDeals().size());
-//        Assert.assertEquals(2, orders5.getFirst().getOrderDeals().size());
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("111111").getFirst().getOrderDeals().size() == 1));
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("222222").getFirst().getOrderDeals().size() == 1));
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("333333").getFirst().getOrderDeals().size() == 1));
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("444444").getFirst().getOrderDeals().size() == 1));
+        Poller.pollAndCheck(SatisfiedWhenTrueReturned.create(() -> orderComponentService.getOrders("555555").getFirst().getOrderDeals().size() == 2));
 
     }
 

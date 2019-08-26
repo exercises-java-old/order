@@ -1,6 +1,6 @@
 package se.lexicon.order.api.test.integration;
 
-import com.google.common.collect.Sets;
+import org.junit.Assert;
 import se.lexicon.order.api.client.OrderApiClient;
 import se.lexicon.order.api.client.OrderApiProvider;
 import com.so4it.api.interceptor.request.RequestContextClientInterceptor;
@@ -18,11 +18,9 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.rules.RuleChain;
 import org.openspaces.core.GigaSpace;
-import se.lexicon.order.component.service.OrderComponentService;
 import se.lexicon.order.component.test.common.domain.OrderDealTestBuilder;
 import se.lexicon.order.component.test.common.domain.OrderTestBuilder;
 
-import java.time.Instant;
 
 /**
  * @author Magnus Poromaa {@literal <mailto:magnus.poromaa@so4it.com/>}
@@ -57,8 +55,9 @@ public class OrderApiClientClientIntegrationTest {
         OrderApiClient orderApiClient = BEAN_CONTEXT.getBean(OrderApiClient.class);
         Poller.pollAndCheck(SatisfiedWhenClientConnected.create(orderApiClient));
 
-        orderApiClient.placeOrder(OrderTestBuilder.builder().build());
+        Boolean ok = orderApiClient.placeOrder(OrderTestBuilder.builder().build());
 
+        Assert.assertTrue(ok);
     }
 
     @Test

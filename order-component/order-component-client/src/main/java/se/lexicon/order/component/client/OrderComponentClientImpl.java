@@ -26,6 +26,6 @@ public class OrderComponentClientImpl implements OrderComponentClient{
     public Orders getOrders(String ssn){ return orderComponentService.getOrders(ssn); }
 
     @Override
-    public void placeOrder(Order order) { orderComponentService.placeOrder(order); }
+    public Boolean placeOrder(Order order) { return orderComponentService.placeOrder(order); }
 
 }

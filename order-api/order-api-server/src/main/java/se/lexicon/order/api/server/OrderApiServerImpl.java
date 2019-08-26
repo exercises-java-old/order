@@ -51,7 +51,7 @@ public class OrderApiServerImpl extends OrderApiServiceGrpc.OrderApiServiceImplB
                             .withMinMaxValue(mapMoney (request.getMinMaxValue()))
                             .build());
 
-            responseObserver.onNext(PlaceOrderResponse.newBuilder().build());
+            responseObserver.onNext(PlaceOrderResponse.newBuilder().setOk(true).build());
             responseObserver.onCompleted();
         }, "Failed creating order request order");
     }

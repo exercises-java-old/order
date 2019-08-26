@@ -63,6 +63,8 @@ public class OrderComponentServiceImpl implements OrderComponentService {
                 OrderDealEntity.templateBuilder().withOrderId(orderEntity.getId()).build()).stream()
                 .map(odentity -> OrderDeal.builder()
                         .withId(odentity.getId())
+                        .withSsn(odentity.getSsn())
+                        .withOrderId(odentity.getOrderId())
                         .withInstrument(odentity.getInstrument())
                         .withNoOfItems(odentity.getNoOfItems())
                         .withPrice(odentity.getPrice())

@@ -13,7 +13,9 @@
         <constructor-arg name="orderDealParallelQueue" ref="orderDealParallelQueue"/>
     </bean>
 
-    <bean id="marketApiClient" class="se.lexicon.market.component.service.MarketApiClientImpl">
-   </bean>
+    <bean id="marketApiClient" class="com.so4it.common.bean.LazyProxyFactoryBean">
+        <constructor-arg name="beanType" value="se.lexicon.market.api.client.MarketApiClient"/>
+        <constructor-arg name="beanContext" ref="frameworksBeanContext"/>
+    </bean>
 
 </beans>

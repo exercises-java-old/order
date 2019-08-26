@@ -15,6 +15,6 @@ public interface OrderComponentClient {
 
     Orders getOrders(String ssn);
 
-    void placeOrder(Order order);
+    Boolean placeOrder(Order order);
 
 }

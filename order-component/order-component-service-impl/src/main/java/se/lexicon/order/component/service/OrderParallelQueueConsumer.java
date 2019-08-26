@@ -39,6 +39,7 @@ public class OrderParallelQueueConsumer {
 
         // Check account
 
+        // If ok, place the order on the market
         boolean ok = marketApiClient.placeMarketOrder (MarketOrder.builder()
             //.withId()
             .withSsn(orderEntity.getSsn())

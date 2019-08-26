@@ -4,15 +4,18 @@ import com.so4it.queue.ParallelQueueConsumer;
 import se.lexicon.order.component.entity.OrderDealEntity;
 import se.lexicon.order.component.event.MakeDealEvent;
 import se.lexicon.order.component.mapper.OrderDealMapper;
+import se.lexicon.order.componment.dao.OrderDao;
 import se.lexicon.order.componment.dao.OrderDealDao;
 
 public class OrderDealParallelQueueConsumer {
 
 
     private OrderDealDao orderDealDao;
+    private OrderDao orderDao;
 
-    public OrderDealParallelQueueConsumer(OrderDealDao orderDealDao) {
+    public OrderDealParallelQueueConsumer(OrderDealDao orderDealDao, OrderDao orderDao) {
         this.orderDealDao = orderDealDao;
+        this.orderDao = orderDao;
     }
 
     /**
@@ -24,13 +27,19 @@ public class OrderDealParallelQueueConsumer {
     @ParallelQueueConsumer
     public void makeOrderDeal(MakeDealEvent makeDealEvent) {
 
+        if (!orderDao.exists(makeDealEvent.getOrderDeal().getOrderId())) {
+            System.out.println("UNKNOWN ORDER_ID TO DEAL " + makeDealEvent.getOrderDeal());
+            return;
+        }
+
+
         OrderDealEntity orderDealEntity = orderDealDao.insert(OrderDealMapper.map(makeDealEvent.getOrderDeal()));
 
         // Update the ACCOUNT
 
         // Update VPC
 
-        System.out.println(orderDealEntity);
+        System.out.println(makeDealEvent);
 
     }
 }
