@@ -1,5 +1,6 @@
 package se.lexicon.order.api.test.integration;
 
+import com.so4it.test.common.probe.SatisfiedWhenTrueReturned;
 import org.junit.Assert;
 import se.lexicon.order.api.client.OrderApiClient;
 import se.lexicon.order.api.client.OrderApiProvider;
@@ -58,6 +59,8 @@ public class OrderApiClientClientIntegrationTest {
         Boolean ok = orderApiClient.placeOrder(OrderTestBuilder.builder().build());
 
         Assert.assertTrue(ok);
+
+        Thread.sleep(3000);
     }
 
     @Test
@@ -67,6 +70,7 @@ public class OrderApiClientClientIntegrationTest {
 
         orderApiClient.makeDeal(OrderDealTestBuilder.builder().build());
 
+        Thread.sleep(3000);
     }
 
 }

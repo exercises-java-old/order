@@ -27,7 +27,6 @@ public class OrderDealEntity extends IdEntity<String> {
     private Money price;
 
     private OrderDealEntity(){
-
     }
     
     private OrderDealEntity(Builder builder){
@@ -51,7 +50,6 @@ public class OrderDealEntity extends IdEntity<String> {
     }
 
     @SpaceRouting
-    @SpaceFifoGroupingProperty
     public String getSsn(){
         return ssn;
     }

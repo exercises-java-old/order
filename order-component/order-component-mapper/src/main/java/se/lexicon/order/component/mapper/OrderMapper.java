@@ -3,6 +3,7 @@ package se.lexicon.order.component.mapper;
 import com.so4it.common.util.Mapper;
 import se.lexicon.order.component.domain.Order;
 import se.lexicon.order.component.entity.OrderEntity;
+import se.lexicon.order.component.event.PlaceOrderEvent;
 
 
 public final class OrderMapper {
@@ -21,6 +22,15 @@ public final class OrderMapper {
                 .map(Order::getOrderBookId, OrderEntity.Builder::withOrderBookId)
                 .map(Order::getInsertionTimestamp, OrderEntity.Builder::withInsertionTimestamp)
                 .build(OrderEntity.Builder::build);
+    }
+
+    public static PlaceOrderEvent mapEvent(Order order){
+        return Mapper.of(order, PlaceOrderEvent::builder)
+                .map(order::getId,PlaceOrderEvent.Builder::withId)
+                .map(order::getSsn,PlaceOrderEvent.Builder::withSsn)
+                .map(()-> order, PlaceOrderEvent.Builder::withOrder)
+                .map(()-> 1, PlaceOrderEvent.Builder::withCounter)
+                .build(PlaceOrderEvent.Builder::build);
     }
 
     public static Order map(OrderEntity orderEntity){

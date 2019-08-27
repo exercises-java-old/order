@@ -52,7 +52,7 @@ public class MakeDealEvent extends IdEntity<String> {
         return orderDeal;
     }
 
-    private void setOrderEntity(OrderDeal orderDeal) {
+    private void setOrderDeal(OrderDeal orderDeal) {
         this.orderDeal = orderDeal;
     }
 

@@ -1,11 +1,15 @@
 package se.lexicon.order.component.service;
 
 import com.so4it.queue.ParallelQueue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import se.lexicon.order.component.domain.*;
 import se.lexicon.order.component.entity.OrderDealEntity;
 import se.lexicon.order.component.entity.OrderEntity;
 import com.so4it.common.util.object.Required;
 import com.so4it.gs.rpc.ServiceExport;
+import se.lexicon.order.component.event.MakeDealEvent;
+import se.lexicon.order.component.event.PlaceOrderEvent;
 import se.lexicon.order.component.mapper.OrderDealMapper;
 import se.lexicon.order.component.mapper.OrderMapper;
 import se.lexicon.order.componment.dao.OrderDao;
@@ -17,16 +21,18 @@ import java.util.stream.Collectors;
 @ServiceExport({OrderComponentService.class})
 public class OrderComponentServiceImpl implements OrderComponentService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderComponentServiceImpl.class);
+
     private OrderDao orderDao;
     private OrderDealDao orderDealDao;
-    private ParallelQueue<OrderEntity> orderParallelQueue;
-    private ParallelQueue<OrderDealEntity> orderDealParallelQueue;
+    private ParallelQueue<PlaceOrderEvent> orderParallelQueue;
+    private ParallelQueue<MakeDealEvent> orderDealParallelQueue;
 
 
     public OrderComponentServiceImpl(OrderDao orderDao,
                                      OrderDealDao orderDealDao,
-                                     ParallelQueue<OrderEntity> orderParallelQueue,
-                                     ParallelQueue<OrderDealEntity> orderDealParallelQueue) {
+                                     ParallelQueue<PlaceOrderEvent> orderParallelQueue,
+                                     ParallelQueue<MakeDealEvent> orderDealParallelQueue) {
 
         this.orderDao     = Required.notNull(orderDao,"orderDao");
         this.orderDealDao = Required.notNull(orderDealDao,"orderDealDao");
@@ -35,7 +41,10 @@ public class OrderComponentServiceImpl implements OrderComponentService {
     }
 
     public void makeOrderDeal (OrderDeal orderDeal) {
-        orderDealParallelQueue.offer(OrderDealMapper.map(orderDeal));
+
+        LOGGER.info("makeOrderDeal<offer>: " + orderDeal);
+
+        orderDealParallelQueue.offer(OrderDealMapper.mapEvent(orderDeal));
     }
 
     @Override
@@ -77,7 +86,10 @@ public class OrderComponentServiceImpl implements OrderComponentService {
 
     @Override
     public Boolean placeOrder(Order order) {
-        return orderParallelQueue.offer(OrderMapper.map(order));
+
+        LOGGER.info("placeOrder<Offer>: " + order);
+
+        return orderParallelQueue.offer(OrderMapper.mapEvent(order));
     }
 
     @Override

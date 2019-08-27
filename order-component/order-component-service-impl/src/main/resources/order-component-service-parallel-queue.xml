@@ -17,12 +17,12 @@
 
 
     <bean id ="orderParallelQueue" class="com.so4it.gs.queue.GigaSpaceParallelQueue" factory-bean="parallelQueueFactory"
-          factory-method="createTaskExecutorParallelQueueOrder" init-method="initialize" destroy-method="close">
+          factory-method="createTaskExecutorParallelQueue" init-method="initialize" destroy-method="close">
         <constructor-arg name="workflowParallelQueueConsumer" ref="orderParallelQueueConsumer"/>
     </bean>
 
     <bean id ="orderDealParallelQueue" class="com.so4it.gs.queue.GigaSpaceParallelQueue" factory-bean="parallelQueueFactory"
-          factory-method="createTaskExecutorParallelQueueOrderDeal" init-method="initialize" destroy-method="close">
+          factory-method="createTaskExecutorParallelQueue2" init-method="initialize" destroy-method="close">
         <constructor-arg name="workflowParallelQueueConsumer" ref="orderDealParallelQueueConsumer"/>
     </bean>
 
@@ -30,11 +30,11 @@
     <bean id="orderParallelQueueConsumer" class="se.lexicon.order.component.service.OrderParallelQueueConsumer">
         <constructor-arg name="orderDao" ref="orderDao"/>
         <constructor-arg name="marketApiClient" ref="marketApiClient"/>
-    </bean>
+   </bean>
 
-    <bean id="orderDealParallelQueueConsumer" class="se.lexicon.order.component.service.OrderDealParallelQueueConsumer">
-        <constructor-arg name="orderDealDao" ref="orderDealDao"/>
-        <constructor-arg name="orderDao" ref="orderDao"/>
-    </bean>
+   <bean id="orderDealParallelQueueConsumer" class="se.lexicon.order.component.service.OrderDealParallelQueueConsumer">
+       <constructor-arg name="orderDealDao" ref="orderDealDao"/>
+       <constructor-arg name="orderDao" ref="orderDao"/>
+   </bean>
 
 </beans>

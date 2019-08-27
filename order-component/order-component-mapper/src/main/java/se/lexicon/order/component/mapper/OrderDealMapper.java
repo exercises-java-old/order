@@ -3,11 +3,10 @@ package se.lexicon.order.component.mapper;
 import com.so4it.common.util.Mapper;
 import se.lexicon.order.component.domain.OrderDeal;
 import se.lexicon.order.component.entity.OrderDealEntity;
+import se.lexicon.order.component.event.MakeDealEvent;
 
 
 public final class OrderDealMapper {
-
-
 
     public static OrderDealEntity map(OrderDeal orderDeal){
         return Mapper.of(orderDeal, OrderDealEntity::builder)
@@ -20,6 +19,14 @@ public final class OrderDealMapper {
                 .build(OrderDealEntity.Builder::build);
     }
 
+    public static MakeDealEvent mapEvent(OrderDeal orderDeal){
+        return Mapper.of(orderDeal, MakeDealEvent::builder)
+                .map(OrderDeal::getId,MakeDealEvent.Builder::withId)
+                .map(OrderDeal::getSsn,MakeDealEvent.Builder::withSsn)
+                .map(()-> orderDeal, MakeDealEvent.Builder::withOrderDeal)
+                .map(()-> 1, MakeDealEvent.Builder::withCounter)
+                .build(MakeDealEvent.Builder::build);
+    }
 
     public static OrderDeal map(OrderDealEntity orderDealEntity){
         return orderDealEntity != null ? Mapper.of(orderDealEntity, OrderDeal::builder)

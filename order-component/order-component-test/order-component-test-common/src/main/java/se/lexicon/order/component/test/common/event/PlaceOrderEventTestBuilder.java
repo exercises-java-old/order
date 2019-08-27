@@ -17,7 +17,7 @@ public class PlaceOrderEventTestBuilder extends AbstractTestBuilder<PlaceOrderEv
         this.builder = Required.notNull(builder, "builder");
         this.builder
                 //.withId("1111111111")
-                .withSsn("1111111111")
+                .withSsn(OrderTestBuilder.builder().build().getSsn())
                 .withOrder(OrderTestBuilder.builder().build())
                 .withCounter(1);
     }

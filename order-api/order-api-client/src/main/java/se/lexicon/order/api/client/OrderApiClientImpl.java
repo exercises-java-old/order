@@ -3,6 +3,8 @@ package se.lexicon.order.api.client;
 import com.so4it.common.util.object.Required;
 import com.so4it.ft.core.FaultTolerantBean;
 import com.so4it.metric.springframework.MetricsBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import se.lexicon.order.OrderApiServiceGrpc;
 import se.lexicon.order.OrderDealRequest;
 import se.lexicon.order.PlaceOrderRequest;
@@ -11,6 +13,8 @@ import se.lexicon.order.component.domain.*;
 @FaultTolerantBean(groupKey = OrderApiClientImpl.ORDER_API_CLIENT_NAME)
 @MetricsBean(name = OrderApiClientImpl.ORDER_API_CLIENT_NAME)
 public class OrderApiClientImpl implements OrderApiClient {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderApiClientImpl.class);
 
     static final String ORDER_API_CLIENT_NAME = "ORDER_API_CLIENT";
 
@@ -22,6 +26,9 @@ public class OrderApiClientImpl implements OrderApiClient {
 
     @Override
     public Boolean placeOrder(Order order) {
+
+        LOGGER.info("placeOrder: " + order);
+
         se.lexicon.order.PlaceOrderResponse response = orderService.placeOrder(PlaceOrderRequest.newBuilder()
                 //.setId(orderOrder.getId())
                 .setSsn(order.getSsn())
@@ -40,9 +47,12 @@ public class OrderApiClientImpl implements OrderApiClient {
     @Override
     public void makeDeal(OrderDeal orderDeal) {
 
+        LOGGER.info("makeDeal: " + orderDeal);
+
         se.lexicon.order.OrderDealResponse response = orderService.makeOrderDeal(OrderDealRequest.newBuilder()
                 //.setId(orderOrder.getId())
                 .setSsn(orderDeal.getSsn())
+                .setOrderid(orderDeal.getOrderId())
                 .setInstrument(orderDeal.getInstrument())
                 .setNoOfItems(orderDeal.getNoOfItems())
                 .setPrice(mapMoney(orderDeal.getPrice()))

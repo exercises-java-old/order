@@ -1,6 +1,8 @@
 package se.lexicon.order.component.service;
 
 import com.so4it.queue.ParallelQueueConsumer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import se.lexicon.order.component.entity.OrderDealEntity;
 import se.lexicon.order.component.event.MakeDealEvent;
 import se.lexicon.order.component.mapper.OrderDealMapper;
@@ -9,9 +11,10 @@ import se.lexicon.order.componment.dao.OrderDealDao;
 
 public class OrderDealParallelQueueConsumer {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderDealParallelQueueConsumer.class);
 
     private OrderDealDao orderDealDao;
-    private OrderDao orderDao;
+    private OrderDao     orderDao;
 
     public OrderDealParallelQueueConsumer(OrderDealDao orderDealDao, OrderDao orderDao) {
         this.orderDealDao = orderDealDao;
@@ -25,12 +28,14 @@ public class OrderDealParallelQueueConsumer {
      * @param makeDealEvent
      */
     @ParallelQueueConsumer
-    public void makeOrderDeal(MakeDealEvent makeDealEvent) {
+    public void makeOrderDealEvent(MakeDealEvent makeDealEvent) {
 
-        if (!orderDao.exists(makeDealEvent.getOrderDeal().getOrderId())) {
-            System.out.println("UNKNOWN ORDER_ID TO DEAL " + makeDealEvent.getOrderDeal());
-            return;
-        }
+        LOGGER.info("makeOrderDealEvent: " + makeDealEvent);
+
+//        if (!orderDao.exists(makeDealEvent.getOrderDeal().getOrderId())) {
+//            System.out.println("UNKNOWN ORDER_ID TO DEAL " + makeDealEvent.getOrderDeal());
+//            return;
+//        }
 
 
         OrderDealEntity orderDealEntity = orderDealDao.insert(OrderDealMapper.map(makeDealEvent.getOrderDeal()));
@@ -38,8 +43,6 @@ public class OrderDealParallelQueueConsumer {
         // Update the ACCOUNT
 
         // Update VPC
-
-        System.out.println(makeDealEvent);
 
     }
 }

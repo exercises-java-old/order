@@ -52,7 +52,8 @@ public class OrderComponentServiceIntegrationTest {
 
         // Orders orders = orderComponentService.getOrders("111111");
         //Assert.assertEquals(1, orders.size());
-        //Assert.assertEquals(order, orders.getFirst());
+        Assert.assertNotNull(orderComponentService.getOrders("111111").getFirst().getId());
+        Assert.assertEquals(order.getInsertionTimestamp(), orderComponentService.getOrders("111111").getFirst().getInsertionTimestamp());
 
     }
 

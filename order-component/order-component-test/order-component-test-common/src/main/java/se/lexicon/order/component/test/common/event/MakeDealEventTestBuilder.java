@@ -17,7 +17,7 @@ public class MakeDealEventTestBuilder extends AbstractTestBuilder<MakeDealEvent>
         this.builder = Required.notNull(builder, "builder");
         this.builder
                 //.withId("1111111111")
-                .withSsn("1111111111")
+                .withSsn(OrderDealTestBuilder.builder().build().getSsn())
                 .withOrderDeal(OrderDealTestBuilder.builder().build())
                 .withCounter(1);
     }

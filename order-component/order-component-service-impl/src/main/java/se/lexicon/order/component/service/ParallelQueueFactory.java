@@ -29,7 +29,7 @@ public class ParallelQueueFactory {
         this.gigaSpaceParallelQueueConfiguration = Required.notNull(gigaSpaceParallelQueueConfiguration, "gigaSpaceParallelQueueConfiguration");
     }
 
-    public ParallelQueue<PlaceOrderEvent> createTaskExecutorParallelQueueOrder(OrderParallelQueueConsumer workflowParallelQueueConsumer) {
+    public ParallelQueue<PlaceOrderEvent> createTaskExecutorParallelQueue(OrderParallelQueueConsumer workflowParallelQueueConsumer) {
         return GigaSpaceParallelQueueFactory.createSingleReadSingleTakeWithFifoStaticTemplateWithTransactionManager(
                 "OrderExecutor",
                 gigaSpace,
@@ -40,7 +40,7 @@ public class ParallelQueueFactory {
                 new SQLQuery<>(PlaceOrderEvent.class, ""));
     }
 
-    public ParallelQueue<MakeDealEvent> createTaskExecutorParallelQueueOrderDeal(OrderDealParallelQueueConsumer workflowParallelQueueConsumer) {
+    public ParallelQueue<MakeDealEvent> createTaskExecutorParallelQueue2(OrderDealParallelQueueConsumer workflowParallelQueueConsumer) {
         return GigaSpaceParallelQueueFactory.createSingleReadSingleTakeWithFifoStaticTemplateWithTransactionManager(
                 "OrderDealExecutor",
                 gigaSpace,

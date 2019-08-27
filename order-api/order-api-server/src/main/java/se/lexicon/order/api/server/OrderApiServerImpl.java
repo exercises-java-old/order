@@ -1,5 +1,7 @@
 package se.lexicon.order.api.server;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import se.lexicon.order.*;
 import se.lexicon.order.Money;
 import se.lexicon.order.OrderPriceType;
@@ -28,6 +30,8 @@ import java.util.Currency;
         properties = Order.PROPERTIES)
 public class OrderApiServerImpl extends OrderApiServiceGrpc.OrderApiServiceImplBase{
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderApiServerImpl.class);
+
     private OrderComponentClient orderComponentClient;
 
     public OrderApiServerImpl(OrderComponentClient orderComponentClient) {
@@ -38,7 +42,9 @@ public class OrderApiServerImpl extends OrderApiServiceGrpc.OrderApiServiceImplB
     public void placeOrder(PlaceOrderRequest request, StreamObserver<PlaceOrderResponse> responseObserver) {
         StreamObserverErrorHandler.of(responseObserver).onError(() -> {
 
-           orderComponentClient.placeOrder
+            LOGGER.info("placeOrder: "+request);
+
+            Boolean ok = orderComponentClient.placeOrder
                     (se.lexicon.order.component.domain.Order.builder()
                             .withSsn(request.getSsn())
                             .withAmount(BigDecimal.valueOf(request.getAmount()))
@@ -51,7 +57,7 @@ public class OrderApiServerImpl extends OrderApiServiceGrpc.OrderApiServiceImplB
                             .withMinMaxValue(mapMoney (request.getMinMaxValue()))
                             .build());
 
-            responseObserver.onNext(PlaceOrderResponse.newBuilder().setOk(true).build());
+            responseObserver.onNext(PlaceOrderResponse.newBuilder().setOk(ok).build());
             responseObserver.onCompleted();
         }, "Failed creating order request order");
     }
@@ -60,11 +66,13 @@ public class OrderApiServerImpl extends OrderApiServiceGrpc.OrderApiServiceImplB
     public void makeOrderDeal(OrderDealRequest request, StreamObserver<OrderDealResponse> responseObserver) {
         StreamObserverErrorHandler.of(responseObserver).onError(() -> {
 
+            LOGGER.info("makeOrderDeal: "+request);
+
             orderComponentClient.makeOrderDeal
                     (OrderDeal.builder()
                             .withSsn(request.getSsn())
-                            .withOrderId(request.getSsn())
-                            .withInstrument(request.getOrderid())
+                            .withOrderId(request.getOrderid())
+                            .withInstrument(request.getInstrument())
                             .withNoOfItems(request.getNoOfItems())
                             .withPrice(mapMoney (request.getPrice()))
                             .build());

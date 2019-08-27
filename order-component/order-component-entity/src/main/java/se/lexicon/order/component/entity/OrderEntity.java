@@ -71,7 +71,6 @@ public class OrderEntity extends IdEntity<String> {
     }
 
     @SpaceRouting
-    @SpaceFifoGroupingProperty
     public String getSsn() {
         return ssn;
     }
