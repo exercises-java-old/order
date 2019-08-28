@@ -10,9 +10,7 @@
         <constructor-arg name="orderDao" ref="orderDao"/>
         <constructor-arg name="orderDealDao" ref="orderDealDao"/>
         <constructor-arg name="orderParallelQueue" ref="orderParallelQueue"/>
-        <!--
         <constructor-arg name="orderDealParallelQueue" ref="orderDealParallelQueue"/>
-        -->
     </bean>
 
 

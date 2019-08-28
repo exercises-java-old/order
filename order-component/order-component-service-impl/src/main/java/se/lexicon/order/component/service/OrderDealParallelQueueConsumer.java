@@ -4,6 +4,7 @@ import com.so4it.queue.ParallelQueueConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import se.lexicon.order.component.entity.OrderDealEntity;
+import se.lexicon.order.component.entity.OrderEntity;
 import se.lexicon.order.component.event.MakeDealEvent;
 import se.lexicon.order.component.mapper.OrderDealMapper;
 import se.lexicon.order.componment.dao.OrderDao;
@@ -32,11 +33,14 @@ public class OrderDealParallelQueueConsumer {
 
         LOGGER.info("makeOrderDealEvent: " + makeDealEvent);
 
-//        if (!orderDao.exists(makeDealEvent.getOrderDeal().getOrderId())) {
-//            System.out.println("UNKNOWN ORDER_ID TO DEAL " + makeDealEvent.getOrderDeal());
-//            return;
-//        }
+        OrderEntity orderEntity = orderDao.readByIdIfExists(makeDealEvent.getOrderDeal().getOrderId());
 
+        LOGGER.info("makeOrderDealEvent<Order>: " + orderEntity);
+
+        if (orderEntity == null || !makeDealEvent.getOrderDeal().getSsn().equals(orderEntity.getSsn())) {
+            System.out.println("UNKNOWN ORDER_ID TO DEAL " + makeDealEvent.getOrderDeal());
+            return;
+        }
 
         OrderDealEntity orderDealEntity = orderDealDao.insert(OrderDealMapper.map(makeDealEvent.getOrderDeal()));
 

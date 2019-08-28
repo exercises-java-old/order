@@ -22,12 +22,10 @@
     </bean>
 
 
-    <!--
     <bean id ="orderDealParallelQueue" class="com.so4it.gs.queue.GigaSpaceParallelQueue" factory-bean="parallelQueueFactory"
           factory-method="createTaskExecutorParallelQueue2" init-method="initialize" destroy-method="close">
         <constructor-arg name="workflowParallelQueueConsumer" ref="orderDealParallelQueueConsumer"/>
     </bean>
-    -->
 
 
     <bean id="orderParallelQueueConsumer" class="se.lexicon.order.component.service.OrderParallelQueueConsumer">

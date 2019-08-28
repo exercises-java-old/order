@@ -3,6 +3,6 @@ se/lexicon/order/component/test/common/domain/OrderBookTestBuilder.class
 se/lexicon/order/component/test/common/entity/OrderDealEntityTestBuilder.class
 se/lexicon/order/component/test/common/event/MakeDealEventTestBuilder.class
 se/lexicon/order/component/test/common/domain/OrderDealTestBuilder.class
-se/lexicon/order/component/test/common/entity/OrderBookEntityTestBuilder.class
 se/lexicon/order/component/test/common/entity/OrderEntityTestBuilder.class
+se/lexicon/order/component/test/common/entity/OrderBookEntityTestBuilder.class
 se/lexicon/order/component/test/common/domain/OrderTestBuilder.class

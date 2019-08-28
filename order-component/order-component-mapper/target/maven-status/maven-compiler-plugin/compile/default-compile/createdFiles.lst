@@ -1,5 +1,5 @@
 se/lexicon/order/component/mapper/OrderMapper.class
 se/lexicon/order/component/mapper/OrderTransactionMapper.class
 se/lexicon/order/component/mapper/MoneyMapper.class
-se/lexicon/order/component/mapper/EnumMapper.class
 se/lexicon/order/component/mapper/OrderDealMapper.class
+se/lexicon/order/component/mapper/EnumMapper.class
