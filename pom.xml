@@ -10,6 +10,7 @@
 
     <modules>
         <module>order-api</module>
+        <module>order-bom</module>
         <module>order-component</module>
     </modules>
 

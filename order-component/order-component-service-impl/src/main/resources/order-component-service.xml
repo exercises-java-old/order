@@ -10,12 +10,10 @@
         <constructor-arg name="orderDao" ref="orderDao"/>
         <constructor-arg name="orderDealDao" ref="orderDealDao"/>
         <constructor-arg name="orderParallelQueue" ref="orderParallelQueue"/>
+        <!--
         <constructor-arg name="orderDealParallelQueue" ref="orderDealParallelQueue"/>
+        -->
     </bean>
 
-    <bean id="marketApiClient" class="com.so4it.common.bean.LazyProxyFactoryBean">
-        <constructor-arg name="beanType" value="se.lexicon.market.api.client.MarketApiClient"/>
-        <constructor-arg name="beanContext" ref="frameworksBeanContext"/>
-    </bean>
 
 </beans>

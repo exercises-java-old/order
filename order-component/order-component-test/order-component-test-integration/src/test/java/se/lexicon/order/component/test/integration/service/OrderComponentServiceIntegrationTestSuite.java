@@ -21,6 +21,8 @@ import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.junit.runners.Suite;
+import org.mockito.Mockito;
+import se.lexicon.market.api.client.MarketApiClient;
 import se.lexicon.order.component.service.OrderComponentServiceProvider;
 
 /**
@@ -42,6 +44,9 @@ public class OrderComponentServiceIntegrationTestSuite {
     private static final DynamicConfiguration DYNAMIC_CONFIGURATION = ServiceFrameworkCommonTest.createDynamicConfiguration(CONFIGURATION_SOURCE);
 
     private static final ServiceBeanStateRegistry SERVICE_BEAN_STATE_REGISTRY = new ServiceBeanStateRegistry();
+
+
+    private static final MarketApiClient MARKET_API_CLIENT = Mockito.mock(MarketApiClient.class);
 
     private static GigaSpaceEmbeddedLusTestRule GIGA_SPACE_TEST_RULE;
 
@@ -72,6 +77,7 @@ public class OrderComponentServiceIntegrationTestSuite {
                     .addBean(ServiceRegistryClient.DEFAULT_API_BEAN_NAME, SERVICE_REGISTRY)
                     .addBean(DynamicConfiguration.DEFAULT_BEAN_NAME, DYNAMIC_CONFIGURATION)
                     .addBean(MapBeanContext.DEFAULT_BEAN_NAME, new MapBeanContext())
+                    .addBean(MarketApiClient.DEFAULT_API_BEAN_NAME,MARKET_API_CLIENT)
                     .addProvider(ServiceFrameworkCommonTest.getPropertyProvider());
 
         }

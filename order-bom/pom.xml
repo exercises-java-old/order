@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.lexicon</groupId>
+        <artifactId>order</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>order-bom</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        This Bill Of Matierialized is a pom designed for importing into your projects dependency management section.
+        It will specify versions of all core modules so that we reduce dependency declarations within our projects.
+    </description>
+
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!--
+                Api
+            -->
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-api-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-api-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-api-mapper</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-api-server</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-api-test-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!--
+                Component
+            -->
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-component-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-component-dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-component-dao-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-component-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-component-entity</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-component-mapper</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-component-mirror</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-component-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-component-service-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lexicon</groupId>
+                <artifactId>order-component-test-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+
+
+
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <configuration>
+                    <flattenMode>bom</flattenMode>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+

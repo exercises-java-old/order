@@ -26,25 +26,24 @@ public class OrderComponentServiceImpl implements OrderComponentService {
     private OrderDao orderDao;
     private OrderDealDao orderDealDao;
     private ParallelQueue<PlaceOrderEvent> orderParallelQueue;
-    private ParallelQueue<MakeDealEvent> orderDealParallelQueue;
+    //private ParallelQueue<MakeDealEvent> orderDealParallelQueue;
 
 
     public OrderComponentServiceImpl(OrderDao orderDao,
                                      OrderDealDao orderDealDao,
-                                     ParallelQueue<PlaceOrderEvent> orderParallelQueue,
-                                     ParallelQueue<MakeDealEvent> orderDealParallelQueue) {
+                                     ParallelQueue<PlaceOrderEvent> orderParallelQueue) {
 
         this.orderDao     = Required.notNull(orderDao,"orderDao");
         this.orderDealDao = Required.notNull(orderDealDao,"orderDealDao");
         this.orderParallelQueue = Required.notNull(orderParallelQueue,"orderParallelQueue");
-        this.orderDealParallelQueue = Required.notNull(orderDealParallelQueue,"orderDealParallelQueue");
+        //this.orderDealParallelQueue = Required.notNull(orderDealParallelQueue,"orderDealParallelQueue");
     }
 
     public void makeOrderDeal (OrderDeal orderDeal) {
 
         LOGGER.info("makeOrderDeal<offer>: " + orderDeal);
 
-        orderDealParallelQueue.offer(OrderDealMapper.mapEvent(orderDeal));
+        //orderDealParallelQueue.offer(OrderDealMapper.mapEvent(orderDeal));
     }
 
     @Override

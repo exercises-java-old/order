@@ -45,19 +45,19 @@ public class OrderParallelQueueConsumer {
         // Check account
 
         // If account balance ok, place the order on the market
-//        boolean ok = marketApiClient.placeMarketOrder (MarketOrder.builder()
-//            //.withId()
-//            .withSsn(orderEntity.getSsn())
-//            .withOrderId(orderEntity.getId())
-//            .withInstrument(orderEntity.getInstrument())
-//            .withAmount(orderEntity.getAmount())
-//            .withInsertionTimestamp(orderEntity.getInsertionTimestamp())
-//            .withMinMaxValue(MoneyMapper.mapIt(orderEntity.getMinMaxValue()))
-//            .withNoOfItems(orderEntity.getNoOfItems())
-//            .withOrderPriceType(EnumMapper.map(orderEntity.getOrderPriceType()))
-//            .withSide(EnumMapper.map(orderEntity.getSide()))
-//            .withOrderBookId(orderEntity.getOrderBookId())
-//            .build());
+        boolean ok = marketApiClient.placeMarketOrder(MarketOrder.builder()
+                //.withId()
+                .withSsn(orderEntity.getSsn())
+                .withOrderId(orderEntity.getId())
+                .withInstrument(orderEntity.getInstrument())
+                .withAmount(orderEntity.getAmount())
+                .withInsertionTimestamp(orderEntity.getInsertionTimestamp())
+                .withMinMaxValue(MoneyMapper.mapIt(orderEntity.getMinMaxValue()))
+                .withNoOfItems(orderEntity.getNoOfItems())
+                .withOrderPriceType(EnumMapper.map(orderEntity.getOrderPriceType()))
+                .withSide(EnumMapper.map(orderEntity.getSide()))
+                .withOrderBookId(orderEntity.getOrderBookId())
+                .build());
 
         // If not OK, reenter placeOrderEvent in the queue
     }
