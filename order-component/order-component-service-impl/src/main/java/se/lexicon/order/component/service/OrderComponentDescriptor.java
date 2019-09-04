@@ -7,7 +7,7 @@ import com.so4it.gs.rpc.ServiceBindingType;
 @Component(
         name = "checkout",
         serviceProviders = {
-                OrderComponentServiceProvider.class,OrderComponentServiceProvider.class,
+                OrderComponentServiceProvider.class
         },
         defaultServiceType = ServiceBindingType.GS_REMOTING
 )

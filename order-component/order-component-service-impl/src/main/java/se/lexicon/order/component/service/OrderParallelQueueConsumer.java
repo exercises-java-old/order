@@ -34,13 +34,13 @@ public class OrderParallelQueueConsumer {
      * @param placeOrderEvent
      */
     @ParallelQueueConsumer
-    public void placeOrderEvent(PlaceOrderEvent placeOrderEvent) {
+    public void OrderExecutor(PlaceOrderEvent placeOrderEvent) {
 
-        LOGGER.info("placeOrderEvent:" + placeOrderEvent);
+        LOGGER.info("OrderExecutor:" + placeOrderEvent);
 
         OrderEntity orderEntity = orderDao.insert(OrderMapper.map(placeOrderEvent.getOrder()));
 
-        LOGGER.info("placeOrderEvent<orderEntity>:" + orderEntity);
+        LOGGER.info("OrderExecutor<orderEntity>:" + orderEntity);
 
         // Check account
 

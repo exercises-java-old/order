@@ -29,13 +29,13 @@ public class OrderDealParallelQueueConsumer {
      * @param makeDealEvent
      */
     @ParallelQueueConsumer
-    public void makeOrderDealEvent(MakeDealEvent makeDealEvent) {
+    public void OrderDealExecutor(MakeDealEvent makeDealEvent) {
 
-        LOGGER.info("makeOrderDealEvent: " + makeDealEvent);
+        LOGGER.info("OrderDealExecutor: " + makeDealEvent);
 
         OrderEntity orderEntity = orderDao.readByIdIfExists(makeDealEvent.getOrderDeal().getOrderId());
 
-        LOGGER.info("makeOrderDealEvent<Order>: " + orderEntity);
+        LOGGER.info("OrderDealExecutor<Order>: " + orderEntity);
 
         if (orderEntity == null || !makeDealEvent.getOrderDeal().getSsn().equals(orderEntity.getSsn())) {
             System.out.println("UNKNOWN ORDER_ID TO DEAL " + makeDealEvent.getOrderDeal());

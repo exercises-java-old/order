@@ -17,13 +17,13 @@
 
 
     <bean id ="orderParallelQueue" class="com.so4it.gs.queue.GigaSpaceParallelQueue" factory-bean="parallelQueueFactory"
-          factory-method="createTaskExecutorParallelQueue" init-method="initialize" destroy-method="close">
+          factory-method="createTaskExecutorParallelQueueOrders" init-method="initialize" destroy-method="close">
         <constructor-arg name="workflowParallelQueueConsumer" ref="orderParallelQueueConsumer"/>
     </bean>
 
 
     <bean id ="orderDealParallelQueue" class="com.so4it.gs.queue.GigaSpaceParallelQueue" factory-bean="parallelQueueFactory"
-          factory-method="createTaskExecutorParallelQueue2" init-method="initialize" destroy-method="close">
+          factory-method="createTaskExecutorParallelQueueDeals" init-method="initialize" destroy-method="close">
         <constructor-arg name="workflowParallelQueueConsumer" ref="orderDealParallelQueueConsumer"/>
     </bean>
 
